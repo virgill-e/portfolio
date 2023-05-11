@@ -12,7 +12,7 @@ html{
 
 body{
     margin: 0px;
-    background: linear-gradient(to right bottom, #121dc6, #7439e0,#d500f9);
+    background: linear-gradient(90deg, rgb(4, 45, 84), rgb(5, 29, 52), rgb(0,0,0));
     position: relative;
     overflow: hidden;
 }
@@ -23,7 +23,7 @@ body{
     width: var(--s);
     height: var(--s);
     border-radius: 50%;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.01);
     box-shadow:
             0 0 20px rgba(0,0,0,0.3), /* ombre externe */
             inset 0 0 20px rgba(255,255,255,0.2); /* reflet interne */
@@ -39,7 +39,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding-top: 1rem;
     border-radius: 1rem;
     background-color: transparent;
     margin: auto;
@@ -48,7 +48,7 @@ body{
 }
 
 .picture-me{
-    width: 20%;
+    width: 20vh;
     border-radius: 50%;
 }
 
@@ -76,6 +76,13 @@ h1{
     justify-content: space-between;
     backdrop-filter: blur(0.5rem);
     border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.link-block img{
+    width: 5vh;
+}
+.link-block:hover{
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 a{
