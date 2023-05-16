@@ -11,9 +11,9 @@
 <div class="rond" style="--x: 0.65; --y: 0.2; --s: 15vh;"></div>
 <div class="rond" style="--x: 0.8; --y: 0.7; --s: 50vh;"></div>
 
-<div class="box" >
+<div class="box">
     <img class="picture-me" src="ressources/img/me.jpeg" alt="me">
-    <h1>Virgill_e</h1>
+    <h1 id="title">Virgill_e</h1>
     <p class="description">Bigaré Virgile</p>
 
 
@@ -50,9 +50,54 @@
 
 
 </div>
-</body>
+
 <footer>
     <p>©Virgill_e</p>
 </footer>
 
+<script>
+    var dir = 1, id = 0, strpos = 0;
+    var speed = 150;
+
+    var str = new Array(0);
+    str[0] = "Hello !";
+    str[1] = "I'm Virgill_e";
+
+    window.onload = function () {
+        window.setInterval('ParseText()', speed);
+    }
+
+    function ParseText() {
+        if (dir == 1) AddChar(); else RemChar();
+        ShowItem();
+    }
+
+    function AddChar() {
+        strpos++;
+        if (strpos > str[id].length) dir = -1;
+    }
+
+    function RemChar() {
+        strpos--;
+        if (strpos < 0) {
+            dir = 1;
+            NextItem();
+        }
+    }
+
+    function ShowItem() {
+        var result = str[id].substring(0, strpos);
+        if (result === "") {
+            result = "&nbsp;"; // Ajouter un espace réservé
+        }
+        document.getElementById("title").innerHTML = result;
+
+    }
+
+    function NextItem() {
+        id++;
+        if (id > str.length - 1) id = 0;
+    }
+</script>
+</body>
 </html>
