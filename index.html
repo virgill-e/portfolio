@@ -2,112 +2,45 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virgill_e</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="title" content="Virgill_e">
+    <meta name="description" content="Point faible: trop fort">
+    <script src="js/flip.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    <title>Virgill_e</title>
 </head>
-<body class="mouse-cursor-gradient-tracking">
+<body>
+<div class="container">
+    <div class="card" id="flip">
 
-<div class="box">
+        <div class="front">
+            <img src="ressources/img/me.png" alt="ma photo">
+            <h1>Virgile Bigaré</h1>
+            <p id="write">Hello !</p>
+            <button onclick="flip()">My links</button>
+        </div>
 
-    <img class="picture-me" src="ressources/img/profile-pic (2).png" alt="me">
-    <h1 id="title">Virgill_e</h1>
-    <p class="description">Bigaré Virgile</p>
+        <div class="back">
+            <h1>Virgill_e</h1>
+            <p>contact me</p>
+            <div class="liens">
+                <a href="https://www.linkedin.com/in/virgile-bigar%C3%A9-19586a195/" target="_blank" class="lien"><img src="ressources/img/linkedin.svg"></a>
+                <a href="https://twitter.com/virgill_e" target="_blank" class="lien"><img src="ressources/img/twitter.svg"></a>
+                <a href="https://discord.com/users/216953621848260608" target="_blank" class="lien"><img src="ressources/img/discord.svg"></a>
+                <a href="https://github.com/virgill-e" target="_blank" class="lien"><img src="ressources/img/github.svg"></a>
+                <a href="https://www.instagram.com/virgill_e/" target="_blank" class="lien"><img src="ressources/img/instagram.svg"></a>
+            </div>
+            <button onclick="flip()">Me</button>
+        </div>
 
-
-    <a href="https://github.com/virgill-e" class="link-block">
-        <img src="ressources/img/github.svg" alt="logo">
-        <span class="link">Github</span>
-        <img src="ressources/img/link.svg" alt="link">
-    </a>
-
-
-    <a href="https://www.linkedin.com/in/virgile-bigar%C3%A9-19586a195/" class="link-block">
-        <img src="ressources/img/linkedin.svg" alt="logo">
-        <span class="link">Linkedin</span>
-        <img src="ressources/img/link.svg" alt="link">
-    </a>
-
-    <a href="https://twitter.com/virgill_e" class="link-block">
-        <img src="ressources/img/twitter.svg" alt="logo">
-        <span class="link">Twitter</span>
-        <img src="ressources/img/link.svg" alt="link">
-    </a>
-
-    <a href="https://discord.com/users/216953621848260608" class="link-block">
-        <img src="ressources/img/discord.svg" alt="logo">
-        <span class="link">Discord</span>
-        <img src="ressources/img/link.svg" alt="link">
-    </a>
-
-    <a href="https://www.instagram.com/virgill_e/" class="link-block">
-        <img src="ressources/img/instagram.svg" alt="logo">
-        <span class="link">Instagram</span>
-        <img src="ressources/img/link.svg" alt="link">
-    </a>
-
-
+    </div>
 </div>
 
-<footer>
-    <p>©Virgill_e</p>
-</footer>
-
-<script>
-    var dir = 1, id = 0, strpos = 0;
-    var speed = 150;
-
-    var str = new Array(0);
-    str[0] = "Hello !";
-    str[1] = "I'm Virgill_e";
-
-    window.onload = function () {
-        window.setInterval('ParseText()', speed);
-    }
-
-    function ParseText() {
-        if (dir == 1) AddChar(); else RemChar();
-        ShowItem();
-    }
-
-    function AddChar() {
-        strpos++;
-        if (strpos > str[id].length) dir = -1;
-    }
-
-    function RemChar() {
-        strpos--;
-        if (strpos < 0) {
-            dir = 1;
-            NextItem();
-        }
-    }
-
-    function ShowItem() {
-        var result = str[id].substring(0, strpos);
-        if (result === "") {
-            result = "&nbsp;"; // Ajouter un espace réservé
-        }
-        document.getElementById("title").innerHTML = result;
-
-    }
-
-    function NextItem() {
-        id++;
-        if (id > str.length - 1) id = 0;
-    }
-</script>
-
-<script>
-    if (window.innerWidth >= 900) { // Modifier la valeur selon vos besoins
-        document.body.addEventListener("pointermove", (e)=>{
-            const { currentTarget: el, clientX: x, clientY: y } = e;
-            const { top: t, left: l, width: w, height: h } = el.getBoundingClientRect();
-            el.style.setProperty('--posX',  x-l-w/2);
-            el.style.setProperty('--posY',  y-t-h/2);
-        });
-    }
-</script>
+<script src="js/background.js"></script>
+<script src="js/writing.js"></script>
 
 </body>
 </html>
+

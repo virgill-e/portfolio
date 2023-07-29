@@ -3,138 +3,184 @@
     src: url(../ressources/font/Ailerons-Typeface.otf);
 }
 
-html{
-    min-height: 100vh;
-    overflow-x: hidden;
-    font-family: ailerons, serif;
-    color: white;
+:root {
+    --card-height: 65vh;
+    --card-width: calc(var(--card-height) / 1.6);
 }
 
-body{
-    min-height: 100vh;
-    margin: 0px;
-    background: linear-gradient(90deg, rgb(4, 45, 84), rgb(5, 29, 52), rgb(0,0,0));
-    position: relative;
-    overflow: hidden;
+/*ANIMATION*/
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes spin {
+    0% {
+        --rotate: 0deg;
+    }
+    100% {
+        --rotate: 360deg;
+    }
+}
+
+html,body {
+    height: 100%;
+    margin: 0;
+}
+body {
     display: flex;
     flex-direction: column;
-    
-    margin: 0;
+    justify-content: center;
+    align-items: center;
+
+    display: flex;
+    flex-direction: column;
+
     --x: calc(var(--posX, 0) * 1px);
     --y: calc(var(--posY, 0) * 1px);
     background-image:
-            linear-gradient(115deg, rgb(120 086 255), rgb(120 086 255)),
-            radial-gradient( 90% 100% at calc( 50% + var(--x)) calc( 0% + var(--y)), rgb(200 200 200), rgb(120 086 255)),
-            radial-gradient(100% 100% at calc( 80% - var(--x)) calc( 0% - var(--y)), rgb(250 255 000), rgb(036 000 000)),
-            radial-gradient(150% 210% at calc(100% + var(--x)) calc( 0% + var(--y)), rgb(000 010 255), rgb(120 086 255)),
-            radial-gradient(100% 100% at calc(100% - var(--x)) calc(30% - var(--y)), rgb(000 010 255), rgb(120 086 255)),
-            linear-gradient(60deg, rgb(000 010 255), rgb(120 086 255));
+            linear-gradient(115deg, rgb(159, 225, 240), rgb(56, 142, 204)),
+            radial-gradient( 90% 100% at calc( 50% + var(--x)) calc( 0% + var(--y)), rgb(180, 234, 176), rgb(63, 173, 71)),
+            radial-gradient(100% 100% at calc( 80% - var(--x)) calc( 0% - var(--y)), rgb(112, 207, 220), rgb(0, 106, 166)),
+            radial-gradient(150% 210% at calc(100% + var(--x)) calc( 0% + var(--y)), rgb(126, 206, 193), rgb(46, 137, 149)),
+            radial-gradient(100% 100% at calc(100% - var(--x)) calc(30% - var(--y)), rgb(120, 198, 252), rgb(0, 85, 206)),
+            linear-gradient(60deg, rgb(0, 160, 176), rgb(0, 70, 140));
     background-blend-mode: overlay, overlay, difference, difference, difference, normal;
 }
-
-
-
-.rond {
-    width: var(--s);
-    height: var(--s);
-    border-radius: 50%;
-    background: rgba(255,255,255,0.01);
-    box-shadow:
-            0 0 20px rgba(0,0,0,0.3), /* ombre externe */
-            inset 0 0 20px rgba(255,255,255,0.2); /* reflet interne */
+.container {
+    width: var(--card-width);
+    max-width: 90%;
+    height: var(--card-height);
+    position: relative;
+    perspective: 800px;
+    border-radius: 4px;
+}
+.card {
+    width: 100%;
+    height: 100%;
     position: absolute;
-    transform: translate3d(
-            calc(100vw * var(--x)),
-            calc(100vh * var(--y)),
-            0
-    );
-    animation: bubble 7s ease-in-out infinite;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 6px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    cursor: pointer;
 }
+.card div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.05);
+    color: #fff;
 
-@keyframes bubble {
-    0% {
-        transform: translate(
-                calc(100vw * var(--x)),
-                calc(120vh)
-        );
-        opacity: 0;
-    }
-    50% {
-        transform: translate(
-                calc(100vw * var(--x)),
-                calc(60vh)
-        );
-        opacity: 1;
-    }
-    100% {
-        transform: translate(
-                calc(100vw * var(--x)),
-                0vh
-        );
-        opacity: 0;
-    }
-}
-
-
-
-.box{
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
     align-items: center;
-    padding-top: 1rem;
-    border-radius: 1rem;
+}
+.card .back {
+    transform: rotateY(180deg);
+}
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.front img{
+    height: 38%;
+    margin: 1rem;
+}
+.front button{
+    height: 7%;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+.front h1, .front p{
+    margin: 0rem;
+    font-family: ailerons, serif;
+    font-size: 2.5rem;
+    height: 15%;
+}
+
+
+.back h1, .back p{
+    margin: 0rem;
+    font-family: ailerons, serif;
+    font-size: 2.5rem;
+    height: 15%;
+}
+.back div{
+    height: 38%;
+}
+.back button{
+    height: 7%;
+}
+
+.card .liens{
+    position: relative;
     background-color: transparent;
-    margin: auto;
-    height: 80%;
-    width: 100%;
-}
-
-.picture-me{
-    width: 20vh;
-    border-radius: 50%;
-}
-
-h1{
-    font-size: 3rem;
-    width: 100%;
-    text-align: center;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-bottom: 0.2rem;
-}
-
-.description{
-    font-size: 1.75rem;
-    margin-top: 0rem;
-}
-
-.link-block{
-    font-size: 2rem;
-    width: 75%;
     display: flex;
-    flex-direction: column;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
-    backdrop-filter: blur(0.5rem);
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    align-content: space-around;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 1rem;
 }
 
-.link-block img{
-    width: 5vh;
-}
-.link-block:hover{
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-a{
-    color: white;
-    text-decoration: none;
-    margin-bottom: 0.5rem;
-    padding: 1rem;
-}
-
-footer{
+.lien{
+    flex-basis: calc(100% / 3);
     text-align: center;
-    background-color: transparent;
+}
+.lien:hover{
+    transform: scale(1.3);
+    transition: transform 0.5s ease-in-out;
+}
+
+button{
+    font-family: ailerons, serif;
+    font-size: 1.5rem;
+    border-style : none;
+    text-decoration: none;
+    width: 50%;
+/*    background: linear-gradient(to top right, #EB7AC8, #6240F6);*/
+    background-image: linear-gradient(
+            var(--rotate)
+            , rgb(0, 160, 176), rgb(0, 70, 140));
+    animation: spin 2.5s linear infinite;
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0px 8px 20px rgba(0,0,0,60%);
+}
+button:hover{
+    transform: scale(1.1);
+    transition: transform 0.5s ease-in-out;
+}
+
+
+@media (max-height: 790px) {
+    .front h1, .front p{
+        font-size: 2rem;
+    }
+
+
+    .back h1, .back p{
+        font-size: 2rem;
+    }
+}
+
+@media (max-height: 640px) {
+    .front h1, .front p{
+        font-size: 1.5rem;
+    }
+
+
+    .back h1, .back p{
+        font-size: 1.5rem;
+    }
+    button{
+        font-size: 1rem;
+    }
 }
