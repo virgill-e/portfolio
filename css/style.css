@@ -64,7 +64,6 @@ body {
     transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border-radius: 6px;
     box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-    cursor: pointer;
 }
 .card div {
     position: absolute;
@@ -96,6 +95,7 @@ body {
     height: 7%;
     margin-bottom: 2rem;
     margin-top: 1rem;
+    cursor: pointer;
 }
 .front h1, .front p{
     margin: 0rem;
@@ -116,6 +116,7 @@ body {
 }
 .back button{
     height: 7%;
+    cursor: pointer;
 }
 
 .card .liens{
