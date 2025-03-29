@@ -1,7 +1,8 @@
 :root {
   /* Couleurs principales */
-  --primary: #3490dc;
-  --secondary: #38c172;
-  --accent: #9561e2;    
-
+  --first: #606c37;
+  --second: #283618 
+  --third: #FEFAE0; 
+  --fourth: #DDA15E;
+  --fifth: #BC6C25;
 }
