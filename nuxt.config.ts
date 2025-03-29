@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
   css: [
-    '~/assets/css/fonts.css'
+    '~/assets/css/fonts.css',
+    '~/assets/css/colors.css',
   ]
 })
