@@ -1,38 +1,92 @@
 <template>
     <!-- main screen -->
-    <div class="h-screen bg-custom-cream flex justify-center items-center">
+    <!-- computer screen-->
+    <div class="hidden md:flex h-screen justify-center items-center">
         <div id="container-customs-blocs" class="w-full h-4/5 grid grid-rows-3">
             <div id="fist-row" class="grid grid-cols-3 gap-4 m-4">
-                <CustomBlock bgColor="bg-instagram-gradient" textColor="text-white"
-                    :svgContent='instagramSvg' />
-                <CustomBlock bgColor="bg-linkedin-blue" textColor="text-white"
-                    :svgContent='linkedinSvg' />
-                    <CustomBlock bgColor="bg-discord-purple" textColor="text-white"
-                    :svgContent="discordSvg" />
+                <CustomBlock bgColor="bg-instagram-gradient" textColor="text-white" :svgContent='instagramSvg' />
+                <CustomBlock bgColor="bg-linkedin-blue" textColor="text-white" :svgContent='linkedinSvg' />
+                <CustomBlock bgColor="bg-discord-purple" textColor="text-white" :svgContent="discordSvg" />
             </div>
 
             <div id="second-row" class="grid grid-cols-3 gap-4 m-4">
-                <CustomBlock bgColor="bg-custom-olive" textColor="text-custom-forest"
-                    svgContent='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>' />
+                <CustomBlock bgColor="bg-custom-amber" textColor="text-white" svgContent='projects' />
+
                 <div class="flex items-center justify-center h-full overflow-hidden">
                     <span
-                        class="font-lostar text-bronze text-center w-full text-7xl xl:text-8xl truncate">virgill_e</span>
+                        class="font-lostar text-custom-bronze text-center w-full text-5xl lg:text-6xl xl:text-8xl truncate">Virgill_e</span>
                 </div>
-                <CustomBlock bgColor="bg-custom-olive" textColor="text-custom-forest"
-                    svgContent='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>' />
+                <CustomBlock bgColor="bg-custom-olive" textColor="text-white" :svgContent='cvSvg' />
             </div>
 
             <div id="third-row" class="grid grid-cols-3 gap-4 m-4">
-                <CustomBlock bgColor="bg-custom-olive" textColor="text-custom-forest"
-                    svgContent='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>' />
-                <CustomBlock bgColor="bg-custom-olive" textColor="text-custom-forest"
-                    svgContent='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>' />
-                <CustomBlock bgColor="bg-custom-olive" textColor="text-custom-forest"
-                    svgContent='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>' />
+                <CustomBlock bgColor="bg-github-grey" textColor="text-white" :svgContent='githubSvg' />
+                <CustomBlock bgColor="bg-black" textColor="text-white" :svgContent='xSvg' />
+                <CustomBlock bgColor="bg-mail-blue" textColor="text-white" :svgContent='mailSvg' />
             </div>
         </div>
 
 
+    </div>
+
+    <!-- mobile screen -->
+    <div class="md:hidden flex h-screen justify-center items-center p-16">
+        <div id="container-customs-blocs-mobile" class="w-full h-full grid grid-rows-5 gap-4 ">
+            <!-- Première rangée: 2 éléments -->
+            <div class="grid grid-cols-2 gap-4">
+                <CustomBlock bgColor="bg-instagram-gradient" textColor="text-white" :svgContent='instagramSvg' />
+                <CustomBlock bgColor="bg-linkedin-blue" textColor="text-white" :svgContent='linkedinSvg' />
+            </div>
+
+            <!-- Deuxième rangée: 2 éléments -->
+            <div class="grid grid-cols-2 gap-4">
+                <CustomBlock bgColor="bg-discord-purple" textColor="text-white" :svgContent="discordSvg" />
+                <CustomBlock bgColor="bg-github-grey" textColor="text-white" :svgContent='githubSvg' />
+
+            </div>
+
+            <!-- Troisième rangée: 1 élément (nom) -->
+            <div class="flex items-center justify-center overflow-hidden">
+                <span
+                    class="font-lostar text-custom-bronze text-center w-full lg:text-2xl xl:text-3xl text-5xl truncate">Virgill_e</span>
+            </div>
+
+            <!-- Quatrième rangée: 2 éléments -->
+            <div class="grid grid-cols-2 gap-4">
+                <CustomBlock bgColor="bg-black" textColor="text-white" :svgContent='xSvg' />
+                <CustomBlock bgColor="bg-mail-blue" textColor="text-white" :svgContent='mailSvg' />
+            </div>
+
+            <!-- Cinquième rangée: 2 éléments -->
+            <div class="grid grid-cols-2 gap-4">
+                <CustomBlock bgColor="bg-cv-teal" textColor="text-white" :svgContent='cvSvg' />
+                <CustomBlock bgColor="bg-cv-teal" textColor="text-white" svgContent='projects' />
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- About me -->
+    <div class="flex flex-col items-center center min-h-screen">
+        <h2 class="font-lostar text-custom-bronze text-6xl lg:text-8xl m-4">About me</h2>
+        <p class="text-custom-forest leading-relaxed text-left mb-6 lg:w-7/12 mx-8 font-neuemontreal text-2xl lg:text-3xl ">
+            JE DOIS AMELIORER MON TEXTE ! Bonjour, je suis un développeur passionné, actuellement étudiant en développement d'applications à HELMo.
+            Mon parcours est guidé par une curiosité constante pour les nouvelles technologies et une volonté
+            d'apprendre et d'innover dans le domaine du développement logiciel.
+        </p>
+    </div>
+
+    <!--Projects-->
+    <div class="flex flex-col items-center center min-h-screen">
+        <h2 class="font-lostar text-custom-bronze text-6xl lg:text-8xl m-4">Projects</h2>
+        <h3 class="text-custom-forest text-4xl font-neuemontreal">Project 1</h3>
+        <span class="font-neuemontreal">2022</span>
+        <span>tags tags tags</span> 
+        <p>description</p>
+        <span>img</span>
     </div>
 
 </template>
@@ -41,4 +95,8 @@
 import instagramSvg from '@/assets/svg/instagram.svg?raw';
 import linkedinSvg from '@/assets/svg/linkedin.svg?raw';
 import discordSvg from '@/assets/svg/discord.svg?raw';
+import githubSvg from '@/assets/svg/github.svg?raw';
+import xSvg from '@/assets/svg/x.svg?raw';
+import mailSvg from '@/assets/svg/mail.svg?raw';
+import cvSvg from '@/assets/svg/cv.svg?raw';
 </script>

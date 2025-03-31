@@ -18,9 +18,13 @@ module.exports = {
 
         'linkedin-blue': '#0A66C2',
         'discord-purple': '#5865F2',
+        'github-grey': '#24292E',
+        'mail-blue': '#0072C6',
+        'cv-teal': '#0F766E'
       },
       fontFamily: {
-        'lostar': ['Lostar', 'sans-serif']
+        'lostar': ['Lostar', 'sans-serif'],
+        'neuemontreal' : ['Neuemontreal', 'sans-serif']
       }
     },
   },

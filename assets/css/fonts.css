@@ -2,3 +2,8 @@
   font-family: 'Lostar';
   src: url('/fonts/lostar/Lostar.ttf')
 }
+
+@font-face {
+  font-family: Neuemontreal;
+  src: url('/fonts/PP_Neue_Montreal_-_Free_for_Personal_Use_v2.6/PP Neue Montreal - Free for Personal Use v2.6/OTF/PPNeueMontreal-Medium.otf');
+}
