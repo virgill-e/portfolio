@@ -80,13 +80,29 @@
     </div>
 
     <!--Projects-->
-    <div class="flex flex-col items-center center min-h-screen">
+    <div class="flex flex-col items-center center min-h-screen p-8">
         <h2 class="font-lostar text-custom-bronze text-6xl lg:text-8xl m-4">Projects</h2>
-        <h3 class="text-custom-forest text-4xl font-neuemontreal">Project 1</h3>
-        <span class="font-neuemontreal">2022</span>
-        <span>tags tags tags</span> 
-        <p>description</p>
-        <span>img</span>
+        
+        <div class="w-full max-w-5xl">
+            <ProjectCard 
+                title="Project 1"
+                year="2022"
+                :tags="['Vue', 'JavaScript', 'Tailwind CSS']"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquet nisl, eget aliquet nisl nisl eget nisl."
+                :image="testImage"
+                />
+
+                <ProjectCard 
+                title="Project 1"
+                year="2022"
+                :tags="['Vue', 'JavaScript', 'Tailwind CSS']"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquet nisl, eget aliquet nisl nisl eget nisl."
+                :image="testImage"
+                />
+
+            
+            <!-- Vous pouvez ajouter plus de projets ici -->
+        </div>
     </div>
 
 </template>
@@ -100,4 +116,6 @@ import xSvg from '@/assets/svg/x.svg?raw';
 import mailSvg from '@/assets/svg/mail.svg?raw';
 import cvSvg from '@/assets/svg/cv.svg?raw';
 import projectsSvg from '@/assets/svg/project.svg?raw';
+
+import testImage from '@/assets/images/projects/test.png'; // Importez votre image
 </script>
