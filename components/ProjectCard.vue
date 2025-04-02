@@ -25,7 +25,7 @@
       </p>
     </div>
     
-    <div class="project-image w-full overflow-hidden rounded-lg shadow-lg">
+    <div class="project-image w-full overflow-hidden rounded-lg shadow-lg bg-white">
       <img :src="image" :alt="title" class="w-full h-auto object-cover">
     </div>
   </div>
