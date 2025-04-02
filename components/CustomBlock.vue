@@ -1,47 +1,62 @@
 <template>
-  <div class="p-6 rounded-lg shadow-md flex justify-center items-center custom-block-container" :class="bgColorClass">
-    <div class="w-16 h-16 flex justify-center items-center svg-container" :class="textColorClass" v-html="svgContent"></div>
+  <div 
+    class="custom-block rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform hover:scale-105 flex items-center justify-center h-full"
+    :class="[bgColor, textColor]"
+    @click="handleClick"
+  >
+    <div v-if="svgContent" v-html="svgContent" class="h-16 w-16 md:h-24 md:w-24 flex items-center justify-center"></div>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { defineProps } from 'vue';
 
 const props = defineProps({
   bgColor: {
     type: String,
-    default: 'bg-cream'
+    default: 'bg-white'
   },
   textColor: {
     type: String,
-    default: 'text-forest'
+    default: 'text-black'
   },
   svgContent: {
     type: String,
-    required: true
+    default: ''
   },
+  link: {
+    type: String,
+    default: ''
+  },
+  isExternal: {
+    type: Boolean,
+    default: false
+  }
 });
 
-const bgColorClass = computed(() => `${props.bgColor}`);
-const textColorClass = computed(() => `${props.textColor}`);
+const handleClick = () => {
+  if (!props.link) return;
+  
+  if (props.isExternal) {
+    // Ouvrir un lien externe dans un nouvel onglet
+    window.open(props.link, '_blank');
+  } else {
+    // Naviguer vers un ancrage interne
+    if (props.link.startsWith('#')) {
+      const element = document.querySelector(props.link);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // S'il ne s'agit pas d'un ancrage mais d'un lien interne
+      window.location.href = props.link;
+    }
+  }
+};
 </script>
 
 <style scoped>
-.custom-block-container {
-  transition: transform 0.3s ease;
-  will-change: transform;
-}
-
-
-.svg-container {
-  transition: transform 0.3s ease;
-}
-
-.custom-block-container:hover .svg-container {
-  transform: scale(1.5  );
-}
-
-.svg-container :deep(svg) {
+.custom-block :deep(svg) {
   width: 100%;
   height: 100%;
 }

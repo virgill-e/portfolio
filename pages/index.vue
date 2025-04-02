@@ -4,29 +4,73 @@
     <div class="hidden md:flex h-screen justify-center items-center">
         <div id="container-customs-blocs" class="w-full h-4/5 grid grid-rows-3">
             <div id="fist-row" class="grid grid-cols-3 gap-4 m-4">
-                <CustomBlock bgColor="bg-instagram-gradient" textColor="text-white" :svgContent='instagramSvg' />
-                <CustomBlock bgColor="bg-linkedin-blue" textColor="text-white" :svgContent='linkedinSvg' />
-                <CustomBlock bgColor="bg-discord-purple" textColor="text-white" :svgContent="discordSvg" />
+                <CustomBlock 
+                    bgColor="bg-instagram-gradient" 
+                    textColor="text-white" 
+                    :svgContent='instagramSvg'
+                    link="https://www.instagram.com/virgill_e/"
+                    :isExternal="true" 
+                />
+                <CustomBlock 
+                    bgColor="bg-linkedin-blue" 
+                    textColor="text-white" 
+                    :svgContent='linkedinSvg'
+                    link="https://www.linkedin.com/in/virgile-bigar%C3%A9/" 
+                    :isExternal="true" 
+                />
+                <CustomBlock 
+                    bgColor="bg-discord-purple" 
+                    textColor="text-white" 
+                    :svgContent="discordSvg"
+                    link="https://discordapp.com/users/216953621848260608"
+                    :isExternal="true" 
+                />
             </div>
 
             <div id="second-row" class="grid grid-cols-3 gap-4 m-4">
-                <CustomBlock bgColor="bg-custom-amber" textColor="text-white" :svgContent='projectsSvg' />
+                <CustomBlock 
+                    bgColor="bg-custom-amber" 
+                    textColor="text-white" 
+                    :svgContent='projectsSvg'
+                    link="#projects" 
+                />
 
                 <div class="flex items-center justify-center h-full overflow-hidden">
                     <span
                         class="font-lostar text-custom-bronze text-center w-full text-5xl lg:text-6xl xl:text-8xl truncate">Virgill_e</span>
                 </div>
-                <CustomBlock bgColor="bg-custom-olive" textColor="text-white" :svgContent='cvSvg' />
+                <CustomBlock 
+                    bgColor="bg-custom-olive" 
+                    textColor="text-white" 
+                    :svgContent='cvSvg'
+                    link="#" 
+                />
             </div>
 
             <div id="third-row" class="grid grid-cols-3 gap-4 m-4">
-                <CustomBlock bgColor="bg-github-grey" textColor="text-white" :svgContent='githubSvg' />
-                <CustomBlock bgColor="bg-black" textColor="text-white" :svgContent='xSvg' />
-                <CustomBlock bgColor="bg-mail-blue" textColor="text-white" :svgContent='mailSvg' />
+                <CustomBlock 
+                    bgColor="bg-github-grey" 
+                    textColor="text-white" 
+                    :svgContent='githubSvg'
+                    link="https://github.com/Virgill-e"
+                    :isExternal="true" 
+                />  
+                <CustomBlock 
+                    bgColor="bg-black" 
+                    textColor="text-white" 
+                    :svgContent='xSvg'
+                    link="https://x.com/Virgill_e"
+                    :isExternal="true" 
+                />
+                <CustomBlock 
+                    bgColor="bg-mail-blue" 
+                    textColor="text-white" 
+                    :svgContent='mailSvg'
+                    link="mailto:virgile.bigare@gmail.com"
+                    :isExternal="true" 
+                />
             </div>
         </div>
-
-
     </div>
 
     <!-- mobile screen -->
@@ -34,15 +78,38 @@
         <div id="container-customs-blocs-mobile" class="w-full h-full grid grid-rows-5 gap-4 ">
             <!-- Première rangée: 2 éléments -->
             <div class="grid grid-cols-2 gap-4">
-                <CustomBlock bgColor="bg-instagram-gradient" textColor="text-white" :svgContent='instagramSvg' />
-                <CustomBlock bgColor="bg-linkedin-blue" textColor="text-white" :svgContent='linkedinSvg' />
+                <CustomBlock 
+                    bgColor="bg-instagram-gradient" 
+                    textColor="text-white" 
+                    :svgContent='instagramSvg'
+                    link="https://www.instagram.com/virgilledev/"
+                    :isExternal="true" 
+                />
+                <CustomBlock 
+                    bgColor="bg-linkedin-blue" 
+                    textColor="text-white" 
+                    :svgContent='linkedinSvg'
+                    link="https://www.linkedin.com/in/virgile-bigaré-9b3635265/"
+                    :isExternal="true" 
+                />
             </div>
 
             <!-- Deuxième rangée: 2 éléments -->
             <div class="grid grid-cols-2 gap-4">
-                <CustomBlock bgColor="bg-discord-purple" textColor="text-white" :svgContent="discordSvg" />
-                <CustomBlock bgColor="bg-github-grey" textColor="text-white" :svgContent='githubSvg' />
-
+                <CustomBlock 
+                    bgColor="bg-discord-purple" 
+                    textColor="text-white" 
+                    :svgContent="discordSvg"
+                    link="https://discord.com/users/virgill_e"
+                    :isExternal="true" 
+                />
+                <CustomBlock 
+                    bgColor="bg-github-grey" 
+                    textColor="text-white" 
+                    :svgContent='githubSvg'
+                    link="https://github.com/Virgill96"
+                    :isExternal="true" 
+                />
             </div>
 
             <!-- Troisième rangée: 1 élément (nom) -->
@@ -53,24 +120,42 @@
 
             <!-- Quatrième rangée: 2 éléments -->
             <div class="grid grid-cols-2 gap-4">
-                <CustomBlock bgColor="bg-black" textColor="text-white" :svgContent='xSvg' />
-                <CustomBlock bgColor="bg-mail-blue" textColor="text-white" :svgContent='mailSvg' />
+                <CustomBlock 
+                    bgColor="bg-black" 
+                    textColor="text-white" 
+                    :svgContent='xSvg'
+                    link="https://twitter.com/Virgill_e"
+                    :isExternal="true" 
+                />
+                <CustomBlock 
+                    bgColor="bg-mail-blue" 
+                    textColor="text-white" 
+                    :svgContent='mailSvg'
+                    link="mailto:virgile.bigare@gmail.com"
+                    :isExternal="true" 
+                />
             </div>
 
             <!-- Cinquième rangée: 2 éléments -->
             <div class="grid grid-cols-2 gap-4">
-                <CustomBlock bgColor="bg-custom-olive" textColor="text-white" :svgContent='cvSvg' />
-                <CustomBlock bgColor="bg-custom-amber" textColor="text-white" :svgContent='projectsSvg' />
-
+                <CustomBlock 
+                    bgColor="bg-custom-olive" 
+                    textColor="text-white" 
+                    :svgContent='cvSvg'
+                    link="/cv" 
+                />
+                <CustomBlock 
+                    bgColor="bg-custom-amber" 
+                    textColor="text-white" 
+                    :svgContent='projectsSvg'
+                    link="#projects" 
+                />
             </div>
-
-
-
         </div>
     </div>
 
     <!-- About me -->
-    <div class="flex flex-col items-center center min-h-screen">
+    <div id="about" class="flex flex-col items-center center min-h-screen">
         <h2 class="font-lostar text-custom-bronze text-6xl lg:text-8xl m-4">About me</h2>
         <p
             class="text-custom-forest leading-relaxed text-left mb-6 lg:w-7/12 mx-8 font-neuemontreal text-2xl lg:text-3xl ">
@@ -87,7 +172,7 @@
     </div>
 
     <!--Projects-->
-    <div class="flex flex-col items-center center min-h-screen p-8">
+    <div id="projects" class="flex flex-col items-center center min-h-screen p-8">
         <h2 class="font-lostar text-custom-bronze text-6xl lg:text-8xl m-4">Projects</h2>
 
         <div class="w-full max-w-5xl">
