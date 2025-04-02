@@ -74,18 +74,15 @@
         <h2 class="font-lostar text-custom-bronze text-6xl lg:text-8xl m-4">About me</h2>
         <p
             class="text-custom-forest leading-relaxed text-left mb-6 lg:w-7/12 mx-8 font-neuemontreal text-2xl lg:text-3xl ">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl
-            aliquet nisl, eget aliquet nisl nisl eget nisl.
+            Bonjour, je suis Virgile Bigaré, un développeur passionné par la création d'applications web et mobiles. Ma passion pour le code a commencé dès mes premieres année d'étude en transition informatique, et depuis, je n'ai jamais cessé d'explorer cet univers en constante évolution.
         </p>
         <p
             class="text-custom-forest leading-relaxed text-left mb-6 lg:w-7/12 mx-8 font-neuemontreal text-2xl lg:text-3xl ">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl
-            aliquet nisl, eget aliquet nisl nisl eget nisl.
+            Actuellement en dernière année de bachelier en développement d'applications à Helmo, j'ai acquis une solide expérience en tant que développeur full stack. Mon parcours académique m'a permis de maîtriser diverses technologies front-end et back-end, tout en développant une approche méthodique face aux défis techniques qui se présentent dans le développement de solutions digitales.
         </p>
         <p
             class="text-custom-forest leading-relaxed text-left mb-6 lg:w-7/12 mx-8 font-neuemontreal text-2xl lg:text-3xl ">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl
-            aliquet nisl, eget aliquet nisl nisl eget nisl.
+            Ce qui me distingue, c'est ma volonté d'apprentissage et ma curiosité. Je consacre une partie de mon temps libre à explorer pour des projets perso. J'aime me lancer dans des aventures qui me poussent hors de ma zone de confort et enrichissent constamment mes compétences.
         </p>
     </div>
 
@@ -93,9 +90,9 @@
     <div class="flex flex-col items-center center min-h-screen p-8">
         <h2 class="font-lostar text-custom-bronze text-6xl lg:text-8xl m-4">Projects</h2>
 
-        <div class="w-full max-w-5xl">              
+        <div class="w-full max-w-5xl">
             <ProjectCard title="ArtConnect" year="2024" :tags="['Vue', 'ASP.NET']" :descriptions="[
-                'Pour un projet scolaire j\'ai du développer une application web dans le framework web ainsi que dans la technologie back de mon choix.',   
+                'Pour un projet scolaire j\'ai du développer une application web dans le framework web ainsi que dans la technologie back de mon choix.',
                 'ArtConnect est une application web dédiée à la promotion des artistes émergents et de leurs œuvres. Cette plateforme sert de vitrine pour les artistes, leur permettant de partager leurs créations, d\'interagir avec des amateurs d\'art, et de vendre leurs œuvres en ligne.'
             ]" :image="artConnectImage" />
 
@@ -122,6 +119,6 @@ import mailSvg from '@/assets/svg/mail.svg?raw';
 import cvSvg from '@/assets/svg/cv.svg?raw';
 import projectsSvg from '@/assets/svg/project.svg?raw';
 
-import mathProjectImage from '@/assets/images/projects/projet_math.webp';  
+import mathProjectImage from '@/assets/images/projects/projet_math.webp';
 import artConnectImage from '@/assets/images/projects/artConnect_project.webp'
 </script>
