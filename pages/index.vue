@@ -73,9 +73,13 @@
     <div class="flex flex-col items-center center min-h-screen">
         <h2 class="font-lostar text-custom-bronze text-6xl lg:text-8xl m-4">About me</h2>
         <p class="text-custom-forest leading-relaxed text-left mb-6 lg:w-7/12 mx-8 font-neuemontreal text-2xl lg:text-3xl ">
-            JE DOIS AMELIORER MON TEXTE ! Bonjour, je suis un développeur passionné, actuellement étudiant en développement d'applications à HELMo.
-            Mon parcours est guidé par une curiosité constante pour les nouvelles technologies et une volonté
-            d'apprendre et d'innover dans le domaine du développement logiciel.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquet nisl, eget aliquet nisl nisl eget nisl.
+        </p>
+        <p class="text-custom-forest leading-relaxed text-left mb-6 lg:w-7/12 mx-8 font-neuemontreal text-2xl lg:text-3xl ">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquet nisl, eget aliquet nisl nisl eget nisl.
+        </p>
+        <p class="text-custom-forest leading-relaxed text-left mb-6 lg:w-7/12 mx-8 font-neuemontreal text-2xl lg:text-3xl ">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquet nisl, eget aliquet nisl nisl eget nisl.
         </p>
     </div>
 
