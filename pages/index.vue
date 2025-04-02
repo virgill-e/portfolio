@@ -10,7 +10,7 @@
             </div>
 
             <div id="second-row" class="grid grid-cols-3 gap-4 m-4">
-                <CustomBlock bgColor="bg-custom-amber" textColor="text-white" svgContent='projects' />
+                <CustomBlock bgColor="bg-custom-amber" textColor="text-white" :svgContent='projectsSvg' />
 
                 <div class="flex items-center justify-center h-full overflow-hidden">
                     <span
@@ -59,8 +59,8 @@
 
             <!-- Cinquième rangée: 2 éléments -->
             <div class="grid grid-cols-2 gap-4">
-                <CustomBlock bgColor="bg-cv-teal" textColor="text-white" :svgContent='cvSvg' />
-                <CustomBlock bgColor="bg-cv-teal" textColor="text-white" svgContent='projects' />
+                <CustomBlock bgColor="bg-custom-olive" textColor="text-white" :svgContent='cvSvg' />
+                <CustomBlock bgColor="bg-custom-amber" textColor="text-white" :svgContent='projectsSvg' />
 
             </div>
 
@@ -99,4 +99,5 @@ import githubSvg from '@/assets/svg/github.svg?raw';
 import xSvg from '@/assets/svg/x.svg?raw';
 import mailSvg from '@/assets/svg/mail.svg?raw';
 import cvSvg from '@/assets/svg/cv.svg?raw';
+import projectsSvg from '@/assets/svg/project.svg?raw';
 </script>
