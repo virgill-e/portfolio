@@ -15,9 +15,15 @@
       </span>
     </div>
     
-    <p class="project-description text-custom-forest font-neuemontreal text-lg mb-6">
-      {{ description }}
-    </p>
+    <div class="project-description mb-6">
+      <p 
+        v-for="(paragraph, index) in descriptions" 
+        :key="index" 
+        class="text-custom-forest font-neuemontreal text-lg mb-3"
+      >
+        {{ paragraph }}
+      </p>
+    </div>
     
     <div class="project-image w-full overflow-hidden rounded-lg shadow-lg">
       <img :src="image" :alt="title" class="w-full h-auto object-cover">
@@ -39,8 +45,9 @@ defineProps({
     type: Array,
     default: () => []
   },
-  description: {
-    type: String,
+  descriptions: {
+    type: Array,
+    default: () => [],
     required: true
   },
   image: {

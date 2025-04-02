@@ -88,24 +88,19 @@
         <h2 class="font-lostar text-custom-bronze text-6xl lg:text-8xl m-4">Projects</h2>
         
         <div class="w-full max-w-5xl">
-            <ProjectCard 
-                title="Project 1"
-                year="2022"
-                :tags="['Vue', 'JavaScript', 'Tailwind CSS']"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquet nisl, eget aliquet nisl nisl eget nisl."
-                :image="testImage"
-                />
+                        <ProjectCard 
+                title="Math project"
+                year="2023"
+                :tags="['Java', 'Gradle', 'JGraphT']"
+                :descriptions="[
+                    'Trois projets réalisés dans le cadre de mon cours de mathématiques : LexicographicTree, Boggle, et DictionaryBasedAnalysis. Chaque projet démontre l\'importance des structures de données et de l\'efficacité algorithmique dans le traitement de grandes quantités de données.',
+                    'LexicographicTree consiste en la création d\'une structure de données arborescente permettant de stocker et manipuler des mots de manière efficace.',
+                    'Boggle consiste à trouver un maximum de mots dans une grille de lettres en suivant des règles spécifiques de déplacement. Il utilise l\'arbre lexicographique du projet précédent pour vérifier rapidement la validité des mots trouvés.',
+                    'DictionaryBasedAnalysis se concentre sur l\'analyse cryptographique basée sur un dictionnaire. Il vise à décoder un texte chiffré à l\'aide d\'un dictionnaire de mots et d\'une technique de substitution alphabétique.'
+                ]"
+                :image="mathProjectImage"
+            />
 
-                <ProjectCard 
-                title="Project 1"
-                year="2022"
-                :tags="['Vue', 'JavaScript', 'Tailwind CSS']"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquet nisl, eget aliquet nisl nisl eget nisl."
-                :image="testImage"
-                />
-
-            
-            <!-- Vous pouvez ajouter plus de projets ici -->
         </div>
     </div>
 
@@ -121,5 +116,5 @@ import mailSvg from '@/assets/svg/mail.svg?raw';
 import cvSvg from '@/assets/svg/cv.svg?raw';
 import projectsSvg from '@/assets/svg/project.svg?raw';
 
-import testImage from '@/assets/images/projects/test.png'; // Importez votre image
+import mathProjectImage from '@/assets/images/projects/projet_math.webp';  
 </script>
