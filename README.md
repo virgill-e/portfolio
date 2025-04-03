@@ -1,75 +1,51 @@
-# Nuxt Minimal Starter
+# Virgill_e Portfolio
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+![Portfolio Preview](   /assets/images/preview.png)
 
-## Setup
 
-Make sure to install dependencies:
+## 🛠️ Technologies utilisées
+
+- **Framework** : [Nuxt.js](https://nuxt.com/)
+- **CSS** : [TailwindCSS](https://tailwindcss.com/)
+- **Typographie** : Polices personnalisées (Lostar, Neue Montreal)
+- **Déploiement** : [GitHub Pages](https://pages.github.com/)
+
+## 💻 Installation et développement
+
+### Prérequis
+
+- Node.js (version 16 ou supérieure)
+- npm
+
+### Installation
 
 ```bash
-# npm
+# Cloner le projet
+git clone https://github.com/Virgill-e/portfolio.git
+cd portfolio
+
+# Installer les dépendances
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+### Développement
 
 ```bash
-# npm
+# Lancer le serveur de développement
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+Le site sera accessible à l'adresse http://localhost:3000
 
-Build the application for production:
+### Production
 
 ```bash
-# npm
+# Construire pour la production
 npm run build
 
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
+# Prévisualiser la version de production
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+Conçu et développé avec ❤️ par Virgile Bigaré.
