@@ -8,8 +8,6 @@
 - **Framework** : [Nuxt.js](https://nuxt.com/)
 - **CSS** : [TailwindCSS](https://tailwindcss.com/)
 - **Typographie** : Polices personnalisées (Lostar, Neue Montreal)
-- **Déploiement** : [GitHub Pages](https://pages.github.com/)
-
 ## 💻 Installation et développement
 
 ### Prérequis
