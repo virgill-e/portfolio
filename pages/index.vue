@@ -68,7 +68,7 @@
                     :svgContent='mailSvg'
                     link="mailto:virgile.bigare@gmail.com"
                     :isExternal="true" 
-                />
+                />        
             </div>
         </div>
     </div>

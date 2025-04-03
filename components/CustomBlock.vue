@@ -1,10 +1,14 @@
 <template>
-  <div 
-    class="custom-block rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform hover:scale-105 flex items-center justify-center h-full"
-    :class="[bgColor, textColor]"
+  <div
+      class="custom-block rounded-lg shadow-md overflow-hidden cursor-pointer flex items-center justify-center h-full"
+    :class="[bgColor, textColor]" 
     @click="handleClick"
   >
-    <div v-if="svgContent" v-html="svgContent" class="h-16 w-16 md:h-24 md:w-24 flex items-center justify-center"></div>
+    <div 
+      v-if="svgContent" 
+      v-html="svgContent" 
+      class="svg-container h-14 w-14 md:h-20 md:w-20 flex items-center justify-center transform transition-transform duration-300 ease-in-out"
+    ></div>
   </div>
 </template>
 
@@ -36,7 +40,7 @@ const props = defineProps({
 
 const handleClick = () => {
   if (!props.link) return;
-  
+
   if (props.isExternal) {
     // Ouvrir un lien externe dans un nouvel onglet
     window.open(props.link, '_blank');
@@ -56,7 +60,11 @@ const handleClick = () => {
 </script>
 
 <style scoped>
-.custom-block :deep(svg) {
+.custom-block:hover .svg-container {
+  transform: scale(1.25);
+}
+
+.custom-block .svg-container :deep(svg) {
   width: 100%;
   height: 100%;
 }
