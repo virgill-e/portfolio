@@ -17,7 +17,7 @@
                     :svgContent='linkedinSvg'
                     link="https://www.linkedin.com/in/virgile-bigar%C3%A9/" 
                     :isExternal="true" 
-                />
+                />                              
                 <CustomBlock 
                     bgColor="bg-discord-purple" 
                     textColor="text-white" 

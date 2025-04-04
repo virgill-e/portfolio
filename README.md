@@ -1,6 +1,8 @@
 # Virgill_e Portfolio
 
-![Portfolio Preview](   /assets/images/preview.png)
+![Portfolio Preview](/assets/images/preview.png)
+
+## 🌟 Présentation
 
 
 ## 🛠️ Technologies utilisées
@@ -8,6 +10,7 @@
 - **Framework** : [Nuxt.js](https://nuxt.com/)
 - **CSS** : [TailwindCSS](https://tailwindcss.com/)
 - **Typographie** : Polices personnalisées (Lostar, Neue Montreal)
+
 ## 💻 Installation et développement
 
 ### Prérequis
@@ -44,6 +47,20 @@ npm run build
 # Prévisualiser la version de production
 npm run preview
 ```
+
+## 🐳 Déploiement avec Docker
+
+Le projet peut être facilement déployé à l'aide de Docker.
+
+```bash
+# Construire l'image Docker
+docker build -t virgille-portfolio -f .dockerfile .
+
+# Exécuter le conteneur
+docker run -p 3000:3000 virgille-portfolio
+
+# Pour exécuter avec un port personnalisé
+docker run -e PORT=3001 -p 3001:3001 virgille-portfolio
 
 
 Conçu et développé avec ❤️ par Virgile Bigaré.
