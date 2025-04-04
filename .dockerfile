@@ -22,9 +22,6 @@ RUN npm ci --only=production
 
 # Copier les fichiers générés depuis l'étape de build
 COPY --from=build /app/.output ./output
-COPY --from=build /app/.nuxt ./.nuxt
-COPY --from=build /app/public ./public
-COPY --from=build /app/nuxt.config.js ./
 
 # Définir un port par défaut mais qui peut être écrasé
 ENV PORT=3000
