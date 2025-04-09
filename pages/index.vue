@@ -43,7 +43,8 @@
                     bgColor="bg-custom-olive" 
                     textColor="text-white" 
                     :svgContent='cvSvg'
-                    link="#" 
+                    link="cv.pdf" 
+                    isExternal="true"
                 />
             </div>
 
