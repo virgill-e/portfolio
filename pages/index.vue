@@ -143,7 +143,7 @@
                     bgColor="bg-custom-olive" 
                     textColor="text-white" 
                     :svgContent='cvSvg'
-                    link="/cv" 
+                    link="cv.pdf" 
                 />
                 <CustomBlock 
                     bgColor="bg-custom-amber" 
