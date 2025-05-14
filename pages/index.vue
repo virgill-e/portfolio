@@ -1,27 +1,24 @@
 <template>
     <div class="min-h-screen bg-custom-cream">
         <!-- title bloc -->
-        <div class="flex flex-col items-center justify-center h-[90vh]">
-            <h1 class="split font-lostar text-custom-cream text-shadow-custom-bronze text-9xl pt-16 h-3/4">Virgill_e
-            </h1>
-            <div class="h-1/4 w-full flex flex-row items-center justify-around">
-                <p class="w-3/5 px-16 text-left text-lg">Bonjour, je suis Virgile Bigaré, développeur full stack
+        <div class="flex flex-col items-center justify-around h-[90vh]">
+            <div class="flex flex-col items-center justify-center h-2/5 md:h-3/5">
+                <h1 class="split font-lostar text-custom-cream text-shadow-custom-bronze text-5xl md:text-9xl ">Virgill_e
+                </h1>
+                <h1 class="split font-lostar text-custom-cream text-shadow-custom-bronze text-5xl md:text-9xl">developper
+                </h1>
+            </div>
+            <div class="h-3/5 md:h-2/5 w-full flex flex-col md:flex-row items-center justify-around">
+                <p class="md:w-3/5 px-8 md:px-16 text-left md:text-lg">Bonjour, je suis Virgile Bigaré, développeur full stack
                     passionné par la création d'applications web
                     et mobiles.<br>
                     Curieux et toujours en quête de nouveaux défis, j'aime explorer des projets personnels qui me
                     permettent d'élargir mes compétences et de rester à jour dans un domaine en constante évolution.</p>
-                <button class="w-2/5">scroll</button>
+                <UiButton text="Scroll to continue ↓" />
             </div>
         </div>
     </div>
 </template>
-
-<style scoped>
-.split span {
-    opacity: 0;
-    display: inline-block;
-}
-</style>
 
 <script setup>
 import { onMounted } from 'vue';

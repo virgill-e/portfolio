@@ -5,7 +5,7 @@
         <div class="hidden md:flex gap-8">
             <a href="#" class="underline-gradient">Projects</a>
             <a href="#" class="underline-gradient">About</a>
-            <a href="#" class="underline-gradient">CV</a>
+            <a href="#" class="underline-gradient">Résumé</a>
         </div>
         <a href="#" class="hidden md:block underline-gradient">Contact</a>
         <div class="md:hidden flex flex-col items-center justify-center" v-if="!isOpen">
