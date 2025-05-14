@@ -16,18 +16,28 @@
     font-weight: 200 700;
     font-display: swap;
     src: url("/fonts/Lostar.ttf") format("truetype");
-  }
+}
 
 body,
 * {
     cursor: none !important;
 }
 
+.text-shadow-custom-bronze {
+    text-shadow:
+        -0.02em 0.02em 0 var(--color-custom-bronze),
+        -0.04em 0.04em 0 var(--color-custom-bronze),
+        -0.06em 0.06em 0 var(--color-custom-bronze),
+        0 .35em .2em var(--color-custom-amber),
+        0 .25em .2em var(--color-custom-amber);
+        -webkit-text-stroke: 1px var(--color-custom-bronze);
+}
 
 
 .underline-gradient {
     position: relative;
 }
+
 .underline-gradient::after {
     content: "";
     position: absolute;
@@ -42,6 +52,7 @@ body,
     transition: opacity 0.2s;
     opacity: 0;
 }
+
 .underline-gradient:hover::after {
     opacity: 1;
 }
