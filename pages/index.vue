@@ -14,7 +14,7 @@
                     et mobiles.<br>
                     Curieux et toujours en quête de nouveaux défis, j'aime explorer des projets personnels qui me
                     permettent d'élargir mes compétences et de rester à jour dans un domaine en constante évolution.</p>
-                <UiButton text="Scroll to continue ↓" />
+                <UiButton class="px-16 py-4" text="Scroll to continue ↓" />
             </div>
         </div>
     </div>
