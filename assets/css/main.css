@@ -18,6 +18,10 @@
     src: url("/fonts/Lostar.ttf") format("truetype");
 }
 
+html {
+    background-color: var(--color-custom-cream);
+}
+
 body,
 * {
     cursor: none !important;

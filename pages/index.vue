@@ -1,21 +1,30 @@
 <template>
-    <div class="min-h-screen bg-custom-cream">
+    <div class="min-h-screen bg-custom-cream px-16 md:px-24">
         <!-- title bloc -->
-        <div class="flex flex-col items-center justify-around h-[90vh]">
-            <div class="flex flex-col items-center justify-center h-2/5 md:h-3/5">
-                <h1 class="split font-lostar text-custom-cream text-shadow-custom-bronze text-5xl md:text-9xl ">Virgill_e
+        <div class="flex flex-col items-center md:justify-around h-[75vh] md:h-[90vh]">
+            <div class="flex flex-col items-center justify-center h-3/5 md:h-3/5">
+                <h1 class="split font-lostar text-custom-cream text-shadow-custom-bronze text-6xl md:text-9xl ">
+                    Virgill_e
                 </h1>
-                <h1 class="split font-lostar text-custom-cream text-shadow-custom-bronze text-5xl md:text-9xl">developper
+                <h1 class="split font-lostar text-custom-cream text-shadow-custom-bronze text-5xl md:text-9xl">
+                    developper
                 </h1>
             </div>
-            <div class="h-3/5 md:h-2/5 w-full flex flex-col md:flex-row items-center justify-around">
-                <p class="md:w-3/5 px-8 md:px-16 text-left md:text-lg">Bonjour, je suis Virgile Bigaré, développeur full stack
-                    passionné par la création d'applications web
-                    et mobiles.<br>
-                    Curieux et toujours en quête de nouveaux défis, j'aime explorer des projets personnels qui me
-                    permettent d'élargir mes compétences et de rester à jour dans un domaine en constante évolution.</p>
-                <UiButton class="px-16 py-4" text="Scroll to continue ↓" />
+            <div class="h-3/5 md:h-2/5 w-full flex flex-col md:flex-row justify-between md:items-center">
+                <p class="md:w-3/5 py-8  text-left md:text-lg">Hello, I'm Virgile Bigaré, a full stack developer
+                    passionate about creating web and mobile applications.<br>
+                    Curious and always seeking new challenges, I enjoy exploring personal projects that
+                    allow me to expand my skills and stay up-to-date in an ever-evolving field.</p>
+                <UiButton class="py-4 md:w-1/3 md:h-1/3" text="Scroll to continue ↓" />
             </div>
+        </div>
+
+        <!-- 3 favorite projects bloc -->
+        <div class="min-h-screen w-full flex flex-col items-center">
+            <h2 class="text-custom-forest py-16 text-6xl font-lostar">Favorite projects</h2>
+            <UiFavoriteProject class="w-full py-16" />
+            <UiFavoriteProject class="w-full py-16" />
+            <UiFavoriteProject class="w-full py-16" />
         </div>
     </div>
 </template>

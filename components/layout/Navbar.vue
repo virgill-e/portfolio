@@ -1,6 +1,6 @@
 <template>
     <div
-        class="bg-custom-cream dark:bg-custom-forest flex justify-between md:justify-around items-center h-[10vh] text-custom-forest dark:text-custom-cream border-b-2 border-custom-olive dark:border-custom-cream text-xl">
+        class="bg-custom-cream dark:bg-custom-forest px-4 flex justify-between md:justify-around items-center h-[10vh] text-custom-forest dark:text-custom-cream border-b-2 border-custom-olive dark:border-custom-cream text-xl">
         <a href="#" class="underline-gradient font-lostar">Virgill_e</a>
         <div class="hidden md:flex gap-8">
             <a href="#" class="underline-gradient">Projects</a>
@@ -31,7 +31,7 @@
                 <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Résumé</a>
                 <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Contact</a>
                 <div class="pt-8">
-                    <UiButton :text="isDark?.value ? 'Light mode' : 'Dark mode'"
+                    <UiButton class="px-4 py-2" :text="isDark?.value ? 'Light mode' : 'Dark mode'"
                         @click="() => { toggleDark(); toggleMenu(); }" />
                 </div>
             </div>
