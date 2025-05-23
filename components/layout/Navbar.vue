@@ -9,7 +9,7 @@
             <a href="#" class="hidden md:block underline-gradient">Contact</a>
         </div>
         <div class="ml-4 hidden md:block">
-            <UiButton class="px-4 py-2" :text="isDark?.value ? 'Light mode' : 'Dark mode'" @click="toggleDark" />
+            <UiButton class="px-4 py-2" :text="isDark ? 'Light mode' : 'Dark mode'" @click="toggleDark" />
         </div>
         <div class="md:hidden flex flex-col items-center justify-center" v-if="!isOpen">
             <button class="text-custom-forest" @click="toggleMenu">
@@ -31,7 +31,7 @@
                 <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Resume</a>
                 <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Contact</a>
                 <div class="pt-8">
-                    <UiButton class="px-4 py-2" :text="isDark?.value ? 'Light mode' : 'Dark mode'"
+                    <UiButton class="px-4 py-2" :text="isDark ? 'Light mode' : 'Dark mode'"
                         @click="() => { toggleDark(); toggleMenu(); }" />
                 </div>
             </div>
