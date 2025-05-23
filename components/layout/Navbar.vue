@@ -1,9 +1,9 @@
 <template>
     <div
         class="bg-custom-cream dark:bg-custom-forest px-4 flex justify-between md:justify-around items-center h-[10vh] text-custom-forest dark:text-custom-cream border-b-2 border-custom-olive dark:border-custom-cream text-xl">
-        <a href="#" class="underline-gradient font-lostar">Virgill_e</a>
+        <nuxt-link to="/" class="underline-gradient font-lostar">Virgill_e</nuxt-link>
         <div class="hidden md:flex gap-8">
-            <a href="#" class="underline-gradient">Projects</a>
+            <nuxt-link to="/projects" class="underline-gradient">Projects</nuxt-link>
             <a href="#" class="underline-gradient">About</a>
             <a href="#" class="underline-gradient">Resume</a>
             <a href="#" class="hidden md:block underline-gradient">Contact</a>
@@ -26,7 +26,7 @@
                 &times;
             </button>
             <div class="space-y-12 text-custom-forest dark:text-custom-cream w-full">
-                <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Projects</a>
+                <nuxt-link @click="toggleMenu" to="/projects" class="block text-5xl font-lostar">Projects</nuxt-link>
                 <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">About</a>
                 <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Resume</a>
                 <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Contact</a>

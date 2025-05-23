@@ -5,11 +5,11 @@
                 class="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105">
         </div>
         <div class="w-1/3 pl-8">
-            <div class="rounded-lg group pb-8">
+            <div class="rounded-lg group pb-4 md:pb-8">
                 <img src="../../public/images/artConnect.webp" alt=""
                     class="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105">
             </div>
-            <span class="font-medium">project name</span>
+            <span class="text-sm font-medium">ArtConnect</span>
         </div>
     </div>
 </template>
