@@ -20,8 +20,8 @@ watch(isDark, (val) => {
     <UiCustomCursor />
     <NuxtPage />
     <LayoutFooter />
-    <div v-if="isDark"
-      style="position: fixed; inset: 0; width: 100vw; height: 100vh; background: white; mix-blend-mode: difference; pointer-events: none; z-index: 99999;">
+    <div v-if="isDark" class="dark-mode-overlay"
+      style="position: fixed; inset: 0; width: 100vw; height: 100vh; background: white; pointer-events: none; z-index: 99999;">
     </div>
   </div>
 </template>

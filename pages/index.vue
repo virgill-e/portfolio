@@ -15,13 +15,13 @@
                     passionate about creating web and mobile applications.<br>
                     Curious and always seeking new challenges, I enjoy exploring personal projects that
                     allow me to expand my skills and stay up-to-date in an ever-evolving field.</p>
-                <UiButton class="py-4 md:w-1/3 md:h-1/3" text="Scroll to continue ↓" />
+                <UiButton @click="scrollToFavoriteProjects" class="py-4 md:w-1/3 md:h-1/3" text="Scroll to continue ↓" />
             </div>
         </div>
 
         <!-- 3 favorite projects bloc -->
-        <div class="min-h-screen w-full flex flex-col items-center">
-            <h2 class="text-custom-forest py-16 text-6xl font-lostar">Favorite projects</h2>
+        <div id="favorite-projects" class="min-h-screen w-full flex flex-col items-center">
+            <h2 class="text-custom-forest py-16 text-6xl font-lostar">Favorites projects</h2>
             <UiFavoriteProject class="w-full py-16" />
             <UiFavoriteProject class="w-full py-16" />
             <UiFavoriteProject class="w-full py-16" />
@@ -52,4 +52,9 @@ onMounted(() => {
         });
     });
 });
+
+function scrollToFavoriteProjects() {
+    const favoriteProjects = document.getElementById('favorite-projects');
+    favoriteProjects.scrollIntoView({ behavior: 'smooth' });
+}
 </script>

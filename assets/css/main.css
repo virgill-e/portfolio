@@ -34,9 +34,8 @@ body,
         -0.06em 0.06em 0 var(--color-custom-bronze),
         0 .35em .2em var(--color-custom-amber),
         0 .25em .2em var(--color-custom-amber);
-        -webkit-text-stroke: 1px var(--color-custom-bronze);
+    -webkit-text-stroke: 1px var(--color-custom-bronze);
 }
-
 
 .underline-gradient {
     position: relative;
@@ -59,4 +58,14 @@ body,
 
 .underline-gradient:hover::after {
     opacity: 1;
+}
+
+/* Dark mode overlay styles */
+.dark-mode-overlay {
+    mix-blend-mode: difference;
+}
+
+img {
+    position: relative;
+    z-index: 100000;
 }

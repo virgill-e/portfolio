@@ -5,7 +5,7 @@
         <div class="hidden md:flex gap-8">
             <a href="#" class="underline-gradient">Projects</a>
             <a href="#" class="underline-gradient">About</a>
-            <a href="#" class="underline-gradient">Résumé</a>
+            <a href="#" class="underline-gradient">Resume</a>
             <a href="#" class="hidden md:block underline-gradient">Contact</a>
         </div>
         <div class="ml-4 hidden md:block">
@@ -28,7 +28,7 @@
             <div class="space-y-12 text-custom-forest dark:text-custom-cream w-full">
                 <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Projects</a>
                 <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">About</a>
-                <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Résumé</a>
+                <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Resume</a>
                 <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Contact</a>
                 <div class="pt-8">
                     <UiButton class="px-4 py-2" :text="isDark?.value ? 'Light mode' : 'Dark mode'"

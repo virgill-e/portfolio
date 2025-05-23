@@ -47,7 +47,7 @@ onUnmounted(() => {
   height: 16px;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 100001;
   mix-blend-mode: difference;
   background: white;
   transform: translate(-50%, -50%);
