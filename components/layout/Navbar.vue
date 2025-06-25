@@ -4,9 +4,7 @@
         <nuxt-link to="/" class="underline-gradient font-lostar">Virgill_e</nuxt-link>
         <div class="hidden md:flex gap-8">
             <nuxt-link to="/projects" class="underline-gradient">Projects</nuxt-link>
-            <nuxt-link to="/about" class="underline-gradient">About</nuxt-link>
             <a href="#" class="underline-gradient">Resume</a>
-            <a href="#" class="hidden md:block underline-gradient">Contact</a>
         </div>
         <div class="ml-4 hidden md:block">
             <UiButton class="px-4 py-2" :text="isDark ? 'Light mode' : 'Dark mode'" @click="toggleDark" />
@@ -27,9 +25,7 @@
             </button>
             <div class="space-y-12 text-custom-forest dark:text-custom-cream w-full">
                 <nuxt-link @click="toggleMenu" to="/projects" class="block text-5xl font-lostar">Projects</nuxt-link>
-                <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">About</a>
                 <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Resume</a>
-                <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Contact</a>
                 <div class="pt-8">
                     <UiButton class="px-4 py-2" :text="isDark ? 'Light mode' : 'Dark mode'"
                         @click="() => { toggleDark(); toggleMenu(); }" />
