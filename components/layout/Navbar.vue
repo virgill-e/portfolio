@@ -4,7 +4,7 @@
         <nuxt-link to="/" class="underline-gradient font-lostar">Virgill_e</nuxt-link>
         <div class="hidden md:flex gap-8">
             <nuxt-link to="/projects" class="underline-gradient">Projects</nuxt-link>
-            <a href="#" class="underline-gradient">About</a>
+            <nuxt-link to="/about" class="underline-gradient">About</nuxt-link>
             <a href="#" class="underline-gradient">Resume</a>
             <a href="#" class="hidden md:block underline-gradient">Contact</a>
         </div>
