@@ -46,9 +46,9 @@
                 <nuxt-link @click="toggleMenu" to="/projects" class="block text-5xl font-lostar">Projects</nuxt-link>
                 <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Resume</a>
                 <div class="pt-8 flex items-center gap-4">
-                    <span class="text-2xl">Dark mode:</span>
                     <button @click="toggleDarkMode"
-                        class="p-2 hover:opacity-70 transition-all duration-300 hover:scale-110">
+                        class="p-2 hover:opacity-70 transition-all duration-300 hover:scale-110 flex flex-row">
+                        <span class="text-2xl mr-4">Dark mode:</span>
                         <svg ref="darkModeSvgMobile" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
                             <path ref="darkModeIconMobile" />
                             <g ref="sunRaysMobile" opacity="0">
