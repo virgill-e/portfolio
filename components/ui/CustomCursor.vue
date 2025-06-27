@@ -10,18 +10,24 @@ const y = ref(0);
 const isClickable = ref(false);
 
 function checkClickable(e) {
-  let el = e.target;
-  while (el) {
-    if (
-      el.tagName === 'A' ||
-      el.tagName === 'BUTTON' ||
-      el.onclick ||
-      el.getAttribute('role') === 'button'
-    ) {
-      isClickable.value = true;
-      return;
+  // Utilise elementsFromPoint pour obtenir tous les éléments sous la souris
+  const elements = document.elementsFromPoint(e.clientX, e.clientY);
+
+  for (let el of elements) {
+    // Vérifie l'élément actuel et remonte la hiérarchie
+    let currentEl = el;
+    while (currentEl) {
+      if (
+        currentEl.tagName === 'A' ||
+        currentEl.tagName === 'BUTTON' ||
+        currentEl.onclick ||
+        currentEl.getAttribute('role') === 'button'
+      ) {
+        isClickable.value = true;
+        return;
+      }
+      currentEl = currentEl.parentElement;
     }
-    el = el.parentElement;
   }
   isClickable.value = false;
 }

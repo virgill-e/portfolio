@@ -3,6 +3,7 @@
         class="bg-custom-cream dark:bg-custom-forest px-4 flex justify-between md:justify-around items-center h-[10vh] text-custom-forest dark:text-custom-cream border-b-2 border-custom-olive dark:border-custom-cream text-xl">
         <nuxt-link to="/" class="underline-gradient font-lostar">Virgill_e</nuxt-link>
         <div class="hidden md:flex gap-8">
+            <nuxt-link to="/" class="underline-gradient">Home</nuxt-link>
             <nuxt-link to="/projects" class="underline-gradient">Projects</nuxt-link>
             <a href="#" class="underline-gradient">Resume</a>
         </div>
@@ -24,6 +25,7 @@
                 &times;
             </button>
             <div class="space-y-12 text-custom-forest dark:text-custom-cream w-full">
+                <nuxt-link @click="toggleMenu" to="/" class="block text-5xl font-lostar">Home</nuxt-link>
                 <nuxt-link @click="toggleMenu" to="/projects" class="block text-5xl font-lostar">Projects</nuxt-link>
                 <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Resume</a>
                 <div class="pt-8">
