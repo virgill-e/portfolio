@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-custom-cream px-16 md:px-24">
+    <div class="min-h-screen bg-custom-cream px-16 md:px-24 relative z-25">
         <!-- title bloc -->
         <div class="flex flex-col items-center md:justify-around h-[75vh] md:h-[90vh]">
             <div class="flex flex-col items-center justify-center h-3/5 md:h-3/5">
