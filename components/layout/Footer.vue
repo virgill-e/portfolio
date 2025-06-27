@@ -8,7 +8,7 @@
         <span class="font-lostar text-3xl md:text-6xl text-center select-text">Create a project
             together</span>
         <div class="flex flex-row gap-4 md:gap-6 h-1/5 my-8">
-            <a href="https://gitlab.com/noshaq/qairn-flutter"
+            <a href="#"
                 class="hover:opacity-75 transition-opacity block w-8 h-8 md:w-10 md:h-10 relative z-50">
                 <IconsIconGithub class="w-full h-full block" />
             </a>
