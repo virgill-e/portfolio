@@ -11,7 +11,8 @@
                 </h1>
             </div>
             <div class="h-3/5 md:h-2/5 w-full flex flex-col md:flex-row justify-between md:items-center">
-                <p class="md:w-3/5 py-8  text-left md:text-lg text-balance   ">Hello, I'm Virgile Bigaré, a full stack developer
+                <p class="md:w-3/5 py-8  text-left md:text-lg text-balance   ">Hello, I'm Virgile Bigaré, a full stack
+                    developer
                     passionate about creating web and mobile applications.
                     Curious and always seeking new challenges, I enjoy exploring personal projects that
                     allow me to expand my skills and stay up-to-date in an ever-evolving field.</p>
@@ -21,11 +22,28 @@
         </div>
 
         <!-- 3 favorite projects bloc -->
-        <div id="favorite-projects" class="min-h-screen w-full flex flex-col items-center">
+        <div id="favorite-projects" class=" w-full flex flex-col items-center">
             <h2 class="text-custom-forest py-16 text-6xl font-lostar">Favorites projects</h2>
-            <UiProjectImageDisplay class="w-full py-16" />
-            <UiProjectImageDisplay class="w-full py-16" />
-            <UiProjectImageDisplay class="w-full py-16" />
+            <div class="w-full py-4">
+                <div class="h-[50vh]">
+                    <UiProjectImageDisplay class="h-full" project-name="Portfolio"
+                        main-image="/images/projects/portfolio/large.png"
+                        secondary-image="/images/projects/portfolio/mobile.webp" />
+                </div>
+            </div>
+            <div class="w-full py-4">
+                <div class="h-[50vh]">
+                    <UiProjectImageDisplay class="h-full" project-name="Qairn"
+                        main-image="/images/projects/qairn/1.jpeg" secondary-image="/images/projects/qairn/2.PNG" />
+                </div>
+            </div>
+            <div class="w-full py-4">
+                <div class="h-[50vh]">
+                    <UiProjectImageDisplay class="h-full" project-name="Shamir secret sharing"
+                        main-image="/images/projects/shamir-secret-sharing/1.jpeg"
+                        secondary-image="/images/projects/shamir-secret-sharing/2.jpeg" />
+                </div>
+            </div>
         </div>
     </div>
 </template>
