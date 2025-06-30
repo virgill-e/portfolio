@@ -4,7 +4,7 @@
         <!-- Image de fond avec overlay -->
         <div class="relative w-full h-full overflow-hidden">
             <img :src="project.image" :alt="project.name"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 project-image" />
+                class="w-full h-full object-cover project-image" />
 
         </div>
 
