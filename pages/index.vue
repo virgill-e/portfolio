@@ -24,26 +24,7 @@
         <!-- 3 favorite projects bloc -->
         <div id="favorite-projects" class=" w-full flex flex-col items-center">
             <h2 class="text-custom-forest py-16 text-6xl font-lostar">Favorites projects</h2>
-            <div class="w-full py-4">
-                <div class="h-[50vh]">
-                    <UiProjectImageDisplay class="h-full" project-name="Portfolio"
-                        main-image="/images/projects/portfolio/large.png"
-                        secondary-image="/images/projects/portfolio/mobile.webp" />
-                </div>
-            </div>
-            <div class="w-full py-4">
-                <div class="h-[50vh]">
-                    <UiProjectImageDisplay class="h-full" project-name="Qairn"
-                        main-image="/images/projects/qairn/1.jpeg" secondary-image="/images/projects/qairn/2.PNG" />
-                </div>
-            </div>
-            <div class="w-full py-4">
-                <div class="h-[50vh]">
-                    <UiProjectImageDisplay class="h-full" project-name="Shamir secret sharing"
-                        main-image="/images/projects/shamir-secret-sharing/1.jpeg"
-                        secondary-image="/images/projects/shamir-secret-sharing/2.jpeg" />
-                </div>
-            </div>
+            TODO
         </div>
     </div>
 </template>
