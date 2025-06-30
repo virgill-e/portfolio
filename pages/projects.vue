@@ -2,9 +2,19 @@
     <div class="min-h-screen bg-custom-cream py-16 px-8 md:px-24 flex flex-col items-center relative z-25">
         <h1 class="text-custom-forest text-6xl font-lostar mb-16">What I have already done</h1>
 
-        <!-- Grid des projets -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl">
-            <UiProjectVisualizer v-for="project in projects" :key="project.id" :project="project" />
+        <!-- Grid des projets sur 2 colonnes -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl w-full">
+            <!-- Première colonne -->
+            <div class="space-y-8">
+                <UiProjectVisualizer v-for="(project, index) in projects.filter((_, i) => i % 2 === 0)"
+                    :key="project.id" :project="project" />
+            </div>
+
+            <!-- Deuxième colonne -->
+            <div class="space-y-8 mt-32">
+                <UiProjectVisualizer v-for="(project, index) in projects.filter((_, i) => i % 2 === 1)"
+                    :key="project.id" :project="project" />
+            </div>
         </div>
     </div>
 </template>
