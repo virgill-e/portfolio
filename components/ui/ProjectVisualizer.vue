@@ -3,8 +3,7 @@
         class="group relative overflow-hidden rounded-xl bordertransition-all duration-300 hover:scale-105 hover:shadow-2xl project-card aspect-square">
         <!-- Image de fond avec overlay -->
         <div class="relative w-full h-full overflow-hidden">
-            <img :src="project.image" :alt="project.name"
-                class="w-full h-full object-cover project-image" />
+            <img :src="project.image" :alt="project.name" class="w-full h-full object-cover project-image" />
 
         </div>
 

@@ -18,34 +18,92 @@ watch(isDark, (val) => {
   else document.documentElement.classList.remove('dark')
 })
 
+function animateImages(invert: boolean) {
+  const images = document.querySelectorAll('img')
+  const timeline = gsap.timeline()
+
+  if (invert) {
+    // Animation d'activation : disparition -> inversion -> réapparition
+    timeline
+      .to(images, {
+        opacity: 0,
+        duration: 0.4,
+        ease: 'power2.inOut'
+      })
+      .set(images, {
+        filter: 'invert(1)'
+      })
+      .to(images, {
+        opacity: 1,
+        duration: 0.4,
+        ease: 'power2.inOut'
+      })
+  } else {
+    // Animation de désactivation : disparition -> retour normal -> réapparition
+    timeline
+      .to(images, {
+        opacity: 0,
+        duration: 0.4,
+        ease: 'power2.inOut'
+      })
+      .set(images, {
+        filter: 'none'
+      })
+      .to(images, {
+        opacity: 1,
+        duration: 0.4,
+        ease: 'power2.inOut'
+      })
+  }
+
+  return timeline
+}
+
 function animateDarkModeTransition() {
   const overlay = darkModeOverlay.value
   if (!overlay) return
 
+  // Créer une timeline principale pour synchroniser les animations
+  const masterTimeline = gsap.timeline()
+
   if (isDark.value) {
-    // Animation d'activation : voile qui glisse de la gauche vers la droite
-    gsap.fromTo(overlay,
+    // Animation d'activation : overlay et images en parallèle
+    const overlayTween = gsap.fromTo(overlay,
       {
-        clipPath: 'inset(0 100% 0 0)', // Commence invisible (clippé à droite)
+        clipPath: 'inset(0 100% 0 0)',
         opacity: 1
       },
       {
-        clipPath: 'inset(0 0% 0 0)', // Se révèle complètement
+        clipPath: 'inset(0 0% 0 0)',
         duration: 0.8,
         ease: 'power2.inOut'
       }
     )
+
+    const imageTimeline = animateImages(true)
+
+    // Lancer les deux animations en parallèle
+    masterTimeline
+      .add(overlayTween, 0)
+      .add(imageTimeline, 0)
+
   } else {
-    // Animation de désactivation : voile qui glisse de droite vers la gauche et disparaît
-    gsap.to(overlay, {
-      clipPath: 'inset(0 100% 0 0)', // Se cache vers la gauche
+    // Animation de désactivation
+    const overlayTween = gsap.to(overlay, {
+      clipPath: 'inset(0 100% 0 0)',
       duration: 0.8,
       ease: 'power2.inOut',
       onComplete: () => {
-        // Remet l'overlay à son état initial pour la prochaine activation
         gsap.set(overlay, { opacity: 0, clipPath: 'inset(0 100% 0 0)' })
       }
     })
+
+    const imageTimeline = animateImages(false)
+
+    // Lancer les deux animations en parallèle
+    masterTimeline
+      .add(overlayTween, 0)
+      .add(imageTimeline, 0)
   }
 }
 
