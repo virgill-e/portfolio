@@ -1,6 +1,6 @@
 <template>
     <div
-        class="group relative overflow-hidden rounded-xl bordertransition-all duration-300 hover:scale-105 hover:shadow-2xl project-card aspect-square">
+        class="group relative overflow-hidden rounded-xl bordertransition-all duration-1000 hover:scale-103 hover:shadow-2xl project-card aspect-square">
         <!-- Image de fond avec overlay -->
         <div class="relative w-full h-full overflow-hidden">
             <img :src="project.image" :alt="project.name" class="w-full h-full object-cover project-image" />
@@ -9,7 +9,7 @@
 
         <!-- Contenu -->
         <div
-            class="absolute inset-0 p-6 flex flex-col justify-between text-white project-content bg-gradient-to-t from-custom-forest via-custom-forest/30 to-transparent">
+            class="absolute inset-0 flex flex-col justify-between text-white project-content">
             <!-- Date en haut à droite -->
             <div class="flex justify-end">
                 <span
@@ -19,7 +19,7 @@
             </div>
 
             <!-- Contenu principal en bas -->
-            <div class="space-y-4">
+            <div class="space-y-4 bg-gradient-to-t from-custom-forest via-custom-forest to-transparent p-8 pt-16">
                 <!-- Titre -->
                 <h3 class="text-3xl font-lostar font-bold leading-tight project-title">
                     {{ project.name }}
@@ -40,10 +40,6 @@
             </div>
         </div>
 
-        <!-- Hover effect overlay -->
-        <div
-            class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-custom-forest/20 project-hover">
-        </div>
     </div>
 </template>
 
