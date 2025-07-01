@@ -5,7 +5,6 @@
         <div class="hidden md:flex gap-8">
             <nuxt-link to="/" class="underline-gradient">Home</nuxt-link>
             <nuxt-link to="/projects" class="underline-gradient">Projects</nuxt-link>
-            <a href="#" class="underline-gradient">Resume</a>
         </div>
         <div class="ml-4 hidden md:block">
             <button @click="toggleDarkMode" class="p-2 hover:opacity-70 transition-all duration-300 hover:scale-110">
@@ -44,7 +43,6 @@
             <div class="space-y-12 text-custom-forest dark:text-custom-cream w-full">
                 <nuxt-link @click="toggleMenu" to="/" class="block text-5xl font-lostar">Home</nuxt-link>
                 <nuxt-link @click="toggleMenu" to="/projects" class="block text-5xl font-lostar">Projects</nuxt-link>
-                <a @click="toggleMenu" href="#" class="block text-5xl font-lostar">Resume</a>
                 <div class="pt-8 flex items-center gap-4">
                     <button @click="toggleDarkMode"
                         class="p-2 hover:opacity-70 transition-all duration-300 hover:scale-110 flex flex-row">
