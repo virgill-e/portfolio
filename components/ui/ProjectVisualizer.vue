@@ -19,7 +19,7 @@
             </div>
 
             <!-- Contenu principal en bas -->
-            <div class="space-y-4 bg-gradient-to-t from-custom-forest via-custom-forest to-transparent p-8 pt-16">
+            <div class="space-y-4 backdrop-blur-xs text-custom-forest bg-gradient-to-t from-custom-cream via-custom-cream/90 to-custom-cream/20 p-8 pt-16">
                 <!-- Titre -->
                 <h3 class="text-3xl font-lostar font-bold leading-tight project-title">
                     {{ project.name }}
@@ -34,7 +34,7 @@
                 </div>
 
                 <!-- Description -->
-                <p class="text-custom-cream/90 text-sm leading-relaxed line-clamp-3 project-description">
+                <p class="text-custom-forest text-sm leading-relaxed line-clamp-3 project-description">
                     {{ project.description }}
                 </p>
             </div>
