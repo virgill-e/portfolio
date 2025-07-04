@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref, provide, watch, onMounted } from 'vue'
+import { ref, provide, watch, onMounted, nextTick } from 'vue'
 import { gsap } from 'gsap'
 
 const isDark = ref(false)
 const darkModeOverlay = ref<HTMLElement | null>(null)
+const route = useRoute()
 
 const toggleDark = () => {
   isDark.value = !isDark.value
@@ -18,45 +19,59 @@ watch(isDark, (val) => {
   else document.documentElement.classList.remove('dark')
 })
 
-function animateImages(invert: boolean) {
+// Surveiller les changements de route pour animer l'apparition des images
+watch(() => route.path, async () => {
+  // Attendre que le DOM soit mis à jour avec les nouvelles images
+  await nextTick()
+  // Animer l'apparition des images avec un délai pour éviter le flash
+  setTimeout(() => {
+    animatePageImages()
+  }, 50)
+})
+
+function animateImages() {
   const images = document.querySelectorAll('img')
   const timeline = gsap.timeline()
 
-  if (invert) {
-    // Animation d'activation : disparition -> inversion -> réapparition
-    timeline
-      .to(images, {
-        opacity: 0,
-        duration: 0.4,
-        ease: 'power2.inOut'
-      })
-      .set(images, {
-        filter: 'invert(1)'
-      })
-      .to(images, {
-        opacity: 1,
-        duration: 0.4,
-        ease: 'power2.inOut'
-      })
-  } else {
-    // Animation de désactivation : disparition -> retour normal -> réapparition
-    timeline
-      .to(images, {
-        opacity: 0,
-        duration: 0.4,
-        ease: 'power2.inOut'
-      })
-      .set(images, {
-        filter: 'none'
-      })
-      .to(images, {
-        opacity: 1,
-        duration: 0.4,
-        ease: 'power2.inOut'
-      })
-  }
+  // Ajouter la classe 'animating' pour désactiver le CSS d'inversion
+  images.forEach(img => img.classList.add('animating'))
+
+  // Animation : disparition -> inversion manuelle -> réapparition
+  timeline
+    .to(images, {
+      opacity: 0,
+      duration: 0.4,
+      ease: 'power2.inOut'
+    })
+    .set(images, {
+      filter: isDark.value ? 'invert(1)' : 'none'
+    })
+    .to(images, {
+      opacity: 1,
+      duration: 0.4,
+      ease: 'power2.inOut',
+      onComplete: () => {
+        // Retirer la classe 'animating' à la fin de l'animation
+        images.forEach(img => img.classList.remove('animating'))
+      }
+    })
 
   return timeline
+}
+
+
+
+function animatePageImages() {
+  const images = document.querySelectorAll('img')
+  if (images.length === 0) return
+
+  // Animer l'apparition des images (elles sont déjà masquées par le CSS)
+  gsap.to(images, {
+    opacity: 1,
+    duration: 0.6,
+    ease: 'power2.out',
+    stagger: 0.1 // Légère cascade pour un effet plus fluide
+  })
 }
 
 function animateDarkModeTransition() {
@@ -80,7 +95,7 @@ function animateDarkModeTransition() {
       }
     )
 
-    const imageTimeline = animateImages(true)
+    const imageTimeline = animateImages()
 
     // Lancer les deux animations en parallèle
     masterTimeline
@@ -98,7 +113,7 @@ function animateDarkModeTransition() {
       }
     })
 
-    const imageTimeline = animateImages(false)
+    const imageTimeline = animateImages()
 
     // Lancer les deux animations en parallèle
     masterTimeline
@@ -115,6 +130,11 @@ onMounted(() => {
       clipPath: 'inset(0 100% 0 0)'
     })
   }
+
+  // Animer l'apparition des images au chargement initial
+  setTimeout(() => {
+    animatePageImages()
+  }, 100)
 })
 </script>
 
@@ -131,3 +151,16 @@ onMounted(() => {
     </div>
   </div>
 </template>
+
+<style>
+/* Masquer toutes les images par défaut pour éviter le flash */
+img {
+  opacity: 0;
+}
+
+/* Appliquer l'inversion des images automatiquement en dark mode */
+/* Seulement quand l'animation n'est pas en cours */
+.dark img:not(.animating) {
+  filter: invert(1);
+}
+</style>
