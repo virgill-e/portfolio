@@ -8,8 +8,7 @@
         </div>
 
         <!-- Contenu -->
-        <div
-            class="absolute inset-0 flex flex-col justify-between text-white project-content">
+        <div class="absolute inset-0 flex flex-col justify-between text-white project-content">
             <!-- Date en haut à droite -->
             <div class="flex justify-end">
                 <span
@@ -19,14 +18,15 @@
             </div>
 
             <!-- Contenu principal en bas -->
-            <div class="space-y-4 backdrop-blur-xs text-custom-forest bg-gradient-to-t from-custom-cream via-custom-cream/90 to-custom-cream/20 p-8 pt-16">
+            <div
+                class="space-y-4 backdrop-blur-xs text-custom-forest bg-gradient-to-t from-custom-cream via-custom-cream/90 to-custom-cream/20 p-4 lg:p-8 lg:pt-16">
                 <!-- Titre -->
                 <h3 class="text-3xl font-lostar font-bold leading-tight project-title">
                     {{ project.name }}
                 </h3>
 
                 <!-- Tags -->
-                <div class="flex flex-wrap gap-2">
+                <div class="hidden lg:flex flex-wrap gap-2">
                     <span v-for="tag in project.tags" :key="tag"
                         class="bg-custom-olive/80 text-white px-2 py-1 rounded-md text-xs font-medium backdrop-blur-sm project-tag">
                         {{ tag }}
@@ -34,7 +34,7 @@
                 </div>
 
                 <!-- Description -->
-                <p class="text-custom-forest text-sm leading-relaxed line-clamp-3 project-description">
+                <p class="hidden lg:block text-custom-forest text-sm leading-relaxed line-clamp-3 project-description">
                     {{ project.description }}
                 </p>
             </div>
@@ -56,12 +56,7 @@ defineProps({
 </script>
 
 <style scoped>
-.line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
+
 
 /* Z-index management pour contrer le z-index global des images */
 .project-card {
