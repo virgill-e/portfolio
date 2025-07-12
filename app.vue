@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { ref, provide, watch, onMounted, nextTick } from 'vue'
+import { ref, provide, watch, onMounted } from 'vue'
 import { gsap } from 'gsap'
 
 const isDark = ref(false)
 const darkModeOverlay = ref<HTMLElement | null>(null)
-const route = useRoute()
 
 const toggleDark = () => {
   isDark.value = !isDark.value
@@ -19,15 +18,7 @@ watch(isDark, (val) => {
   else document.documentElement.classList.remove('dark')
 })
 
-// Surveiller les changements de route pour animer l'apparition des images
-watch(() => route.path, async () => {
-  // Attendre que le DOM soit mis à jour avec les nouvelles images
-  await nextTick()
-  // Animer l'apparition des images avec un délai pour éviter le flash
-  setTimeout(() => {
-    animatePageImages()
-  }, 50)
-})
+// Code de surveillance des routes supprimé car une seule page
 
 function animateImages() {
   const images = document.querySelectorAll('img')
