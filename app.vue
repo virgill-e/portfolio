@@ -2,15 +2,9 @@
 import { ref, provide, watch, onMounted } from 'vue'
 import { gsap } from 'gsap'
 
-const isTouch = ref(false)
+
 const isDark = ref(false)
 const darkModeOverlay = ref<HTMLElement | null>(null)
-
-onMounted(() => {
-  isTouch.value =
-    window.matchMedia('(pointer: coarse)').matches ||
-    'ontouchstart' in window
-})
 
 const toggleDark = () => {
   isDark.value = !isDark.value
@@ -140,7 +134,7 @@ onMounted(() => {
   <div :class="['text-custom-forest uppercase', { dark: isDark }]">
     <NuxtRouteAnnouncer />
     <LayoutNavbar />
-    <UiCustomCursor />
+    <UiCustomCursor class="hidden md:block" />
     <NuxtPage />
     <LayoutFooter />
     <!-- Dark mode overlay avec animation de voile -->
