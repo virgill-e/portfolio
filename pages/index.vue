@@ -29,7 +29,8 @@
             <div class="w-full max-w-7xl">
                 <!-- Mobile: Une seule colonne avec tous les projets -->
                 <div class="md:hidden space-y-8">
-                    <UiProjectVisualizer v-for="project in projects" :key="project.id" :project="project" />
+                    <UiProjectVisualizer v-for="project in projects" :key="project.id" :project="project"
+                        class="project-visualizer left" />
                 </div>
 
                 <!-- Desktop: 2 colonnes alternées -->
@@ -37,13 +38,13 @@
                     <!-- Première colonne -->
                     <div class="space-y-8">
                         <UiProjectVisualizer v-for="(project, index) in projects.filter((_, i) => i % 2 === 0)"
-                            :key="project.id" :project="project" />
+                            :key="project.id" :project="project" class="project-visualizer left" />
                     </div>
 
                     <!-- Deuxième colonne -->
                     <div class="space-y-8 mt-32">
                         <UiProjectVisualizer v-for="(project, index) in projects.filter((_, i) => i % 2 === 1)"
-                            :key="project.id" :project="project" />
+                            :key="project.id" :project="project" class="project-visualizer right" />
                     </div>
                 </div>
             </div>
@@ -55,6 +56,7 @@
 import { onMounted, ref } from 'vue';
 import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
+import { animateProjectVisualizers } from '@/assets/js/projectVisualizerAnimation';
 
 gsap.registerPlugin(SplitText);
 
@@ -125,6 +127,7 @@ onMounted(() => {
             delay: 0.05 * i
         });
     });
+    animateProjectVisualizers();
 });
 
 function scrollToUiProjectImageDisplays() {
