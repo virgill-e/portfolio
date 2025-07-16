@@ -8,20 +8,24 @@
         <span class="font-lostar text-3xl md:text-6xl text-center select-text">Create a project
             together</span>
         <div class="flex flex-row gap-4 md:gap-6 h-1/5 my-8">
-            <a href="#"
+            <a href="https://github.com/virgill-e" target="_blank"
                 class="hover:opacity-75 transition-opacity block w-8 h-8 md:w-10 md:h-10 relative z-50">
                 <IconsIconGithub class="w-full h-full block" />
             </a>
-            <a href="#" class="hover:opacity-75 transition-opacity block w-8 h-8 md:w-10 md:h-10 relative z-50">
+            <a href="https://www.linkedin.com/in/virgile-bigar%C3%A9/" target="_blank"
+                class="hover:opacity-75 transition-opacity block w-8 h-8 md:w-10 md:h-10 relative z-50">
                 <IconsIconLinkedin class="w-full h-full block" />
             </a>
-            <a href="#" class="hover:opacity-75 transition-opacity block w-8 h-8 md:w-10 md:h-10 relative z-50">
+            <a href="https://x.com/virgill_e" target="_blank"
+                class="hover:opacity-75 transition-opacity block w-8 h-8 md:w-10 md:h-10 relative z-50">
                 <IconsIconX class="w-full h-full block" />
             </a>
-            <a href="#" class="hover:opacity-75 transition-opacity block w-8 h-8 md:w-10 md:h-10 relative z-50">
+            <a href="https://www.instagram.com/virgill_e/" target="_blank"
+                class="hover:opacity-75 transition-opacity block w-8 h-8 md:w-10 md:h-10 relative z-50">
                 <IconsIconInstagram class="w-full h-full block" />
             </a>
-            <a href="#" class="hover:opacity-75 transition-opacity block w-8 h-8 md:w-10 md:h-10 relative z-50">
+            <a href="mailto:virgile.bigare@gmail.com"
+                class="hover:opacity-75 transition-opacity block w-8 h-8 md:w-10 md:h-10 relative z-50">
                 <IconsIconMail class="w-full h-full block" />
             </a>
         </div>
