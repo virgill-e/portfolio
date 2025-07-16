@@ -16,8 +16,7 @@
                     passionate about creating web and mobile applications.
                     Curious and always seeking new challenges, I enjoy exploring personal projects that
                     allow me to expand my skills and stay up-to-date in an ever-evolving field.</p>
-                <UiButton @click="scrollToUiProjectImageDisplays" class="py-4 md:w-1/3 md:h-1/3"
-                    text="Scroll to continue ↓" />
+                <UiButton @click="scrollToUiProjectImageDisplays" class="py-4 md:w-1/3 md:h-1/3" text="My projects ↓" />
             </div>
         </div>
 
