@@ -1,9 +1,9 @@
 <template>
-    <div class="min-h-screen bg-custom-cream px-16 md:px-24 relative z-25">
+    <div class="min-h-screen bg-custom-cream px-8 md:px-24 relative z-25">
         <!-- title bloc -->
-        <div class="flex flex-col items-center md:justify-around h-[90vh] pb-8">
-            <div class="flex flex-col items-center justify-center h-3/5 md:h-3/5">
-                <h1 class="split font-lostar text-custom-cream text-shadow-custom-bronze text-6xl md:text-9xl ">
+        <div class="flex flex-col items-center md:justify-around h-[90vh] pb-32">
+            <div class="flex flex-col items-center justify-center h-2/5 md:h-3/5">
+                <h1 class="split font-lostar text-custom-cream text-shadow-custom-bronze text-6xl md:text-9xl">
                     Virgill_e
                 </h1>
                 <h1 class="split font-lostar text-custom-cream text-shadow-custom-bronze text-5xl md:text-9xl">
@@ -22,8 +22,9 @@
         </div>
 
         <!-- 3 favorite projects bloc -->
-        <div id="favorite-projects" class="w-full flex flex-col items-center py-16">
-            <h2 class="text-custom-forest py-16 text-6xl font-lostar text-balance">What I have already done</h2>
+        <div id="favorite-projects" class="w-full flex flex-col items-center pb-16">
+            <h2 class="text-custom-forest py-16 text-6xl font-lostar text-balance text-center">What I have already
+                done</h2>
 
             <!-- Grid des projets -->
             <div class="w-full max-w-7xl">
