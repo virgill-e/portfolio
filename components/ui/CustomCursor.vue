@@ -10,24 +10,21 @@ const y = ref(0);
 const isClickable = ref(false);
 
 function checkClickable(e) {
-  // Utilise elementsFromPoint pour obtenir tous les éléments sous la souris
-  const elements = document.elementsFromPoint(e.clientX, e.clientY);
+  // Prend seulement le premier élément sous la souris (le plus haut)
+  const el = document.elementFromPoint(e.clientX, e.clientY);
 
-  for (let el of elements) {
-    // Vérifie l'élément actuel et remonte la hiérarchie
-    let currentEl = el;
-    while (currentEl) {
-      if (
-        currentEl.tagName === 'A' ||
-        currentEl.tagName === 'BUTTON' ||
-        currentEl.onclick ||
-        currentEl.getAttribute('role') === 'button'
-      ) {
-        isClickable.value = true;
-        return;
-      }
-      currentEl = currentEl.parentElement;
+  let currentEl = el;
+  while (currentEl) {
+    if (
+      currentEl.tagName === 'A' ||
+      currentEl.tagName === 'BUTTON' ||
+      currentEl.onclick ||
+      currentEl.getAttribute('role') === 'button'
+    ) {
+      isClickable.value = true;
+      return;
     }
+    currentEl = currentEl.parentElement;
   }
   isClickable.value = false;
 }
