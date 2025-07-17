@@ -4,7 +4,7 @@
         <span ref="fillRef" class="absolute left-0 top-0 h-full w-0 bg-custom-forest z-0 transition-none"></span>
         <span
             class="relative z-10 group-hover:text-custom-cream transition-colors duration-300 text-center leading-tight">{{
-            text }}</span>
+                text }}</span>
     </button>
 </template>
 
