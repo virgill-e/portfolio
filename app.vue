@@ -6,6 +6,8 @@ import { gsap } from 'gsap'
 const isDark = ref(false)
 const darkModeOverlay = ref<HTMLElement | null>(null)
 
+
+
 const toggleDark = () => {
   isDark.value = !isDark.value
   animateDarkModeTransition()
@@ -121,6 +123,15 @@ onMounted(() => {
       opacity: 0,
       clipPath: 'inset(0 100% 0 0)'
     })
+  }
+
+  if (typeof window !== 'undefined') {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      if (!isDark.value) {
+        isDark.value = true
+        animateDarkModeTransition()
+      }
+    }
   }
 
   // Animer l'apparition des images au chargement initial

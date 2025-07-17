@@ -1,6 +1,6 @@
 <template>
     <div
-        class="bg-custom-cream dark:bg-custom-forest px-4 flex justify-between md:justify-around items-center h-[10vh] text-custom-forest dark:text-custom-cream border-b-2 border-custom-olive dark:border-custom-cream text-xl">
+        class="bg-custom-cream px-4 flex justify-between md:justify-around items-center h-[10vh] text-custom-forest border-b-2 border-custom-olive text-xl">
         <nuxt-link to="/" class="underline-gradient font-lostar">Virgill_e</nuxt-link>
         <div class="ml-4">
             <button @click="toggleDarkMode" class="p-2 hover:opacity-70 transition-all duration-300 hover:scale-110">
@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick, inject, onMounted } from 'vue';
+import { ref, nextTick, inject, onMounted, watch } from 'vue';
 import gsap from 'gsap';
 import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
 
@@ -58,6 +58,49 @@ onMounted(() => {
         }
     }
 });
+
+watch(isDark, (val, oldVal) => {
+    if (val !== oldVal) {
+        // Joue l’animation comme si on avait cliqué
+        animateIcon(val)
+    }
+})
+
+function animateIcon(isNowDark: boolean) {
+    const timeline = gsap.timeline();
+
+    // Animation de rotation du SVG
+    if (darkModeSvg.value) {
+        timeline.to(darkModeSvg.value, {
+            rotation: isNowDark ? -180 : 180,
+            duration: 0.8,
+            ease: "power2.inOut",
+            transformOrigin: "50% 50%"
+        }, 0);
+    }
+
+    // Animation des rayons
+    if (sunRays.value) {
+        if (isNowDark) {
+            gsap.killTweensOf(sunRays.value);
+            gsap.set(sunRays.value, { rotation: 0, transformOrigin: "50% 50%" });
+            timeline.to(sunRays.value, { opacity: 0, duration: 0.3, ease: "power2.in" }, 0);
+        } else {
+            gsap.killTweensOf(sunRays.value);
+            timeline.to(sunRays.value, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.3);
+            timeline.to(sunRays.value, { rotation: 360, duration: ROTATION_DURATION, ease: "none", repeat: -1, transformOrigin: "50% 50%" }, 0.65);
+        }
+    }
+
+    // Animation de morphing de l'icône
+    if (darkModeIcon.value) {
+        timeline.to(darkModeIcon.value, {
+            duration: 0.6,
+            morphSVG: { shape: isNowDark ? moonPath : sunPath },
+            ease: "power2.inOut"
+        }, 0.1);
+    }
+}
 
 function toggleDarkMode() {
     const timeline = gsap.timeline();
