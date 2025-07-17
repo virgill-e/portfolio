@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ref, provide, watch, onMounted } from 'vue'
-import { gsap } from 'gsap'
-
+import {
+  animateDarkModeTransition as animateDarkMode,
+  animatePageImages,
+  initializeDarkModeOverlay
+} from '@/assets/js/animations'
 
 const isDark = ref(false)
 const darkModeOverlay = ref<HTMLElement | null>(null)
-
-
 
 const toggleDark = () => {
   isDark.value = !isDark.value
@@ -21,108 +22,16 @@ watch(isDark, (val) => {
   else document.documentElement.classList.remove('dark')
 })
 
-// Code de surveillance des routes supprimé car une seule page
-
-function animateImages() {
-  const images = document.querySelectorAll('img')
-  const timeline = gsap.timeline()
-
-  // Ajouter la classe 'animating' pour désactiver le CSS d'inversion
-  images.forEach(img => img.classList.add('animating'))
-
-  // Animation : disparition -> inversion manuelle -> réapparition
-  timeline
-    .to(images, {
-      opacity: 0,
-      duration: 0.4,
-      ease: 'power2.inOut'
-    })
-    .set(images, {
-      filter: isDark.value ? 'invert(1)' : 'none'
-    })
-    .to(images, {
-      opacity: 1,
-      duration: 0.4,
-      ease: 'power2.inOut',
-      onComplete: () => {
-        // Retirer la classe 'animating' à la fin de l'animation
-        images.forEach(img => img.classList.remove('animating'))
-      }
-    })
-
-  return timeline
-}
-
-
-
-function animatePageImages() {
-  const images = document.querySelectorAll('img')
-  if (images.length === 0) return
-
-  // Animer l'apparition des images (elles sont déjà masquées par le CSS)
-  gsap.to(images, {
-    opacity: 1,
-    duration: 0.6,
-    ease: 'power2.out',
-    stagger: 0.1 // Légère cascade pour un effet plus fluide
-  })
-}
-
 function animateDarkModeTransition() {
-  const overlay = darkModeOverlay.value
-  if (!overlay) return
-
-  // Créer une timeline principale pour synchroniser les animations
-  const masterTimeline = gsap.timeline()
-
-  if (isDark.value) {
-    // Animation d'activation : overlay et images en parallèle
-    const overlayTween = gsap.fromTo(overlay,
-      {
-        clipPath: 'inset(0 100% 0 0)',
-        opacity: 1
-      },
-      {
-        clipPath: 'inset(0 0% 0 0)',
-        duration: 0.8,
-        ease: 'power2.inOut'
-      }
-    )
-
-    const imageTimeline = animateImages()
-
-    // Lancer les deux animations en parallèle
-    masterTimeline
-      .add(overlayTween, 0)
-      .add(imageTimeline, 0)
-
-  } else {
-    // Animation de désactivation
-    const overlayTween = gsap.to(overlay, {
-      clipPath: 'inset(0 100% 0 0)',
-      duration: 0.8,
-      ease: 'power2.inOut',
-      onComplete: () => {
-        gsap.set(overlay, { opacity: 0, clipPath: 'inset(0 100% 0 0)' })
-      }
-    })
-
-    const imageTimeline = animateImages()
-
-    // Lancer les deux animations en parallèle
-    masterTimeline
-      .add(overlayTween, 0)
-      .add(imageTimeline, 0)
+  if (darkModeOverlay.value) {
+    animateDarkMode(isDark.value, darkModeOverlay.value)
   }
 }
 
 onMounted(() => {
   // Initialise l'overlay comme invisible
   if (darkModeOverlay.value) {
-    gsap.set(darkModeOverlay.value, {
-      opacity: 0,
-      clipPath: 'inset(0 100% 0 0)'
-    })
+    initializeDarkModeOverlay(darkModeOverlay.value)
   }
 
   if (typeof window !== 'undefined') {

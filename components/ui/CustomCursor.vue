@@ -4,42 +4,24 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import { updateCursor, initializeCursor, cleanupCursor } from '@/assets/js/animations';
 
 const x = ref(0);
 const y = ref(0);
 const isClickable = ref(false);
 
-function checkClickable(e) {
-  // Prend seulement le premier élément sous la souris (le plus haut)
-  const el = document.elementFromPoint(e.clientX, e.clientY);
+const refs = { x, y, isClickable };
 
-  let currentEl = el;
-  while (currentEl) {
-    if (
-      currentEl.tagName === 'A' ||
-      currentEl.tagName === 'BUTTON' ||
-      currentEl.onclick ||
-      currentEl.getAttribute('role') === 'button'
-    ) {
-      isClickable.value = true;
-      return;
-    }
-    currentEl = currentEl.parentElement;
-  }
-  isClickable.value = false;
-}
-
-function updateCursor(e) {
-  x.value = e.clientX;
-  y.value = e.clientY;
-  checkClickable(e);
+function handleUpdateCursor(e) {
+  updateCursor(e, refs);
 }
 
 onMounted(() => {
-  window.addEventListener('mousemove', updateCursor);
+  initializeCursor(handleUpdateCursor);
 });
+
 onUnmounted(() => {
-  window.removeEventListener('mousemove', updateCursor);
+  cleanupCursor(handleUpdateCursor);
 });
 </script>
 

@@ -1,8 +1,11 @@
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger)
 
+/**
+ * Anime l'apparition des visualiseurs de projets au scroll
+ */
 export function animateProjectVisualizers() {
     // Colonne de gauche (index pair)
     gsap.utils.toArray(".project-visualizer.left").forEach((el) => {

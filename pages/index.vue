@@ -54,11 +54,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import gsap from 'gsap';
-import SplitText from 'gsap/SplitText';
-import { animateProjectVisualizers } from '@/assets/js/projectVisualizerAnimation';
-
-gsap.registerPlugin(SplitText);
+import { animateSplitText, animateProjectVisualizers } from '@/assets/js/animations';
 
 // Données des projets avec tous les paramètres requis
 const projects = ref([
@@ -113,20 +109,7 @@ const projects = ref([
 ])
 
 onMounted(() => {
-    let split = new SplitText(".split", { type: "words, chars" });
-    split.chars.forEach((char, i) => {
-        gsap.fromTo(char, {
-            opacity: 0,
-            duration: 0.5,
-            y: -100,
-            delay: 0.05 * i
-        }, {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            delay: 0.05 * i
-        });
-    });
+    animateSplitText(".split");
     animateProjectVisualizers();
 });
 
