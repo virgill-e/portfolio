@@ -10,7 +10,7 @@
         <!-- Contenu -->
         <div class="absolute inset-0 flex flex-col justify-between text-white project-content">
             <!-- Date en haut à droite -->
-            <div class="flex justify-end">
+            <div class="flex justify-end m-2">
                 <span
                     class="bg-custom-amber/90 text-custom-forest px-3 py-1 rounded-full text-sm font-medium project-date">
                     {{ project.date }}

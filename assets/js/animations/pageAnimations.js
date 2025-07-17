@@ -57,7 +57,7 @@ export function animatePageImages() {
  * @param {HTMLElement|null} overlay - Élément overlay pour l'animation
  */
 export function animateDarkModeTransition(isDark, overlay) {
-  if (!overlay) return
+    if (!overlay) return
 
     // Créer une timeline principale pour synchroniser les animations
     const masterTimeline = gsap.timeline()
@@ -110,10 +110,10 @@ export function animateDarkModeTransition(isDark, overlay) {
  * @param {HTMLElement|null} overlay - Élément overlay
  */
 export function initializeDarkModeOverlay(overlay) {
-  if (overlay) {
-    gsap.set(overlay, {
-      opacity: 0,
-      clipPath: 'inset(0 100% 0 0)'
-    })
-  }
+    if (overlay) {
+        gsap.set(overlay, {
+            opacity: 0,
+            clipPath: 'inset(0 100% 0 0)'
+        })
+    }
 } 
