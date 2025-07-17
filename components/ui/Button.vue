@@ -21,7 +21,7 @@ const props = defineProps({
 
 const buttonRef = ref(null)
 const fillRef = ref(null)
-let enterHandler, leaveHandler
+let enterHandler, leaveHandler, scrollHandler
 
 onMounted(() => {
     enterHandler = () => {
@@ -30,8 +30,12 @@ onMounted(() => {
     leaveHandler = () => {
         gsap.to(fillRef.value, { width: '0%', duration: 0.5, ease: 'power2.in' })
     }
+    scrollHandler = () => {
+        gsap.to(fillRef.value, { width: '0%', duration: 0.5, ease: 'power2.in' })
+    }
     buttonRef.value.addEventListener('mouseenter', enterHandler)
     buttonRef.value.addEventListener('mouseleave', leaveHandler)
+    window.addEventListener('scroll', scrollHandler)
 })
 
 onBeforeUnmount(() => {
@@ -39,5 +43,6 @@ onBeforeUnmount(() => {
         buttonRef.value.removeEventListener('mouseenter', enterHandler)
         buttonRef.value.removeEventListener('mouseleave', leaveHandler)
     }
+    window.removeEventListener('scroll', scrollHandler)
 })
 </script>
