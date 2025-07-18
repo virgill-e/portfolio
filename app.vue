@@ -65,13 +65,10 @@ onMounted(() => {
 </template>
 
 <style>
-/* Masquer toutes les images par défaut pour éviter le flash */
 img {
   opacity: 0;
 }
 
-/* Appliquer l'inversion des images automatiquement en dark mode */
-/* Seulement quand l'animation n'est pas en cours */
 .dark img:not(.animating) {
   filter: invert(1);
 }
