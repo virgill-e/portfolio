@@ -25,7 +25,3 @@ git clone https://github.com/votre-username/portfolioV2.git
 npm install
 npm run dev
 ```
-
----
-
-## 📬 Contact
