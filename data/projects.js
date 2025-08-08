@@ -9,7 +9,7 @@ export const projects = [
     },
     {
         id: 2,
-        name: "Portfolio V2",
+        name: "Portfolio",
         image: "/images/projects/portfolio/portfolio.webp",
         tags: ["Nuxt.js", "Tailwind CSS", "Gsap"],
         description: "My portfolio, the one you are currently viewing!",
