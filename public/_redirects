@@ -1,0 +1,5 @@
+# Configuration pour Netlify
+/* /404.html 404
+
+# SPA fallback pour les routes dynamiques
+/*    /index.html   200

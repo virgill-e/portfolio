@@ -1,0 +1,19 @@
+# Configuration pour Apache
+ErrorDocument 404 /404.html
+
+# Pour SPA - rediriger toutes les routes vers index.html sauf 404
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Si le fichier ou dossier existe, le servir
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+    
+    # Pour toutes les autres routes, servir index.html (SPA routing)
+    RewriteRule ^ /index.html [L]
+</IfModule>
+
+# Mais pour les vraies erreurs 404 (fichiers inexistants), servir 404.html
+# Cette ligne sera traitée avant les règles RewriteRule
+ErrorDocument 404 /404.html
