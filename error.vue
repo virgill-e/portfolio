@@ -1,4 +1,5 @@
 <template>
+    <UiCustomCursor class="hidden md:block" />
     <div class="page-404 h-screen w-screen p-8 md:p-32 flex justify-center items-center">
         <div class="bg-custom-amber rounded-full h-full w-full p-8 md:p-32 inset-shadow-deep border-amber">
             <div
