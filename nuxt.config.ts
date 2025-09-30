@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
-  ssr: false,
+  ssr: false, // Pour une SPA statique
   css: ['~/assets/css/main.css'],
   vite: {
     plugins: [
@@ -11,6 +11,6 @@ export default defineNuxtConfig({
     ],
   },
   nitro: {
-    preset: 'static',
+    preset: 'static', // Pour la génération statique
   },
 });
