@@ -13,7 +13,16 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'node-server', // Pour le déploiement serveur
     port: process.env.PORT ? parseInt(process.env.PORT) : 3001,
-    host: process.env.HOST || '0.0.0.0'
+    host: process.env.HOST || '0.0.0.0',
+    // Configuration pour servir les assets statiques en mode SPA
+    serveStatic: true,
+    publicAssets: [
+      {
+        baseURL: '/images',
+        dir: 'public/images',
+        maxAge: 60 * 60 * 24 * 7 // 7 jours de cache
+      }
+    ]
   },
   // Configuration pour la production
   runtimeConfig: {
