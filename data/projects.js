@@ -34,7 +34,7 @@ export const projects = [
     {
         id: 5,
         name: "ArtConnect",
-        image: "/images/projects/artconnect/ArtConnect.webp",
+        image: "/images/projects/artconnect/star-colonies.webp",
         tags: ["Vue.js", "ASP.NET", "Tailwind CSS"],
         description: "A platform for the sale of art between artists and collectors, allowing the discovery and purchase of art.",
         date: "2024"
