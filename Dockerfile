@@ -1,28 +1,28 @@
-# Utiliser une image Node.js plus récente
-FROM node:20-alpine AS base
+# Dockerfile pour Nuxt 4 - Déploiement Dokploy
+FROM node:20-alpine
 
-# Build stage
-FROM node:20-alpine AS build-stage
+# Définir le répertoire de travail
 WORKDIR /app
+
+# Copier les fichiers de dépendances
 COPY package*.json ./
-RUN npm ci
+
+# Installer les dépendances
+RUN npm ci --only=production && npm cache clean --force
+
+# Copier le code source
 COPY . .
+
+# Construire l'application
 RUN npm run build
 
-# Production stage with nginx
-FROM nginx:alpine AS prod-stage
-COPY --from=build-stage /app/.output/public /usr/share/nginx/html
+# Exposer le port 3001
+EXPOSE 3001
 
-# Configuration nginx pour SPA
-RUN echo 'server { \
-    listen 80; \
-    server_name localhost; \
-    root /usr/share/nginx/html; \
-    index index.html; \
-    location / { \
-        try_files $uri $uri/ /index.html; \
-    } \
-}' > /etc/nginx/conf.d/default.conf
+# Définir les variables d'environnement
+ENV NODE_ENV=production
+ENV PORT=3001
+ENV HOST=0.0.0.0
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Commande pour démarrer l'application
+CMD ["npm", "run", "preview", "--", "--port", "3001", "--host", "0.0.0.0"]

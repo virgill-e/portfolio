@@ -11,6 +11,14 @@ export default defineNuxtConfig({
     ],
   },
   nitro: {
-    preset: 'static', // Pour la génération statique
+    preset: 'node-server', // Pour le déploiement serveur
+    port: process.env.PORT ? parseInt(process.env.PORT) : 3001,
+    host: process.env.HOST || '0.0.0.0'
   },
+  // Configuration pour la production
+  runtimeConfig: {
+    public: {
+      baseURL: process.env.BASE_URL || ''
+    }
+  }
 });
