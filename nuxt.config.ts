@@ -16,13 +16,6 @@ export default defineNuxtConfig({
     host: process.env.HOST || '0.0.0.0',
     // Configuration pour servir les assets statiques en mode SPA
     serveStatic: true,
-    publicAssets: [
-      {
-        baseURL: '/images',
-        dir: 'public/images',
-        maxAge: 60 * 60 * 24 * 7 // 7 jours de cache
-      }
-    ]
   },
   // Configuration pour la production
   runtimeConfig: {
