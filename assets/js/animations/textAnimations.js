@@ -7,7 +7,11 @@ gsap.registerPlugin(SplitText)
  * Anime les titres avec effet de caractères qui apparaissent un par un
  * @param {string} selector - Sélecteur CSS des éléments à animer
  */
-export function animateSplitTextTitles(selector = ".split") {
+export async function animateSplitTextTitles(selector = ".split") {
+    if (document.fonts) {
+        await document.fonts.ready;
+    }
+
     const elements = document.querySelectorAll(selector)
     const splits = []
 
