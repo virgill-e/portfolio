@@ -33,9 +33,29 @@ body,
         -0.02em 0.02em 0 var(--color-custom-bronze),
         -0.04em 0.04em 0 var(--color-custom-bronze),
         -0.06em 0.06em 0 var(--color-custom-bronze),
+        0 .35em .2em var(--color-custom-bronze),
+        0 .25em .2em var(--color-custom-bronze);
+    -webkit-text-stroke: 1px var(--color-custom-bronze);
+}
+
+.text-shadow-custom-amber {
+    text-shadow:
+        -0.02em 0.02em 0 var(--color-custom-amber),
+        -0.04em 0.04em 0 var(--color-custom-amber),
+        -0.06em 0.06em 0 var(--color-custom-amber),
         0 .35em .2em var(--color-custom-amber),
         0 .25em .2em var(--color-custom-amber);
-    -webkit-text-stroke: 1px var(--color-custom-bronze);
+    -webkit-text-stroke: 1px var(--color-custom-amber);
+}
+
+.text-shadow-custom-cream {
+    text-shadow:
+        -0.02em 0.02em 0 var(--color-custom-cream),
+        -0.04em 0.04em 0 var(--color-custom-cream),
+        -0.06em 0.06em 0 var(--color-custom-cream),
+        0 .35em .2em var(--color-custom-cream),
+        0 .25em .2em var(--color-custom-cream);
+    -webkit-text-stroke: 1px var(--color-custom-cream);
 }
 
 .underline-gradient {

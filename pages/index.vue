@@ -3,12 +3,7 @@
         <!-- title bloc -->
         <div class="flex flex-col items-center md:justify-around h-[90vh] pb-16 md:pb-32">
             <div class="flex flex-col items-center justify-center h-2/5 md:h-3/5">
-                <h1 class="split font-lostar text-custom-cream text-shadow-custom-bronze text-6xl md:text-9xl">
-                    Virgill_e
-                </h1>
-                <h1 class="split font-lostar text-custom-cream text-shadow-custom-bronze text-5xl md:text-9xl">
-                    developper
-                </h1>
+                <UiTitle />
             </div>
             <div class="h-3/5 md:h-2/5 w-full flex flex-col md:flex-row justify-between md:items-center">
                 <p class="md:w-3/5 py-4 md:py-8  text-left md:text-lg text-balance   ">Hello, I'm Virgile Bigaré, a full
@@ -56,14 +51,13 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import { animateSplitText, animateProjectVisualizers } from '@/assets/js/animations';
+import { animateProjectVisualizers } from '@/assets/js/animations';
 import { projects as projectsData } from '@/data/projects';
 
 // Import des données des projets depuis le fichier séparé
 const projects = ref(projectsData);
 
 onMounted(() => {
-    animateSplitText(".split");
     animateProjectVisualizers();
 });
 
