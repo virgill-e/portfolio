@@ -8,21 +8,29 @@ gsap.registerPlugin(SplitText)
  * @param {string} selector - Sélecteur CSS des éléments à animer
  */
 export function animateSplitTextTitles(selector = ".split") {
-    let split = new SplitText(selector, { type: "words, chars" })
+    const elements = document.querySelectorAll(selector)
+    const splits = []
 
-    split.chars.forEach((char, i) => {
-        gsap.fromTo(char, {
-            opacity: 0,
-            y: -100,
-        }, {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            delay: 0.01 * i
+    // Traiter chaque élément séparément pour animer en parallèle
+    elements.forEach((element) => {
+        let split = new SplitText(element, { type: "words, chars" })
+        splits.push(split)
+
+        // Animer les caractères de cet élément avec un délai basé sur l'index local
+        split.chars.forEach((char, i) => {
+            gsap.fromTo(char, {
+                opacity: 0,
+                y: -100,
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                delay: 0.01 * i
+            })
         })
     })
 
-    return split
+    return splits
 }
 
 /**
