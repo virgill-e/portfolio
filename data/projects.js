@@ -18,8 +18,8 @@ export const projects = [
     {
         id: 3,
         name: "Shamir Secret Sharing",
-        image: "/images/projects/shamir-secret-sharing/shamir secret.webp",
-        tags: ["Python"],
+        image: "/images/projects/shamir-secret-sharing/shamir-secret-sharing.webp",
+        tags: ["vue3", "tailwindcss", "electron"],
         description: "Shamir Secret Sharing is a cryptographic algorithm used to divide a secret (like a password or private key) into several pieces called 'shares.' To reconstruct the original secret, you need to gather a minimum number of these shares (for example, 3 out of 5).",
         date: "2025"
     },
