@@ -44,80 +44,53 @@ export async function animateSplitTextTitles(selector = ".split") {
 export function add3DMouseEffect(element) {
     if (!element) return
 
-    // Configuration simple
-    const maxRotation = 5
-    const sensitivity = 0.3
-    const followSpeed = 0.2
-    const returnSpeed = 0.3
-    const idleDelay = 0.1
-
-    let tween = null
-    let returnTimer = null
-    let lastX = 0
-    let lastY = 0
-    let isFirstMove = true
+    // Configuration premium
+    const maxRotation = 15 // Plus d'angle pour plus d'impact
+    const speed = 0.5 // Durée de l'interpolation (plus grand = plus "flottant")
 
     // Initialisation
     gsap.set(element, {
-        rotateX: 0,
-        rotateY: 0,
-        force3D: true,
-        transformOrigin: "center center"
+        transformOrigin: "center center",
+        transformStyle: "preserve-3d",
+        force3D: true
     })
 
     const handleMouseMove = (e) => {
-        // Initialisation au premier mouvement
-        if (isFirstMove) {
-            lastX = e.clientX
-            lastY = e.clientY
-            isFirstMove = false
-            return
-        }
+        // Calcul de la position de la souris relative au centre de l'écran (-1 à 1)
+        const xPct = (e.clientX / window.innerWidth - 0.5) * 2
+        const yPct = (e.clientY / window.innerHeight - 0.5) * 2
 
-        // Calcul des rotations basées sur le mouvement
-        const deltaX = (e.clientX - lastX) * sensitivity
-        const deltaY = (e.clientY - lastY) * sensitivity
+        // Calcul des angles cibles
+        // Note: on inverse Y pour que ça suive la souris naturellement (regarder en haut = basculer en arrière)
+        const targetRotateY = xPct * maxRotation
+        const targetRotateX = -yPct * maxRotation
 
-        lastX = e.clientX
-        lastY = e.clientY
-
-        const rotateY = gsap.utils.clamp(-maxRotation, maxRotation)(deltaX)
-        const rotateX = gsap.utils.clamp(-maxRotation, maxRotation)(-deltaY)
-
-        // Annuler le retour en cours
-        if (returnTimer) {
-            clearTimeout(returnTimer)
-            returnTimer = null
-        }
-
-        // Animation du suivi - GSAP gère automatiquement la transition smooth
-        tween = gsap.to(element, {
-            rotateX,
-            rotateY,
-            duration: followSpeed,
-            ease: "power1.out",
-            overwrite: true,
-            force3D: true
+        gsap.to(element, {
+            rotateX: targetRotateX,
+            rotateY: targetRotateY,
+            duration: speed,
+            ease: "power2.out",
+            overwrite: "auto"
         })
+    }
 
-        // Programmer le retour smooth après inactivité
-        returnTimer = setTimeout(() => {
-            tween = gsap.to(element, {
-                rotateX: 0,
-                rotateY: 0,
-                duration: returnSpeed,
-                ease: "power2.out",
-                overwrite: true,
-                force3D: true
-            })
-        }, idleDelay * 1000)
+    // Remettre à plat quand la souris quitte la fenêtre (optionnel mais propre)
+    const handleMouseLeave = () => {
+        gsap.to(element, {
+            rotateX: 0,
+            rotateY: 0,
+            duration: 1,
+            ease: "power2.out",
+            overwrite: "auto"
+        })
     }
 
     window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mouseleave', handleMouseLeave)
 
     return () => {
         window.removeEventListener('mousemove', handleMouseMove)
-        if (returnTimer) clearTimeout(returnTimer)
-        if (tween) tween.kill()
+        window.removeEventListener('mouseleave', handleMouseLeave)
+        gsap.killTweensOf(element)
     }
 }
