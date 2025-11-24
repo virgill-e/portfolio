@@ -14,7 +14,6 @@ Bienvenue sur mon portfolio !
 - **Vue.js**
 - **Tailwind CSS**
 - **GSAP**
-- **TypeScript**
 
 ---
 
