@@ -3,7 +3,7 @@
 
 Bienvenue sur mon portfolio ! 
 
-**🌐 Voir le site en live :** [virgill-e.com](https://virgill-e.com)
+**🌐 Voir le site en live :** [virgill-e.com](https://www.virgill-e.com)
 
 
 ---
