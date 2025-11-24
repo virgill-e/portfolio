@@ -14,7 +14,7 @@
     font-family: Lostar;
     font-style: normal;
     font-weight: 200 700;
-    font-display: swap;
+    font-display: block;
     src: url("/fonts/Lostar.ttf") format("truetype");
 }
 
