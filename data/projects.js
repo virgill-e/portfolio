@@ -25,6 +25,14 @@ export const projects = [
     },
     {
         id: 4,
+        name: "Advent of code",
+        image: "/images/projects/advent-of-code/advent-of-code.webp",
+        tags: ["Java"],
+        description: "Participation in Advent of Code. In a field where AI is playing an increasingly important role, developing logical reasoning and honing algorithmic skills is crucial. It's important to actively work on your reasoning and concepts to optimize your code.",
+        date: "2024"
+    },
+    {
+        id: 5,
         name: "Star Colonies",
         image: "/images/projects/star-colonies/star-colonies.webp",
         tags: ["ASP.NET", "Razor Pages", "MySQL", "Tailwind CSS"],
@@ -32,7 +40,7 @@ export const projects = [
         date: "2025"
     },
     {
-        id: 5,
+        id: 6,
         name: "ArtConnect",
         image: "/images/projects/artconnect/artConnect.webp",
         tags: ["Vue.js", "ASP.NET", "Tailwind CSS"],
@@ -40,7 +48,7 @@ export const projects = [
         date: "2024"
     },
     {
-        id: 6,
+        id: 7,
         name: "Math Project",
         image: "/images/projects/math-project/math-project.webp",
         tags: ["Java", "Arbre Lexicographique", "JGraphT"],
