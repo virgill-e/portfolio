@@ -1,6 +1,14 @@
 export const projects = [
     {
-        id: 1,
+        id: 8,
+        name: "KNOW YOUR FOOD",
+        image: "/images/projects/knowyourfood/knowyourfood.webp",
+        tags: ["Nuxt.js", "Tailwind CSS", "API"],
+        description: "A web app that allows scanning barcodes to obtain detailed information on food products via the OpenFoodFacts API.",
+        date: "2025"
+    },
+    {
+        id: 7,
         name: "Qairn",
         image: "/images/projects/qairn/qairn.webp",
         tags: ["Flutter", "Firebase", "swift", "Kotlin"],
@@ -8,7 +16,7 @@ export const projects = [
         date: "2025"
     },
     {
-        id: 2,
+        id: 6,
         name: "Portfolio",
         image: "/images/projects/portfolio/portfolio.webp",
         tags: ["Nuxt.js", "Tailwind CSS", "Gsap"],
@@ -16,7 +24,7 @@ export const projects = [
         date: "2025"
     },
     {
-        id: 3,
+        id: 5,
         name: "Shamir Secret Sharing",
         image: "/images/projects/shamir-secret-sharing/shamir-secret-sharing.webp",
         tags: ["vue3", "tailwindcss", "electron"],
@@ -32,7 +40,7 @@ export const projects = [
         date: "2024"
     },
     {
-        id: 5,
+        id: 3,
         name: "Star Colonies",
         image: "/images/projects/star-colonies/star-colonies.webp",
         tags: ["ASP.NET", "Razor Pages", "MySQL", "Tailwind CSS"],
@@ -40,7 +48,7 @@ export const projects = [
         date: "2025"
     },
     {
-        id: 6,
+        id: 2,
         name: "ArtConnect",
         image: "/images/projects/artconnect/artConnect.webp",
         tags: ["Vue.js", "ASP.NET", "Tailwind CSS"],
@@ -48,7 +56,7 @@ export const projects = [
         date: "2024"
     },
     {
-        id: 7,
+        id: 1,
         name: "Math Project",
         image: "/images/projects/math-project/math-project.webp",
         tags: ["Java", "Arbre Lexicographique", "JGraphT"],
