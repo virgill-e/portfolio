@@ -3,7 +3,7 @@
         class="group relative overflow-hidden rounded-xl bordertransition-all duration-1000 hover:scale-103 hover:shadow-2xl project-card aspect-square">
         <!-- Image de fond avec overlay -->
         <div class="relative w-full h-full overflow-hidden">
-            <nuxt-img loading="lazy" :src="project.image" :alt="project.name" class="w-full h-full object-cover project-image" />
+            <nuxt-img :src="project.image" :alt="project.name" class="w-full h-full object-cover project-image" />
         </div>
 
         <!-- Contenu -->
