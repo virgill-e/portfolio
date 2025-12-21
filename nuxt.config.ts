@@ -13,6 +13,27 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      title: 'Virgile | Développeur Web',
+      htmlAttrs: {
+        lang: 'fr'
+      },
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'description', content: 'Portfolio de Virgile, développeur web full-stack. Découvrez mes projets et compétences.' },
+        { name: 'author', content: 'Virgile' },
+
+        // Open Graph (pour le partage sur LinkedIn, Facebook, etc.)
+        { property: 'og:type', content: 'website' },
+        { property: 'og:title', content: 'Virgile | Développeur Web' },
+        { property: 'og:description', content: 'Portfolio de Virgile, développeur web full-stack.' },
+        { property: 'og:url', content: 'https://virgill-e.com/' },
+
+        // Twitter Card
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Virgile | Développeur Web' },
+        { name: 'twitter:description', content: 'Portfolio de Virgile, développeur web full-stack.' },
+      ],
       link: [
         { rel: 'preload', href: '/fonts/Lostar.ttf', as: 'font', type: 'font/ttf', crossorigin: 'anonymous' }
       ]
