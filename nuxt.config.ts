@@ -1,4 +1,6 @@
 import tailwindcss from "@tailwindcss/vite";
+import { ViteMinifyPlugin } from 'vite-plugin-minify';
+
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -20,7 +22,19 @@ export default defineNuxtConfig({
   vite: {
     plugins: [
       tailwindcss(),
+      ViteMinifyPlugin({
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeEmptyAttributes: true,
+        minifyCSS: true,
+        minifyJS: true,
+      }),
     ],
+    build: {
+      cssMinify: 'lightningcss', // Plus rapide que esbuild pour le CSS
+      minify: 'esbuild', // Déjà par défaut, mais explicite
+    },
   },
 
   nitro: {
