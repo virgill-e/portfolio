@@ -35,7 +35,9 @@ export default defineNuxtConfig({
         { name: 'twitter:description', content: 'Portfolio de Virgile, développeur web full-stack.' },
       ],
       link: [
-        { rel: 'preload', href: '/fonts/Lostar.ttf', as: 'font', type: 'font/ttf', crossorigin: 'anonymous' }
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap' }
       ]
     }
   },
