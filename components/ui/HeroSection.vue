@@ -24,7 +24,7 @@
         <div ref="line2" class="flex-grow h-full bg-custom-forest rounded-full origin-left scale-x-0"></div>
       </div>
     </div>
-      <UiButon ref="button" text="View more" href="#" />
+      <UiButon ref="button" text="View more" href="#about-me" />
   </div>
 </template>
 

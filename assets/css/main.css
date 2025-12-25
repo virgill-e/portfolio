@@ -45,4 +45,5 @@
 html {
     background-color: var(--color-custom-cream);
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
