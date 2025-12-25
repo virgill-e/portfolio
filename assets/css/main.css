@@ -11,6 +11,29 @@
     --font-lato: "Lato", system-ui;
 }
 
+.underline-gradient {
+    position: relative;
+}
+
+.underline-gradient::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-custom-olive), var(--color-custom-forest), var(--color-custom-amber), var(--color-custom-bronze));
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.2s;
+    opacity: 0;
+}
+
+.underline-gradient:hover::after {
+    opacity: 1;
+}
+
 @font-face {
     font-family: Lostar;
     font-style: normal;

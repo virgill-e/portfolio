@@ -1,6 +1,6 @@
 <template>
-  <div ref="container" class="w-full h-screen bg-custom-cream flex items-center justify-center visible">
-    <div class="flex flex-col w-min">
+  <div ref="container" class="w-full h-screen bg-custom-cream flex flex-col items-center justify-center">
+    <div class="flex flex-col w-fit">
       <h1 class="text-7xl md:text-[16rem] font-bagel text-custom-forest text-center whitespace-nowrap overflow-hidden">
         <span
           v-for="(char, index) in h1Text.split('')"
@@ -24,6 +24,7 @@
         <div ref="line2" class="flex-grow h-full bg-custom-forest rounded-full origin-left scale-x-0"></div>
       </div>
     </div>
+      <UiButon ref="button" text="View more" href="#" />
   </div>
 </template>
 
@@ -37,6 +38,7 @@ const nameText = "Virgile Bigaré"
 const container = ref(null)
 const line1 = ref(null)
 const line2 = ref(null)
+const button = ref(null)
 
 onMounted(() => {
   const ctx = gsap.context(() => {
@@ -46,6 +48,7 @@ onMounted(() => {
     gsap.set('.h1-char', { y: 100, opacity: 0 })
     gsap.set('.name-char', { y: 20, opacity: 0 })
     gsap.set([line1.value, line2.value], { scaleX: 0 })
+    gsap.set(button.value.$el, { y: 20, opacity: 0 })
 
     // Animation Sequence
     tl.to('.h1-char', {
@@ -72,6 +75,12 @@ onMounted(() => {
       duration: 0.8,
       ease: 'power2.out'
     }, "-=0.1")
+    .to(button.value.$el, {
+      y: 0,
+      opacity: 1,
+      duration: 0.6,
+      ease: 'back.out(1.7)'
+    }, "-=0.2")
     
   }, container.value) // Scope to container
 })
