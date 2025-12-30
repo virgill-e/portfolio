@@ -5,4 +5,5 @@
     <UiEducationSection />
     <UiExperienceSection />
     <UiProjectsSection />
+    <UiFooterSection />
 </template>
