@@ -4,4 +4,5 @@
     <UiAboutMeSection />
     <UiEducationSection />
     <UiExperienceSection />
+    <UiProjectsSection />
 </template>
