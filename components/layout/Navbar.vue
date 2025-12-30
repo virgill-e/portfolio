@@ -1,7 +1,7 @@
 <template>
     <nav 
         ref="navRef" 
-        class="fixed top-0 left-0 right-0 z-[9999] flex justify-between items-center px-6 md:px-16 transition-all duration-300 font-bagel md:text-xl text-custom-forest backdrop-blur-xl"
+        class="w-screen fixed top-0 left-0 right-0 z-[9999] flex justify-between items-center px-6 md:px-16 transition-all duration-300 font-bagel md:text-xl text-custom-forest backdrop-blur-xl"
         :class="isScrolled ? 'bg-custom-cream shadow-md py-4 md:py-6' : 'bg-custom-cream/80 md:bg-custom-cream/60 py-6 md:py-8'"
         style="transform: translateZ(0); will-change: transform; -webkit-transform: translateZ(0);"
     >

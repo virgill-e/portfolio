@@ -1,5 +1,5 @@
 <template>
-    <section ref="sectionRef" class="w-full bg-custom-cream relative py-24">
+    <section ref="sectionRef" class="w-full bg-custom-cream relative overflow-x-hidden py-24">
         <!-- Background Decorations -->
         <img src="@/assets/images/Polygon 1.svg" alt="" class="absolute top-40 left-[-5%] w-64 md:w-96 rotate-12 pointer-events-none opacity-50 z-0">
         <img src="@/assets/images/Polygon 2.svg" alt="" class="absolute bottom-1/4 right-[-5%] w-64 md:w-96 -rotate-12 pointer-events-none opacity-50 z-0">

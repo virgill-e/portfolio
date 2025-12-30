@@ -1,14 +1,16 @@
 <template>
-<div ref="sectionRef" id="about-me" class="w-full h-screen bg-custom-cream pt-24 px-16 relative overflow-hidden">
-    <h2 ref="titleRef" class="absolute top-24 left-16 text-7xl md:text-9xl font-bagel text-custom-bronze flex flex-col items-start z-10">
-        <span>Hello,</span>
-        <span>I'm Virgile,</span>
-    </h2>
-    <p ref="textRef" class="absolute bottom-16 right-16 md:w-1/2 font-lato md:text-3xl z-10 text-justify leading-relaxed">
-        a full stack developer passionate about creating web and mobile applications. Curious and always seeking new challenges, I enjoy exploring personal projects that allow me to expand my skills and stay up-to-date in an ever-evolving field.
-    </p>
-    <img ref="decor1Ref" class="absolute top-0 right-0 pointer-events-none" src="@/assets/images/Polygon 1.svg" alt="">
-    <img ref="decor2Ref" class="absolute bottom-0 left-0 pointer-events-none" src="@/assets/images/Polygon 2.svg" alt="">
+<div ref="sectionRef" id="about-me" class="w-full min-h-screen bg-custom-cream px-6 md:px-16 py-20 md:py-24 relative overflow-hidden flex flex-col justify-center md:block">
+    <div class="flex flex-col gap-6 md:gap-0 md:contents">
+        <h2 ref="titleRef" class="relative md:absolute md:top-24 md:left-16 text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-bagel text-custom-bronze flex flex-col items-start z-10">
+            <span>Hello,</span>
+            <span>I'm Virgile,</span>
+        </h2>
+        <p ref="textRef" class="relative md:absolute md:bottom-16 md:right-16 w-full md:w-1/2 font-lato text-lg sm:text-xl md:text-2xl lg:text-3xl z-10 text-justify leading-relaxed">
+            a full stack developer passionate about creating web and mobile applications. Curious and always seeking new challenges, I enjoy exploring personal projects that allow me to expand my skills and stay up-to-date in an ever-evolving field.
+        </p>
+    </div>
+    <img ref="decor1Ref" class="absolute top-0 right-0 pointer-events-none w-40 sm:w-56 md:w-72 lg:w-auto opacity-60 md:opacity-100" src="@/assets/images/Polygon 1.svg" alt="">
+    <img ref="decor2Ref" class="absolute bottom-0 left-0 pointer-events-none w-40 sm:w-56 md:w-72 lg:w-auto opacity-60 md:opacity-100" src="@/assets/images/Polygon 2.svg" alt="">
 </div>
 </template>
 
