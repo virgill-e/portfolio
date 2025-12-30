@@ -7,7 +7,7 @@
     <p ref="textRef" class="absolute bottom-16 right-16 md:w-1/2 font-lato md:text-3xl z-10 text-justify leading-relaxed">
         a full stack developer passionate about creating web and mobile applications. Curious and always seeking new challenges, I enjoy exploring personal projects that allow me to expand my skills and stay up-to-date in an ever-evolving field.
     </p>
-    <img ref="decor1Ref" class="absolute top-0 right-0 pointer-events-none " src="@/assets/images/Polygon 1.svg" alt="">
+    <img ref="decor1Ref" class="absolute top-0 right-0 pointer-events-none" src="@/assets/images/Polygon 1.svg" alt="">
     <img ref="decor2Ref" class="absolute bottom-0 left-0 pointer-events-none" src="@/assets/images/Polygon 2.svg" alt="">
 </div>
 </template>

@@ -2,5 +2,5 @@
     <LayoutNavbar />
     <UiHeroSection />
     <UiAboutMeSection />
-    <UiResumeSection />
+    <UiExperienceSection />
 </template>
