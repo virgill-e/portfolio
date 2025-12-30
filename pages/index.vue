@@ -1,9 +1,9 @@
 <template>
     <LayoutNavbar />
-    <UiHeroSection />
-    <UiAboutMeSection />
-    <UiEducationSection />
-    <UiExperienceSection />
-    <UiProjectsSection />
-    <UiFooterSection />
+    <UiHeroSection id="hero" />
+    <UiAboutMeSection id="about-me" />
+    <UiEducationSection id="education" />
+    <UiExperienceSection id="experience" />
+    <UiProjectsSection id="projects" />
+    <LayoutFooter id="contact" />
 </template>
