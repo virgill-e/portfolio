@@ -30,9 +30,9 @@
         <!-- Desktop Moving Underline (Hidden on Mobile) -->
         <div 
             ref="underlineRef"
-            class="hidden md:block absolute bottom-[30px] h-[2px] pointer-events-none rounded-full transition-all duration-300"
+            class="hidden md:block absolute bottom-[26px] h-[2px] pointer-events-none rounded-full transition-all duration-300"
             style="background: linear-gradient(90deg, var(--color-custom-olive), var(--color-custom-forest), var(--color-custom-amber), var(--color-custom-bronze)); z-index: 1;"
-            :class="isScrolled ? 'bottom-[20px]' : 'bottom-[30px]'"
+            :class="isScrolled ? 'bottom-[16px]' : 'bottom-[26px]'"
         ></div>
 
         <!-- Mobile Menu Button -->

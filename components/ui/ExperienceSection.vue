@@ -84,13 +84,13 @@ const experienceItems = [
     {
         date: 'February 2025 - May 2025',
         title: 'Noshaq - Internship',
-        description: 'Mobile development in Flutter. Implemented core features and improved app performance.',
+        description: 'Mobile development in Flutter.',
         image: noshaqLogo
     },
     {
         date: 'July 2025 - Now',
         title: 'Noshaq - Employee',
-        description: 'Participation in the EDMS (Electronic Document Management System) Project. Full stack development and system architecture.',
+        description: 'Participation in the EDMS (Electronic Document Management System) Project.',
         image: noshaqLogo
     }
 ];

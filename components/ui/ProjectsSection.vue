@@ -1,5 +1,5 @@
 <template>
-    <section ref="sectionRef" class="w-full bg-custom-cream relative overflow-x-hidden py-24">
+    <section ref="sectionRef" class="w-full bg-custom-cream relative overflow-x-clip py-24">
         <!-- Background Decorations -->
         <img src="@/assets/images/Polygon 1.svg" alt="" class="absolute top-40 left-[-5%] w-64 md:w-96 rotate-12 pointer-events-none opacity-50 z-0">
         <img src="@/assets/images/Polygon 2.svg" alt="" class="absolute bottom-1/4 right-[-5%] w-64 md:w-96 -rotate-12 pointer-events-none opacity-50 z-0">
@@ -55,7 +55,9 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Noshaq from '@/assets/images/Noshaq.png';
+import Img1 from '@/assets/images/Img1.jpeg';
+import Img2 from '@/assets/images/Img2.jpeg';
+import Img3 from '@/assets/images/Img3.jpeg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,13 +70,13 @@ const projects = [
         tags: ['Vue.js', 'Tailwind', 'Chart.js', 'Node.js'],
         description: 'A comprehensive analytics dashboard for modern SaaS applications. Features real-time data visualization, user management, and customizable reporting widgets.',
         // Simulating multiple screenshots for the stack
-        images: [Noshaq, Noshaq, Noshaq]
+        images: [Img1, Img2, Img3]
     },
     {
         title: 'Neo-Chic Commerce',
         tags: ['Nuxt', 'Shopify', 'GSAP', 'Stripe'],
         description: 'A vibrant e-commerce experiences for a fashion brand. Optimized for conversion with smooth animations and a lightning-fast checkout process.',
-        images: [Noshaq, Noshaq, Noshaq]
+        images: [Img1, Img2, Img3]
     }
 ];
 
