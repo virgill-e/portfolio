@@ -71,7 +71,7 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import noshaqLogo from '@/assets/images/image.png';
+import noshaqLogo from '@/assets/images/Noshaq.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
