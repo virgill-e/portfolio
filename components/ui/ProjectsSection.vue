@@ -13,7 +13,7 @@
             <div 
                 v-for="(project, index) in projects" 
                 :key="index"
-                class="min-h-screen w-full flex items-center justify-center sticky top-0 bg-custom-cream project-panel border-t-2 border-custom-bronze/10 md:border-t-0"
+                class="min-h-screen pb-32 md:pb-8 w-full flex items-center justify-center sticky -top-32 md:top-16 bg-custom-cream project-panel border-t-2 border-custom-bronze/10 md:border-t-0"
             >
                 <div class="container mx-auto px-6 md:px-12 max-w-7xl">
                     <div :class="['flex flex-col gap-16 items-center', index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row']">
