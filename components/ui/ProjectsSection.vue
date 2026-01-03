@@ -57,7 +57,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Img1 from '@/assets/images/Img1.jpeg';
 import Img2 from '@/assets/images/Img2.jpeg';
-import Img3 from '@/assets/images/Img3.jpeg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -66,17 +65,10 @@ const titleRef = ref(null);
 
 const projects = [
     {
-        title: 'SaaS Dashboard',
-        tags: ['Vue.js', 'Tailwind', 'Chart.js', 'Node.js'],
-        description: 'A comprehensive analytics dashboard for modern SaaS applications. Features real-time data visualization, user management, and customizable reporting widgets.',
-        // Simulating multiple screenshots for the stack
-        images: [Img1, Img2, Img3]
-    },
-    {
-        title: 'Neo-Chic Commerce',
-        tags: ['Nuxt', 'Shopify', 'GSAP', 'Stripe'],
-        description: 'A vibrant e-commerce experiences for a fashion brand. Optimized for conversion with smooth animations and a lightning-fast checkout process.',
-        images: [Img1, Img2, Img3]
+        title: 'Coming soon',
+        tags: ['Coming soon'],
+        description: 'Coming soon',
+        images: [Img1, Img2]
     }
 ];
 
@@ -96,7 +88,6 @@ onMounted(() => {
             ease: 'power3.out'
         });
 
-        // Projects Panel Animation (Parallax/Stagger)
         const panels = gsap.utils.toArray('.project-panel');
         panels.forEach((panel, i) => {
             gsap.from(panel.querySelector('h3'), {
