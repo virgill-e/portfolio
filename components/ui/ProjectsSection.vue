@@ -55,8 +55,8 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Img1 from '@/assets/images/Img1.jpeg';
-import Img2 from '@/assets/images/Img2.jpeg';
+import Img1 from '@/assets/images/img1.jpeg';
+import Img2 from '@/assets/images/img2.jpeg';
 
 gsap.registerPlugin(ScrollTrigger);
 
