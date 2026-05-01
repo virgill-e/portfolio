@@ -1,87 +1,102 @@
 <template>
-  <div ref="container" class="w-full h-screen bg-custom-cream flex flex-col items-center justify-center">
-    <div class="flex flex-col w-fit">
-      <h1 class="text-7xl md:text-[16rem] font-bagel text-custom-forest text-center whitespace-nowrap overflow-hidden">
-        <span
-          v-for="(char, index) in h1Text.split('')"
-          :key="index"
-          class="h1-char inline-block opacity-0"
-        >
-          {{ char === ' ' ? '\u00A0' : char }}
-        </span>
+  <section id="hero" class="relative w-full h-screen flex items-center justify-center overflow-hidden bg-transparent">
+    <!-- Parallax Layers -->
+    
+    <!-- Background Layer (0.3x) -->
+    <div 
+      class="absolute inset-0 flex items-center justify-center opacity-[0.07] pointer-events-none overflow-hidden"
+      :style="{ transform: `translateY(${scrollY * 0.3}px)` }"
+    >
+      <h1 class="text-[20vw] md:text-[12vw] font-serif font-bold text-transparent tracking-tighter whitespace-nowrap" style="-webkit-text-stroke: 2px #fff;">
+        DEVELOPER
       </h1>
-      <div class="flex items-center justify-between w-full h-4 md:h-8">
-        <div ref="line1" class="flex-grow h-full bg-custom-forest rounded-full origin-left scale-x-0"></div>
-        <span class="text-xl md:text-3xl font-bagel text-custom-forest whitespace-nowrap px-2">
-          <span
-             v-for="(char, index) in nameText.split('')"
-             :key="index"
-             class="name-char inline-block opacity-0"
-          >
-            {{ char === ' ' ? '\u00A0' : char }}
-          </span>
-        </span>
-        <div ref="line2" class="flex-grow h-full bg-custom-forest rounded-full origin-left scale-x-0"></div>
+    </div>
+
+    <!-- Midground Layer (0.6x) -->
+    <div 
+      class="absolute inset-0 flex items-center justify-center pointer-events-none"
+      :style="{ transform: `translateY(${scrollY * 0.6}px)` }"
+    >
+      <div class="w-full max-w-7xl px-6 flex justify-between items-end h-full pb-20 md:pb-32">
+        <div class="text-zinc-500 font-sans tracking-widest uppercase text-xs md:text-sm">
+          Portfolio ©2025
+        </div>
+        <div class="text-zinc-500 font-sans tracking-widest uppercase text-xs md:text-sm text-right">
+          Creative<br/>Development
+        </div>
       </div>
     </div>
-      <UiButon ref="button" text="View more" href="#about-me" />
-  </div>
+
+    <!-- Foreground Layer (1x) -->
+    <div 
+      class="relative z-10 w-full max-w-7xl px-6 flex flex-col items-center text-center"
+      :style="{ transform: `translateY(${scrollY * 1}px)` }"
+    >
+      <h1 class="text-7xl md:text-[8rem] lg:text-[10rem] font-serif font-bold text-zinc-100 leading-[0.9] tracking-tight mb-8 flex flex-col gap-2 md:gap-4">
+        <span class="block overflow-hidden py-6 -my-6">
+          <span ref="title1" class="block translate-y-full">Virgile</span>
+        </span>
+        <span class="block overflow-hidden py-6 -my-6">
+          <span ref="title2" class="block translate-y-full italic text-zinc-300">Bigaré</span>
+        </span>
+      </h1>
+      
+      <div class="overflow-hidden">
+        <p ref="subtitle" class="text-lg md:text-2xl text-zinc-400 font-sans font-light translate-y-full max-w-lg mx-auto">
+          Crafting digital experiences with depth, motion, and intention.
+        </p>
+      </div>
+
+      <div class="mt-16 overflow-hidden">
+        <div ref="buttonContainer" class="translate-y-full">
+          <a href="#about-me" class="group relative inline-flex items-center justify-center px-10 py-5 font-sans tracking-widest uppercase text-sm text-[#0a0a0a] bg-zinc-100 rounded-full overflow-hidden transition-transform hover:scale-105 duration-300">
+            <span class="relative z-10 font-bold">Explore Work</span>
+            <div class="absolute inset-0 bg-zinc-300 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
+import { useParallax } from '@/composables/useParallax'
 
-const h1Text = "Portfolio"
-const nameText = "Virgile Bigaré"
+const { scrollY } = useParallax()
 
-const container = ref(null)
-const line1 = ref(null)
-const line2 = ref(null)
-const button = ref(null)
+const title1 = ref(null)
+const title2 = ref(null)
+const subtitle = ref(null)
+const buttonContainer = ref(null)
+
+let ctx;
 
 onMounted(() => {
-  const ctx = gsap.context(() => {
-    const tl = gsap.timeline()
-    
-    // Initial states
-    gsap.set('.h1-char', { y: 100, opacity: 0 })
-    gsap.set('.name-char', { y: 20, opacity: 0 })
-    gsap.set([line1.value, line2.value], { scaleX: 0 })
-    gsap.set(button.value.$el, { y: 20, opacity: 0 })
+  ctx = gsap.context(() => {
+    const tl = gsap.timeline({ delay: 0.2 })
 
-    // Animation Sequence
-    tl.to('.h1-char', {
+    tl.to([title1.value, title2.value], {
       y: 0,
-      opacity: 1,
-      duration: 1,
-      stagger: 0.1,
-      ease: 'back.out(1.7)'
+      duration: 1.2,
+      stagger: 0.15,
+      ease: 'power4.out'
     })
-    .to(line1.value, {
-      scaleX: 1,
-      duration: 0.8,
-      ease: 'power2.out'
-    }, "-=0.2")
-    .to('.name-char', {
+    .to(subtitle.value, {
       y: 0,
-      opacity: 1,
-      duration: 0.6,
-      stagger: 0.05,
-      ease: 'back.out(1.7)'
-    }, "-=0.2")
-    .to(line2.value, {
-      scaleX: 1,
-      duration: 0.8,
-      ease: 'power2.out'
-    }, "-=0.1")
-    .to(button.value.$el, {
+      duration: 1,
+      ease: 'power3.out'
+    }, "-=0.8")
+    .to(buttonContainer.value, {
       y: 0,
-      opacity: 1,
-      duration: 0.6,
-      ease: 'back.out(1.7)'
-    }, "-=0.2")
-    
-  }, container.value) // Scope to container
+      duration: 1,
+      ease: 'power3.out'
+    }, "-=0.8")
+  })
+})
+
+onUnmounted(() => {
+  ctx && ctx.revert()
 })
 </script>
