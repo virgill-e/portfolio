@@ -15,10 +15,12 @@
       <!-- Projects Grid -->
       <div class="flex flex-col gap-24">
         <template v-if="projects.length > 0">
-          <div 
+          <NuxtLink 
             v-for="(project, index) in projects" 
             :key="index"
-            class="project-card relative w-full h-[60vh] md:h-[80vh] rounded-[2rem] overflow-hidden group cursor-pointer shadow-2xl"
+            :to="project.link"
+            target="_blank"
+            class="project-card relative w-full h-[60vh] md:h-[80vh] rounded-[2rem] overflow-hidden group cursor-pointer shadow-2xl block"
           >
             <!-- Background Image with Scale on Hover -->
             <div class="absolute inset-0 w-full h-full overflow-hidden bg-zinc-900">
@@ -65,7 +67,7 @@
 
               </div>
             </div>
-          </div>
+          </NuxtLink>
         </template>
         
         <!-- Empty State Placeholder -->
@@ -88,15 +90,29 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Img1 from '@/assets/images/img1.jpeg'
-import Img2 from '@/assets/images/img2.jpeg'
+import mockupvidiledger from '../../assets/images/vidiledger/mockup-vidiledger.webp'
+
+const projects = ref([
+  {
+    title: 'Vidi Ledger',
+    description: 'Vidi Ledger est une application web full-stack de gestion financière personnelle permettant de suivre ses dépenses, revenus et investissements depuis une interface web.',
+    images: [mockupvidiledger],
+    tags: ['Nuxt 4', 'Tailwind', 'Drizzle ORM'],
+    link: 'https://vidi-ledger.virgill-e.com/'
+  },
+  {
+    title: 'MORE SOON',
+    description: '',
+    images: '',
+    tags: [''],
+    link: '#'
+  }
+])
 
 gsap.registerPlugin(ScrollTrigger)
 
 const sectionRef = ref(null)
 const titleRef = ref(null)
-
-const projects = []
 
 let ctx;
 
