@@ -5,19 +5,19 @@
       
       <!-- Asymmetric left column for the huge statement -->
       <div class="col-span-1 md:col-span-5 flex flex-col items-start">
-        <h2 class="text-6xl sm:text-7xl md:text-[8rem] font-serif font-bold text-zinc-100 leading-[0.85] tracking-tighter flex flex-col gap-2 md:gap-4">
+        <h2 class="text-6xl sm:text-7xl md:text-[8rem] font-serif font-bold text-text-primary leading-[0.85] tracking-tighter flex flex-col gap-2 md:gap-4">
           <span class="block overflow-hidden py-6 -my-6">
             <span ref="title1" class="block translate-y-full">Hello,</span>
           </span>
           <span class="block overflow-hidden py-6 -my-6">
-            <span ref="title2" class="block translate-y-full italic text-zinc-400">I'm Virgile.</span>
+            <span ref="title2" class="block translate-y-full italic text-text-secondary">I'm Virgile.</span>
           </span>
         </h2>
       </div>
 
       <!-- Asymmetric right column for the body text -->
       <div class="col-span-1 md:col-span-6 md:col-start-7 flex flex-col pt-12 md:pt-32">
-        <div class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-sans font-light text-zinc-300 leading-snug">
+        <div class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-sans font-light text-text-secondary leading-snug">
           <!-- Word by word reveal -->
           <span
             v-for="(word, index) in words"
@@ -31,12 +31,12 @@
         </div>
         
         <div class="mt-16 overflow-hidden">
-          <div ref="lineRef" class="w-full h-[1px] bg-zinc-800 scale-x-0 origin-left"></div>
+          <div ref="lineRef" class="w-full h-[1px] bg-border-subtle scale-x-0 origin-left"></div>
         </div>
         
         <div class="mt-8 flex justify-between items-center opacity-0 translate-y-4" ref="metaRef">
-          <span class="font-sans text-xs md:text-sm tracking-widest uppercase text-zinc-500">Based in Belgium</span>
-          <span class="font-sans text-xs md:text-sm tracking-widest uppercase text-zinc-500">Open to work</span>
+          <span class="font-sans text-xs md:text-sm tracking-widest uppercase text-text-muted">Based in Belgium</span>
+          <span class="font-sans text-xs md:text-sm tracking-widest uppercase text-text-muted">Open to work</span>
         </div>
       </div>
 

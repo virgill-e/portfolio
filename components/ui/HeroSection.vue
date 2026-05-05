@@ -7,7 +7,7 @@
       class="absolute inset-0 flex items-center justify-center opacity-[0.07] pointer-events-none overflow-hidden"
       :style="{ transform: `translateY(${scrollY * 0.3}px)` }"
     >
-      <h1 class="text-[20vw] md:text-[12vw] font-serif font-bold text-transparent tracking-tighter whitespace-nowrap" style="-webkit-text-stroke: 2px #fff;">
+      <h1 class="text-[20vw] md:text-[12vw] font-serif font-bold text-transparent tracking-tighter whitespace-nowrap" style="-webkit-text-stroke: 2px var(--text-primary);">
         DEVELOPER
       </h1>
     </div>
@@ -18,10 +18,10 @@
       :style="{ transform: `translateY(${scrollY * 0.6}px)` }"
     >
       <div class="w-full max-w-7xl px-6 flex justify-between items-end h-full pb-20 md:pb-32">
-        <div class="text-zinc-500 font-sans tracking-widest uppercase text-xs md:text-sm">
+        <div class="text-text-muted font-sans tracking-widest uppercase text-xs md:text-sm">
           Portfolio ©2025
         </div>
-        <div class="text-zinc-500 font-sans tracking-widest uppercase text-xs md:text-sm text-right">
+        <div class="text-text-muted font-sans tracking-widest uppercase text-xs md:text-sm text-right">
           Creative<br/>Development
         </div>
       </div>
@@ -32,26 +32,26 @@
       class="relative z-10 w-full max-w-7xl px-6 flex flex-col items-center text-center"
       :style="{ transform: `translateY(${scrollY * 1}px)` }"
     >
-      <h1 class="text-7xl md:text-[8rem] lg:text-[10rem] font-serif font-bold text-zinc-100 leading-[0.9] tracking-tight mb-8 flex flex-col gap-2 md:gap-4">
+      <h1 class="text-7xl md:text-[8rem] lg:text-[10rem] font-serif font-bold text-text-primary leading-[0.9] tracking-tight mb-8 flex flex-col gap-2 md:gap-4">
         <span class="block overflow-hidden py-6 -my-6">
           <span ref="title1" class="block translate-y-full">Virgile</span>
         </span>
         <span class="block overflow-hidden py-6 -my-6">
-          <span ref="title2" class="block translate-y-full italic text-zinc-300">Bigaré</span>
+          <span ref="title2" class="block translate-y-full italic text-text-secondary">Bigaré</span>
         </span>
       </h1>
       
       <div class="overflow-hidden">
-        <p ref="subtitle" class="text-lg md:text-2xl text-zinc-400 font-sans font-light translate-y-full max-w-lg mx-auto">
+        <p ref="subtitle" class="text-lg md:text-2xl text-text-muted font-sans font-light translate-y-full max-w-lg mx-auto">
           Crafting digital experiences with depth, motion, and intention.
         </p>
       </div>
 
       <div class="mt-16 overflow-hidden">
         <div ref="buttonContainer" class="translate-y-full">
-          <a href="#about-me" class="group relative inline-flex items-center justify-center px-10 py-5 font-sans tracking-widest uppercase text-sm text-[#0a0a0a] bg-zinc-100 rounded-full overflow-hidden transition-transform hover:scale-105 duration-300">
+          <a href="#about-me" class="group relative inline-flex items-center justify-center px-10 py-5 font-sans tracking-widest uppercase text-sm text-bg-primary bg-text-primary rounded-full overflow-hidden transition-transform hover:scale-105 duration-300">
             <span class="relative z-10 font-bold">Explore Work</span>
-            <div class="absolute inset-0 bg-zinc-300 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
+            <div class="absolute inset-0 bg-text-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
           </a>
         </div>
       </div>

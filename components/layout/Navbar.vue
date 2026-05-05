@@ -1,15 +1,15 @@
 <template>
   <nav 
     ref="navRef" 
-    class="w-screen fixed top-0 left-0 right-0 z-[9999] flex justify-between items-center px-6 md:px-16 transition-all duration-500 font-sans md:text-sm tracking-widest uppercase text-zinc-100"
-    :class="isScrolled ? 'bg-[#0a0a0a]/70 backdrop-blur-2xl border-b border-white/5 py-5' : 'bg-transparent py-8 md:py-10'"
+    class="w-screen fixed top-0 left-0 right-0 z-[9999] flex justify-between items-center px-6 md:px-16 transition-all duration-500 font-sans md:text-sm tracking-widest uppercase text-text-primary"
+    :class="isScrolled ? 'bg-bg-primary/70 backdrop-blur-2xl border-b border-border-subtle py-5' : 'bg-transparent py-8 md:py-10'"
     style="transform: translateZ(0); will-change: transform; -webkit-transform: translateZ(0);"
   >
     <!-- Hero / Title Link -->
     <a 
       @click.prevent="scrollTo('hero')" 
       ref="heroLinkRef"
-      class="cursor-pointer relative z-50 hover:text-white transition-colors text-base md:text-lg font-serif italic tracking-normal normal-case font-bold"
+      class="cursor-pointer relative z-50 hover:opacity-80 transition-opacity text-base md:text-lg font-serif italic tracking-normal normal-case font-bold"
     >
       Virgile Bigaré
     </a>
@@ -20,8 +20,8 @@
         <a 
           @click.prevent="scrollTo(item.id)" 
           :ref="el => { if(el) itemRefs[item.id] = el }"
-          class="cursor-pointer text-zinc-400 hover:text-zinc-100 transition-colors"
-          :class="{ '!text-white font-bold': activeId === item.id }"
+          class="cursor-pointer text-text-secondary hover:text-text-primary transition-colors"
+          :class="{ '!text-text-primary font-bold': activeId === item.id }"
         >
           {{ item.label }}
         </a>
@@ -31,14 +31,14 @@
     <!-- Desktop Moving Underline (Hidden on Mobile) -->
     <div 
       ref="underlineRef"
-      class="hidden md:block absolute bottom-[20px] h-[1px] pointer-events-none transition-all duration-300 bg-white"
+      class="hidden md:block absolute bottom-[20px] h-[1px] pointer-events-none transition-all duration-300 bg-text-primary"
       :class="isScrolled ? 'bottom-[12px]' : 'bottom-[20px]'"
     ></div>
 
     <!-- Mobile Menu Button -->
     <button 
       @click="toggleMenu" 
-      class="md:hidden relative z-50 p-2 text-zinc-100 hover:text-white transition-colors"
+      class="md:hidden relative z-50 p-2 text-text-primary hover:opacity-80 transition-opacity"
       aria-label="Toggle Menu"
     >
       <svg v-if="!isMenuOpen" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -54,19 +54,19 @@
 
     <!-- Mobile Menu Overlay -->
     <div 
-      class="fixed inset-0 h-[100dvh] bg-[#0a0a0a]/95 backdrop-blur-2xl z-40 flex flex-col items-center justify-center gap-12 md:hidden transition-all duration-500 ease-in-out"
+      class="fixed inset-0 h-[100dvh] bg-bg-primary/95 backdrop-blur-2xl z-40 flex flex-col items-center justify-center gap-12 md:hidden transition-all duration-500 ease-in-out"
       :class="isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'"
     >
       <a 
         v-for="item in navItems" 
         :key="item.id"
         @click.prevent="scrollTo(item.id)"
-        class="text-3xl font-serif text-zinc-400 cursor-pointer hover:text-zinc-100 transition-colors relative group tracking-tight normal-case"
-        :class="{ 'text-zinc-100 italic': activeId === item.id }"
+        class="text-3xl font-serif text-text-secondary cursor-pointer hover:text-text-primary transition-colors relative group tracking-tight normal-case"
+        :class="{ 'text-text-primary italic': activeId === item.id }"
       >
         {{ item.label }}
         <span 
-          class="absolute -bottom-3 left-1/2 -translate-x-1/2 h-[1px] bg-zinc-100 transition-all duration-300"
+          class="absolute -bottom-3 left-1/2 -translate-x-1/2 h-[1px] bg-text-primary transition-all duration-300"
           :class="activeId === item.id ? 'w-full' : 'w-0 group-hover:w-full'"
         ></span>
       </a>

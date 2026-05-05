@@ -3,11 +3,11 @@
     <div class="w-full max-w-7xl mx-auto px-6 md:px-16 flex flex-col relative z-10">
       
       <!-- Title -->
-      <div class="mb-24 flex items-end justify-between border-b border-white/10 pb-8">
-        <h2 ref="titleRef" class="text-5xl md:text-8xl font-serif font-bold text-zinc-100 tracking-tighter translate-y-full opacity-0">
+      <div class="mb-24 flex items-end justify-between border-b border-border-subtle pb-8">
+        <h2 ref="titleRef" class="text-5xl md:text-8xl font-serif font-bold text-text-primary tracking-tighter translate-y-full opacity-0">
           Experience
         </h2>
-        <span class="hidden md:block text-zinc-500 font-sans tracking-widest uppercase text-sm">
+        <span class="hidden md:block text-text-muted font-sans tracking-widest uppercase text-sm">
           02 // Professional
         </span>
       </div>
@@ -21,7 +21,7 @@
         >
           <!-- Date / Meta (Col 1-3) -->
           <div class="col-span-1 md:col-span-3 flex flex-col pt-2">
-            <span class="font-sans text-xs md:text-sm tracking-widest uppercase text-zinc-500 border-l border-zinc-800 pl-4 py-1 mb-4">
+            <span class="font-sans text-xs md:text-sm tracking-widest uppercase text-text-muted border-l border-border-subtle pl-4 py-1 mb-4">
               {{ item.date }}
             </span>
           </div>
@@ -36,10 +36,10 @@
 
             <!-- Details -->
             <div class="flex flex-col">
-              <h3 class="font-serif text-3xl sm:text-4xl md:text-5xl text-zinc-100 mb-6 tracking-tight group-hover:text-white transition-colors duration-300">
+              <h3 class="font-serif text-3xl sm:text-4xl md:text-5xl text-text-secondary mb-6 tracking-tight group-hover:text-text-primary transition-colors duration-300">
                 {{ item.title }}
               </h3>
-              <p class="font-sans text-xl md:text-2xl text-zinc-400 font-light leading-relaxed max-w-2xl">
+              <p class="font-sans text-xl md:text-2xl text-text-muted font-light leading-relaxed max-w-2xl">
                 {{ item.description }}
               </p>
             </div>

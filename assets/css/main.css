@@ -1,14 +1,74 @@
 @import "tailwindcss";
 
 @theme {
-    --color-custom-olive: #606c37;
-    --color-custom-forest: #283618;
-    --color-custom-cream: #FEFAE0;
-    --color-custom-amber: #DDA15E;
-    --color-custom-bronze: #BC6C25;
+    /* Semantic Colors using CSS variables */
+    --color-bg-primary: var(--bg-primary);
+    --color-bg-secondary: var(--bg-secondary);
+    --color-bg-tertiary: var(--bg-tertiary);
+    
+    --color-text-primary: var(--text-primary);
+    --color-text-secondary: var(--text-secondary);
+    --color-text-muted: var(--text-muted);
+    
+    --color-accent-primary: var(--accent-primary);
+    --color-accent-secondary: var(--accent-secondary);
+    --color-border-subtle: var(--border-subtle);
 
+    /* Keep fonts */
     --font-bagel: "Bagel Fat One", system-ui;
     --font-lato: "Lato", system-ui;
+}
+
+:root {
+    /* LIGHT THEME (Using your existing @theme palette) */
+    --bg-primary: #FEFAE0; /* custom-cream */
+    --bg-secondary: #f0ebd1; /* slightly darker cream */
+    --bg-tertiary: #e6e2c3; /* for cards/elements */
+    
+    --text-primary: #283618; /* custom-forest */
+    --text-secondary: #606c37; /* custom-olive */
+    --text-muted: rgba(40, 54, 24, 0.6);
+    
+    --accent-primary: #DDA15E; /* custom-amber */
+    --accent-secondary: #BC6C25; /* custom-bronze */
+    --border-subtle: rgba(40, 54, 24, 0.1);
+}
+
+:root.dark {
+    /* DARK THEME (Current sleek dark colors) */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #09090b; /* zinc-950 */
+    --bg-tertiary: #18181b; /* zinc-900 */
+    
+    --text-primary: #f4f4f5; /* zinc-100 */
+    --text-secondary: #a1a1aa; /* zinc-400 */
+    --text-muted: rgba(244, 244, 245, 0.4);
+    
+    --accent-primary: #ffffff;
+    --accent-secondary: #d4d4d8;
+    --border-subtle: rgba(255, 255, 255, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not(.light) {
+        /* Default to dark if user prefers dark and hasn't manually picked light */
+        --bg-primary: #0a0a0a;
+        --bg-secondary: #09090b;
+        --bg-tertiary: #18181b;
+        --text-primary: #f4f4f5;
+        --text-secondary: #a1a1aa;
+        --text-muted: rgba(244, 244, 245, 0.4);
+        --accent-primary: #ffffff;
+        --accent-secondary: #d4d4d8;
+        --border-subtle: rgba(255, 255, 255, 0.05);
+    }
+}
+
+html {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 .underline-gradient {
@@ -22,7 +82,7 @@
     bottom: -2px;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, var(--color-custom-olive), var(--color-custom-forest), var(--color-custom-amber), var(--color-custom-bronze));
+    background: linear-gradient(90deg, var(--text-secondary), var(--text-primary), var(--accent-primary), var(--accent-secondary));
     border-radius: 2px;
     pointer-events: none;
     z-index: 1;
@@ -40,11 +100,4 @@
     font-weight: 200 700;
     font-display: block;
     src: url("/fonts/Lostar.ttf") format("truetype");
-}
-
-html {
-    background-color: #0a0a0a;
-    color: #f4f4f5;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
 }
