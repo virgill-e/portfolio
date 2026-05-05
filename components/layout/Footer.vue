@@ -49,7 +49,7 @@
     </div>
     
     <div class="absolute bottom-8 text-text-muted font-sans tracking-widest uppercase text-xs">
-      © 2025 Virgile Bigaré
+      © 2026 Virgile Bigaré
     </div>
   </footer>
 </template>
