@@ -19,7 +19,7 @@
     >
       <div class="w-full max-w-7xl px-6 flex justify-between items-end h-full pb-20 md:pb-32">
         <div class="text-text-muted font-sans tracking-widest uppercase text-xs md:text-sm">
-          Portfolio ©2025
+          Portfolio ©2026
         </div>
         <div class="text-text-muted font-sans tracking-widest uppercase text-xs md:text-sm text-right">
           Creative<br/>Development
