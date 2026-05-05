@@ -12,62 +12,71 @@
         </span>
       </div>
 
-      <!-- Projects Grid -->
-      <div class="flex flex-col gap-24">
+      <div class="flex flex-col gap-16 md:gap-32">
         <template v-if="projects.length > 0">
-          <NuxtLink 
+          <div 
             v-for="(project, index) in projects" 
             :key="index"
-            :to="project.link"
-            target="_blank"
-            class="project-card relative w-full h-[60vh] md:h-[80vh] rounded-[2rem] overflow-hidden group cursor-pointer shadow-2xl block"
+            class="project-card relative w-full flex flex-col md:block md:h-[85vh] rounded-[2.5rem] overflow-hidden group shadow-2xl bg-zinc-950 border border-white/5"
           >
-            <!-- Background Image with Scale on Hover -->
-            <div class="absolute inset-0 w-full h-full overflow-hidden bg-zinc-900">
-               <!-- Using the first image -->
+            <!-- Image Container -->
+            <div class="relative w-full aspect-video md:aspect-auto md:absolute md:inset-0 md:h-full overflow-hidden bg-zinc-900">
               <img 
                 :src="project.images[0]" 
                 :alt="project.title" 
-                class="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]"
+                class="w-full h-full object-cover transform transition-transform duration-1000 ease-out md:group-hover:scale-105"
               />
-              <!-- Dark Overlay -->
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-700"></div>
+              <!-- Mobile Gradient Overlay (Transitions into the dark card body) -->
+              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent md:hidden"></div>
+              <!-- Desktop Dark Overlay -->
+              <div class="absolute inset-0 bg-black/40 md:group-hover:bg-black/20 transition-colors duration-700 hidden md:block"></div>
             </div>
 
+            <!-- Desktop Link Overlay (MD and up) -->
+            <NuxtLink 
+              :to="project.link" 
+              target="_blank"
+              class="hidden md:block absolute inset-0 z-10 cursor-pointer"
+            ></NuxtLink>
+
             <!-- Content Overlay -->
-            <div class="absolute inset-0 p-8 md:p-16 flex flex-col justify-end">
-              <!-- Top Tags -->
-              <div class="mb-auto flex gap-3">
+            <div class="relative md:absolute md:inset-0 p-8 md:p-16 flex flex-col md:justify-end z-20 pointer-events-none -mt-16 md:mt-0">
+              <!-- Tags (Mobile: relative, Desktop: absolute at top) -->
+              <div class="flex gap-2 mb-6 md:mb-auto md:gap-3 pointer-events-auto">
                 <span v-for="tag in project.tags" :key="tag" 
-                      class="font-sans text-xs tracking-widest uppercase text-zinc-100 backdrop-blur-md bg-white/10 px-4 py-2 rounded-full border border-white/20">
+                      class="font-sans text-[10px] md:text-xs tracking-widest uppercase text-zinc-100 backdrop-blur-xl bg-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/20 shadow-lg">
                   {{ tag }}
                 </span>
               </div>
               
-              <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-700 ease-out">
+              <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-8 transform translate-y-0 md:translate-y-8 md:group-hover:translate-y-0 transition-all duration-700 ease-out">
                 
-                <div class="flex flex-col">
-                  <h3 class="font-serif text-5xl md:text-7xl font-bold text-zinc-100 mb-4 drop-shadow-lg">
+                <div class="flex flex-col pointer-events-auto">
+                  <h3 class="font-serif text-4xl md:text-7xl font-bold text-zinc-100 mb-3 md:mb-4 drop-shadow-2xl tracking-tighter">
                     {{ project.title }}
                   </h3>
-                  <p class="font-sans text-lg md:text-xl text-zinc-300 max-w-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
+                  <p class="font-sans text-sm md:text-xl text-zinc-400 md:text-zinc-300 max-w-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 delay-100 leading-relaxed md:leading-normal">
                     {{ project.description }}
                   </p>
                 </div>
 
-                <!-- CTA that reveals on hover -->
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
-                  <div class="flex items-center justify-center w-16 h-16 rounded-full bg-white text-[#0a0a0a] hover:scale-110 transition-transform duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- CTA Button -->
+                <div class="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-700 delay-200 pointer-events-auto relative z-30 self-end md:self-auto">
+                  <NuxtLink 
+                    :to="project.link" 
+                    target="_blank"
+                    class="flex items-center justify-center w-14 h-14 md:w-20 md:h-20 rounded-full bg-white text-zinc-950 hover:scale-110 transition-transform duration-500 shadow-2xl"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:w-8 md:h-8">
                       <line x1="5" y1="12" x2="19" y2="12"></line>
                       <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
-                  </div>
+                  </NuxtLink>
                 </div>
 
               </div>
             </div>
-          </NuxtLink>
+          </div>
         </template>
         
         <!-- Empty State Placeholder -->
