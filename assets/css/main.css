@@ -43,7 +43,8 @@
 }
 
 html {
-    background-color: var(--color-custom-cream);
+    background-color: #0a0a0a;
+    color: #f4f4f5;
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
