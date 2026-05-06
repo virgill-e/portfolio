@@ -100,6 +100,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import mockupvidiledger from '../../assets/images/vidiledger/mockup-vidiledger.webp'
+import mockupqairnmobile from '../../assets/images/qairn mobile/mockup.webp'
 
 const projects = ref([
   {
@@ -110,10 +111,17 @@ const projects = ref([
     link: 'https://vidi-ledger.virgill-e.com/'
   },
   {
+    title: 'Qairn',
+    description: 'Qairn is a modern Flutter-based mobile application designed to create, manage, and share digital business cards through QR codes in VCF (vCard) format. With an intuitive interface and powerful customization options, Qairn streamlines professional networking in the digital age.',
+    images: [mockupqairnmobile],
+    tags: ['Flutter', 'Swift', 'Kotlin'],
+    link: 'https://qairn.app/'
+  },
+  {
     title: 'MORE SOON',
-    description: '',
-    images: '',
-    tags: [''],
+    description: 'MORE SOON',
+    images: [],
+    tags: [],
     link: '#'
   }
 ])
