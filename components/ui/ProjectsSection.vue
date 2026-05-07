@@ -105,7 +105,7 @@ import mockupqairnmobile from '../../assets/images/qairn mobile/mockup.webp'
 const projects = ref([
   {
     title: 'Vidi Ledger',
-    description: 'Vidi Ledger est une application web full-stack de gestion financière personnelle permettant de suivre ses dépenses, revenus et investissements depuis une interface web.',
+    description: 'Vidi Ledger is a full-stack web application for personal financial management, allowing users to track their expenses, and investments through a web interface.',
     images: [mockupvidiledger],
     tags: ['Nuxt 4', 'Tailwind', 'Drizzle ORM'],
     link: 'https://vidi-ledger.virgill-e.com/'
