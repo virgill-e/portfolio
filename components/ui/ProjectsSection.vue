@@ -122,7 +122,7 @@ const projects = ref([
     title: 'PIkémon',
     description: 'Pokémon Red on a Game Boy emulator (serverboy) using the decimal digits of π as a deterministic input stream.',
     images: [PIkemon],
-    tags: ['tailwind','Serverboy','Gameboy ROM'],
+    tags: ['tailwind','Serverboy','ROM'],
     link: '#'
   },
   {
