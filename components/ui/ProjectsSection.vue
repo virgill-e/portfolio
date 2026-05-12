@@ -101,6 +101,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import mockupvidiledger from '../../assets/images/vidiledger/mockup-vidiledger.webp'
 import mockupqairnmobile from '../../assets/images/qairn mobile/mockup.webp'
+import PIkemon from '../../assets/images/PIkemon/mockup PIkemon mac+iphone.webp'
 
 const projects = ref([
   {
@@ -116,6 +117,13 @@ const projects = ref([
     images: [mockupqairnmobile],
     tags: ['Flutter', 'Swift', 'Kotlin'],
     link: 'https://qairn.app/'
+  },
+  {
+    title: 'PIkémon',
+    description: 'Pokémon Red on a Game Boy emulator (serverboy) using the decimal digits of π as a deterministic input stream.',
+    images: [PIkemon],
+    tags: ['tailwind','Serverboy','Gameboy ROM'],
+    link: '#'
   },
   {
     title: 'MORE SOON',
