@@ -12,68 +12,94 @@
         </span>
       </div>
 
-      <div class="flex flex-col gap-16 md:gap-32">
+      <!-- Cinematic Horizontal Layout -->
+      <div class="flex flex-col gap-32 md:gap-48">
         <template v-if="projects.length > 0">
           <div 
             v-for="(project, index) in projects" 
             :key="index"
-            class="project-card relative w-full flex flex-col md:block md:h-[85vh] rounded-[2.5rem] overflow-hidden group shadow-2xl bg-bg-secondary border border-border-subtle"
+            class="project-card flex flex-col md:flex-row items-center gap-12 md:gap-24"
+            :class="index % 2 === 1 ? 'md:flex-row-reverse' : ''"
           >
-            <!-- Image Container -->
-            <div class="relative w-full aspect-video md:aspect-auto md:absolute md:inset-0 md:h-full overflow-hidden bg-bg-tertiary">
-              <img 
-                :src="project.images[0]" 
-                :alt="project.title" 
-                class="w-full h-full object-cover transform transition-transform duration-1000 ease-out md:group-hover:scale-105"
-              />
-              <!-- Mobile Gradient Overlay (Stronger for readability) -->
-              <div class="absolute inset-0 bg-gradient-to-t from-bg-secondary via-bg-secondary/60 to-transparent md:hidden"></div>
-              <!-- Desktop Gradient Overlay (Ensures readability at the bottom) -->
-              <div class="absolute inset-0 bg-gradient-to-t from-bg-primary/90 via-bg-primary/30 to-transparent transition-opacity duration-700 hidden md:block"></div>
+            <!-- Image Section (Landscape optimized) -->
+            <div class="w-full md:w-[60%] group">
+              <div class="relative block w-full aspect-video rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-bg-tertiary shadow-2xl transition-all duration-700">
+                <template v-if="project.images && project.images.length > 0">
+                  <img 
+                    :src="project.images[0]" 
+                    :alt="project.title" 
+                    class="project-parallax-img w-full h-full object-cover transform transition-transform duration-1000 ease-out"
+                  />
+                </template>
+                <div v-else class="w-full h-full bg-bg-tertiary/40 backdrop-blur-xl flex flex-col items-center justify-center gap-8 relative overflow-hidden group-hover:bg-bg-tertiary/60 transition-all duration-700 border border-white/5">
+                  <!-- Decorative Background Glow -->
+                  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
+                  
+                  <!-- Large Spinner -->
+                  <div class="relative w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+                    <svg class="w-full h-full animate-spin-slow" viewBox="0 0 100 100">
+                      <circle class="text-white/5" stroke-width="3" stroke="currentColor" fill="transparent" r="44" cx="50" cy="50" />
+                      <circle class="text-primary" stroke-width="3" stroke-dasharray="120 160" stroke-linecap="round" stroke="currentColor" fill="transparent" r="44" cx="50" cy="50" />
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                    </div>
+                  </div>
+                  
+                  <!-- Title -->
+                  <div class="flex flex-col items-center gap-2">
+                    <h4 class="font-serif text-4xl md:text-6xl text-text-primary italic tracking-tighter opacity-90">Coming Soon</h4>
+                    <span class="text-[9px] md:text-[10px] uppercase tracking-[0.6em] text-text-muted font-bold">New Vision Under Construction</span>
+                  </div>
+                </div>
+                
+                <!-- Project Number -->
+                <div class="absolute top-6 left-6 md:top-10 md:left-10">
+                  <span class="text-[10px] md:text-xs font-sans tracking-[0.3em] uppercase text-text-primary/60 backdrop-blur-md bg-bg-primary/20 px-4 py-2 rounded-full border border-white/5">
+                    0{{ index + 1 }}
+                  </span>
+                </div>
+              </div>
             </div>
 
-            <!-- Desktop Link Overlay (MD and up) -->
-            <NuxtLink 
-              :to="project.link" 
-              target="_blank"
-              class="hidden md:block absolute inset-0 z-10 cursor-pointer"
-            ></NuxtLink>
-
-            <!-- Content Overlay -->
-            <div class="relative md:absolute md:inset-0 p-8 md:p-16 flex flex-col md:justify-end z-20 pointer-events-none -mt-16 md:mt-0">
-              <!-- Tags (Mobile: relative, Desktop: absolute at top) -->
-              <div class="flex gap-2 mb-6 md:mb-auto md:gap-3 pointer-events-auto">
+            <!-- Info Section -->
+            <div class="w-full md:w-[40%] flex flex-col px-4 md:px-0" :class="index % 2 === 1 ? 'md:items-end md:text-right' : ''">
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-2 mb-8" :class="index % 2 === 1 ? 'md:justify-end' : ''">
                 <span v-for="tag in project.tags" :key="tag" 
-                      class="font-sans text-[10px] md:text-xs tracking-widest uppercase text-text-primary backdrop-blur-xl bg-bg-primary/40 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-border-subtle shadow-lg">
+                      class="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-sans font-bold text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">
                   {{ tag }}
                 </span>
               </div>
-              
-              <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-8 transform translate-y-0 md:translate-y-8 md:group-hover:translate-y-0 transition-all duration-700 ease-out">
-                
-                <div class="flex flex-col pointer-events-auto">
-                  <h3 class="font-serif text-4xl md:text-7xl font-bold text-text-primary mb-3 md:mb-4 drop-shadow-xl tracking-tighter">
-                    {{ project.title }}
-                  </h3>
-                  <p class="font-sans text-sm md:text-xl text-text-secondary max-w-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 delay-100 leading-relaxed md:leading-normal drop-shadow-sm">
-                    {{ project.description }}
-                  </p>
-                </div>
 
-                <!-- CTA Button -->
-                <div class="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-700 delay-200 pointer-events-auto relative z-30 self-end md:self-auto">
-                  <NuxtLink 
-                    :to="project.link" 
-                    target="_blank"
-                    class="flex items-center justify-center w-14 h-14 md:w-20 md:h-20 rounded-full bg-text-primary text-bg-primary hover:scale-110 transition-transform duration-500 shadow-2xl"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:w-8 md:h-8">
+              <!-- Title & Description -->
+              <div class="flex flex-col gap-6">
+                <h3 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-text-primary tracking-tighter leading-[0.9]">
+                  {{ project.title }}
+                </h3>
+                <p class="font-sans text-sm md:text-lg lg:text-xl text-text-secondary leading-relaxed max-w-md opacity-80" :class="index % 2 === 1 ? 'md:ml-auto' : ''">
+                  {{ project.description }}
+                </p>
+              </div>
+
+              <!-- CTA -->
+              <div v-if="project.link && project.link !== '#'" class="mt-12 overflow-hidden">
+                <NuxtLink 
+                  :to="project.link" 
+                  target="_blank"
+                  class="inline-flex items-center gap-4 text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold text-text-primary group/cta"
+                >
+                  <span class="relative overflow-hidden">
+                    <span class="inline-block transition-transform duration-500 group-hover/cta:-translate-y-full">Explore Project</span>
+                    <span class="absolute top-0 left-0 inline-block translate-y-full transition-transform duration-500 group-hover/cta:translate-y-0 text-primary">Explore Project</span>
+                  </span>
+                  <div class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-border-subtle flex items-center justify-center group-hover/cta:bg-text-primary group-hover/cta:text-bg-primary transition-all duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover/cta:translate-x-1 transition-transform">
                       <line x1="5" y1="12" x2="19" y2="12"></line>
                       <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
-                  </NuxtLink>
-                </div>
-
+                  </div>
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -127,7 +153,7 @@ const projects = ref([
   },
   {
     title: 'MORE SOON',
-    description: 'MORE SOON',
+    description: 'Constantly exploring new horizons in creative engineering and full-stack architecture. Stay tuned for upcoming experimental releases.',
     images: [],
     tags: [],
     link: '#'
@@ -159,17 +185,34 @@ onMounted(() => {
     // Cards Animation
     const cards = gsap.utils.toArray('.project-card')
     cards.forEach((card, i) => {
+      // Reveal Animation
       gsap.from(card, {
         scrollTrigger: {
           trigger: card,
-          start: 'top 85%',
+          start: 'top 90%',
           toggleActions: 'play none none reverse'
         },
-        y: 100,
+        y: 60,
         opacity: 0,
-        duration: 1.2,
-        ease: 'power3.out'
+        duration: 1,
+        ease: 'power3.out',
+        delay: i % 2 * 0.2 // Stagger delay between columns
       })
+
+      // Parallax Image Effect
+      const img = card.querySelector('.project-parallax-img')
+      if (img) {
+        gsap.to(img, {
+          y: '10%',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        })
+      }
     })
 
   }, sectionRef.value)
@@ -179,3 +222,18 @@ onUnmounted(() => {
   ctx && ctx.revert()
 })
 </script>
+
+<style scoped>
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.project-parallax-img {
+  will-change: transform;
+}
+</style>
