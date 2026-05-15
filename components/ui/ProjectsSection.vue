@@ -48,7 +48,7 @@
                   
                   <!-- Title -->
                   <div class="flex flex-col items-center gap-2">
-                    <h4 class="font-serif text-4xl md:text-6xl text-text-primary italic tracking-tighter opacity-90">Brewing...</h4>
+                    <h4 class="font-serif text-4xl md:text-6xl text-text-primary italic tracking-tighter opacity-90">MORE SOON...</h4>
                     <span class="text-[9px] md:text-[10px] uppercase tracking-[0.6em] text-text-muted font-bold">More projects coming soon</span>
                   </div>
                 </div>
@@ -152,7 +152,7 @@ const projects = ref([
     link: '#'
   },
   {
-    title: 'NEXT UP',
+    title: 'MORE SOON',
     description: "I'm currently working on new projects. More projects are coming very soon.",
     images: [],
     tags: [],
