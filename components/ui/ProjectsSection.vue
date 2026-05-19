@@ -128,6 +128,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import mockupvidiledger from '../../assets/images/vidiledger/mockup-vidiledger.webp'
 import mockupqairnmobile from '../../assets/images/qairn mobile/mockup.webp'
 import PIkemon from '../../assets/images/PIkemon/mockup PIkemon mac+iphone.webp'
+import clove from '../../assets/images/clove/mockup Clove.webp'
 
 const projects = ref([
   {
@@ -136,6 +137,13 @@ const projects = ref([
     images: [mockupvidiledger],
     tags: ['Nuxt 4', 'Tailwind', 'Drizzle ORM'],
     link: 'https://vidi-ledger.virgill-e.com/'
+  },
+    {
+    title: 'Clove',
+    description: "Clove is an intuitive culinary organizer and meal-planning web application. It empowers users to seamlessly archive their favorite recipes, structure weekly menus, and automatically generate smart, consolidated grocery lists. Cook & Love.",
+    images: [clove],
+    tags: ['Nuxt 4', 'Tailwind', 'Drizzle ORM'],
+    link: '#'
   },
   {
     title: 'Qairn',
