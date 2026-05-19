@@ -143,7 +143,7 @@ const projects = ref([
     description: "Clove is an intuitive culinary organizer and meal-planning web application. It empowers users to seamlessly archive their favorite recipes, structure weekly menus, and automatically generate smart, consolidated grocery lists. Cook & Love.",
     images: [clove],
     tags: ['Nuxt 4', 'Tailwind', 'Drizzle ORM'],
-    link: '#'
+    link: 'https://github.com/virgill-e/Clove'
   },
   {
     title: 'Qairn',
