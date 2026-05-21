@@ -129,6 +129,7 @@ import mockupvidiledger from '../../assets/images/vidiledger/mockup-vidiledger.w
 import mockupqairnmobile from '../../assets/images/qairn mobile/mockup.webp'
 import PIkemon from '../../assets/images/PIkemon/mockup PIkemon mac+iphone.webp'
 import clove from '../../assets/images/clove/mockup Clove.webp'
+import toomanycookies from '../../assets/images/toomanycookies/mockup too many cookies.webp'
 
 const projects = ref([
   {
@@ -151,6 +152,13 @@ const projects = ref([
     images: [mockupqairnmobile],
     tags: ['Flutter', 'Swift', 'Kotlin'],
     link: 'https://qairn.app/'
+  },
+  {
+    title: 'Too many cookies 🍪',
+    description: 'Too Many Cookies is a lightweight Chrome browser extension designed to help users quickly clean up cookies and cache for the currently active website.',
+    images: [toomanycookies],
+    tags: ['html','css','javascript'],
+    link: 'https://github.com/virgill-e/too_many_cookies'
   },
   {
     title: 'PIkémon',
