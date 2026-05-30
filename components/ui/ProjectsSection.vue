@@ -28,6 +28,11 @@
                   <img 
                     :src="project.images[0]" 
                     :alt="project.title" 
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    width="800"
+                    height="450"
                     class="project-parallax-img w-full h-full object-cover transform transition-transform duration-1000 ease-out"
                   />
                 </template>

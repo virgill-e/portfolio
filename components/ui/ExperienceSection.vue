@@ -31,7 +31,7 @@
             
             <!-- Logo -->
             <div class="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 flex items-start justify-start group-hover:scale-105 transition-transform duration-500 ease-out grayscale group-hover:grayscale-0">
-              <img :src="item.image" :alt="item.title" class="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
+              <img :src="item.image" :alt="item.title" loading="lazy" decoding="async" width="96" height="96" class="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
             </div>
 
             <!-- Details -->
