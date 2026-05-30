@@ -54,9 +54,11 @@ const isDark = ref(true)
 const updateTheme = () => {
   if (isDark.value) {
     document.documentElement.classList.add('dark')
+    document.documentElement.classList.remove('light')
     document.documentElement.setAttribute('data-theme', 'dark')
   } else {
     document.documentElement.classList.remove('dark')
+    document.documentElement.classList.add('light')
     document.documentElement.setAttribute('data-theme', 'light')
   }
 }
