@@ -72,7 +72,7 @@ const experienceItems = [
   {
     date: 'July 2025 — Now',
     title: 'Noshaq - Employee',
-    description: 'Participation in the EDMS (Electronic Document Management System) Project.',
+    description: 'Support IT',
     image: noshaqLogo
   }
 ]
