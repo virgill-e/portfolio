@@ -72,7 +72,7 @@ const experienceItems = [
   {
     date: 'July 2025 — Now',
     title: 'Noshaq - Employee',
-    description: 'Support IT',
+    description: 'IT Support',
     image: noshaqLogo
   }
 ]
