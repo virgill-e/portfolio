@@ -43,71 +43,8 @@
       </header>
 
       <!-- Game Section -->
-      <section class="w-full max-w-6xl mx-auto px-4 md:px-16 mt-12 md:mt-16">
-        <UiRunnerGame @score-submitted="refreshLeaderboard" />
-      </section>
-
-      <!-- Leaderboard Section -->
-      <section class="w-full max-w-4xl mx-auto px-6 md:px-16 mt-16 md:mt-24 pb-24">
-        <div class="flex items-end justify-between border-b border-border-subtle pb-6 mb-10">
-          <h2 class="text-3xl md:text-5xl font-serif font-bold text-text-primary tracking-tighter">
-            Leaderboard
-          </h2>
-          <span class="text-text-muted font-sans tracking-widest uppercase text-xs">
-            Top 10
-          </span>
-        </div>
-
-        <!-- Loading state -->
-        <div v-if="leaderboardLoading" class="flex items-center justify-center py-16">
-          <div class="leaderboard-spinner"></div>
-        </div>
-
-        <!-- Empty state -->
-        <div v-else-if="leaderboard.length === 0" class="flex flex-col items-center justify-center py-16 gap-4">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-text-muted opacity-50">
-            <path d="M12 20V10"/>
-            <path d="M18 20V4"/>
-            <path d="M6 20v-4"/>
-          </svg>
-          <p class="text-text-muted font-sans tracking-widest uppercase text-sm">
-            No scores yet — be the first!
-          </p>
-        </div>
-
-        <!-- Scores list -->
-        <div v-else class="leaderboard-list">
-          <div
-            v-for="(entry, index) in leaderboard"
-            :key="index"
-            class="leaderboard-entry"
-            :class="{ 'top-three': index < 3 }"
-          >
-            <!-- Rank -->
-            <div class="entry-rank" :class="rankClass(index)">
-              <span v-if="index === 0" class="rank-icon">🥇</span>
-              <span v-else-if="index === 1" class="rank-icon">🥈</span>
-              <span v-else-if="index === 2" class="rank-icon">🥉</span>
-              <span v-else class="rank-number">#{{ index + 1 }}</span>
-            </div>
-
-            <!-- Pseudo -->
-            <div class="entry-pseudo">
-              {{ entry.pseudo }}
-            </div>
-
-            <!-- Score -->
-            <div class="entry-score">
-              {{ formatScore(entry.score) }}
-            </div>
-
-            <!-- Decorative bar (width based on score relative to #1) -->
-            <div
-              class="entry-bar"
-              :style="{ width: `${(entry.score / (leaderboard[0]?.score || 1)) * 100}%` }"
-            ></div>
-          </div>
-        </div>
+      <section class="w-full max-w-6xl mx-auto px-4 md:px-16 mt-12 md:mt-16 mb-24 md:mb-32">
+        <UiGameOfLife />
       </section>
     </div>
 
@@ -117,51 +54,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-
-interface ScoreEntry {
-  pseudo: string
-  score: number
-  date: string
-}
-
-const leaderboard = ref<ScoreEntry[]>([])
-const leaderboardLoading = ref(true)
-
 const handleGoHome = () => {
   clearError({ redirect: '/' })
 }
-
-function formatScore(score: number): string {
-  return String(Math.floor(score)).padStart(5, '0')
-}
-
-function rankClass(index: number): string {
-  if (index === 0) return 'rank-gold'
-  if (index === 1) return 'rank-silver'
-  if (index === 2) return 'rank-bronze'
-  return ''
-}
-
-async function fetchLeaderboard() {
-  try {
-    const data = await $fetch<{ scores: ScoreEntry[] }>('/api/scores')
-    leaderboard.value = data.scores || []
-  } catch (err) {
-    console.error('Failed to fetch leaderboard:', err)
-    leaderboard.value = []
-  } finally {
-    leaderboardLoading.value = false
-  }
-}
-
-function refreshLeaderboard() {
-  fetchLeaderboard()
-}
-
-onMounted(() => {
-  fetchLeaderboard()
-})
 </script>
 
 <style>
@@ -185,113 +80,4 @@ onMounted(() => {
 .animate-aurora-1 { animation: aurora-1 25s ease-in-out infinite; }
 .animate-aurora-2 { animation: aurora-2 30s ease-in-out infinite; }
 .animate-aurora-3 { animation: aurora-3 28s ease-in-out infinite; }
-</style>
-
-<style scoped>
-/* ── Elegant 404 Typography ─────────── */
-
-/* ── Leaderboard ────────────────────── */
-.leaderboard-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.leaderboard-entry {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 14px 20px;
-  border-radius: 12px;
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-secondary);
-  overflow: hidden;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.leaderboard-entry:hover {
-  transform: translateX(4px);
-  border-color: var(--accent-primary);
-}
-
-.leaderboard-entry.top-three {
-  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
-}
-
-.entry-rank {
-  width: 40px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.rank-icon {
-  font-size: 22px;
-  line-height: 1;
-}
-
-.rank-number {
-  font-family: "Lato", monospace;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
-}
-
-.entry-pseudo {
-  flex: 1;
-  font-family: "Lato", sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  position: relative;
-  z-index: 2;
-}
-
-.entry-score {
-  font-family: "Lato", monospace;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--accent-primary);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.05em;
-  position: relative;
-  z-index: 2;
-}
-
-.entry-bar {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-  border-radius: 0 3px 0 0;
-  opacity: 0.4;
-  transition: width 0.8s ease;
-}
-
-.rank-gold .rank-icon { filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4)); }
-.rank-silver .rank-icon { filter: drop-shadow(0 0 6px rgba(192, 192, 192, 0.4)); }
-.rank-bronze .rank-icon { filter: drop-shadow(0 0 6px rgba(205, 127, 50, 0.4)); }
-
-/* ── Spinner ────────────────────────── */
-.leaderboard-spinner {
-  width: 32px;
-  height: 32px;
-  border: 3px solid var(--border-subtle);
-  border-top-color: var(--text-primary);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
 </style>
