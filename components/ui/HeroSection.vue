@@ -68,8 +68,6 @@ if (process.client) {
   gsap.registerPlugin(ScrollTrigger)
 }
 
-// const { scrollY } = useParallax() // No longer needed
-
 const title1 = ref(null)
 const title2 = ref(null)
 const subtitle = ref(null)
