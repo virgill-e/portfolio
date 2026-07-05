@@ -23,9 +23,22 @@
           >
             <!-- Image Section (Landscape optimized) -->
             <div class="w-full md:w-[60%] group">
-              <div class="relative block w-full aspect-video rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-bg-tertiary shadow-2xl transition-all duration-700">
+              <div
+                class="relative block w-full rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-bg-tertiary shadow-2xl transition-all duration-700"
+                :class="isVideo(project.images && project.images[0]) ? 'aspect-[9/16] max-w-[280px] sm:max-w-xs md:max-w-sm mx-auto' : 'aspect-video'"
+              >
                 <template v-if="project.images && project.images.length > 0">
+                  <video
+                    v-if="isVideo(project.images[0])"
+                    :src="project.images[0]"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="project-parallax-img w-full h-full object-cover transform transition-transform duration-1000 ease-out"
+                  />
                   <img 
+                    v-else
                     :src="project.images[0]" 
                     :alt="project.title" 
                     loading="lazy"
@@ -135,8 +148,22 @@ import mockupqairnmobile from '../../assets/images/qairn mobile/mockup.webp'
 import PIkemon from '../../assets/images/PIkemon/mockup PIkemon mac+iphone.webp'
 import clove from '../../assets/images/clove/mockup Clove.webp'
 import toomanycookies from '../../assets/images/toomanycookies/mockup too many cookies.webp'
+import tvtime from '../../assets/images/tv-time/mockup.mp4'
+
+const isVideo = (src) => {
+  if (typeof src !== 'string') return false
+  const cleanSrc = src.split('?')[0].split('#')[0]
+  return cleanSrc.endsWith('.mp4') || cleanSrc.endsWith('.webm') || cleanSrc.endsWith('.ogg')
+}
 
 const projects = ref([
+{
+    title: 'TV-time',
+    description: 'TV-time is a web application for tracking and managing your favorite TV shows. It allows users to keep track of the shows they are watching, the episodes they have seen, and the shows they want to watch in the future.',
+    images: [tvtime],
+    tags: ['Nuxt 4', 'Tailwind', 'Drizzle ORM'],
+    link: 'https://tv.virgill-e.com/'
+  },
   {
     title: 'Vidi Ledger',
     description: 'Vidi Ledger is a full-stack web application for personal financial management, allowing users to track their expenses, and investments through a web interface.',
@@ -220,8 +247,8 @@ onMounted(() => {
         delay: i % 2 * 0.2 // Stagger delay between columns
       })
 
-      // Parallax Image Effect
-      const img = card.querySelector('.project-parallax-img')
+      // Parallax Image Effect (skip videos to avoid revealing container edges)
+      const img = card.querySelector('img.project-parallax-img')
       if (img) {
         gsap.to(img, {
           y: '10%',
