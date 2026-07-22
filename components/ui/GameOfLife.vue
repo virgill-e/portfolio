@@ -283,7 +283,7 @@ onUnmounted(() => {
   background: var(--bg-primary);
   border: 1px solid var(--border-subtle);
   border-radius: 999px;
-  font-family: "Lato", monospace;
+  font-family: var(--font-lato);
   pointer-events: none;
   z-index: 10;
 }
@@ -315,7 +315,7 @@ onUnmounted(() => {
   color: var(--bg-primary);
   border: none;
   border-radius: 999px;
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;

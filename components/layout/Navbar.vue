@@ -6,8 +6,8 @@
     style="transform: translateZ(0); will-change: transform; -webkit-transform: translateZ(0);"
   >
     <!-- Hero / Title Link -->
-    <a 
-      @click.prevent="scrollTo('hero')" 
+    <a
+      @click.prevent="scrollTo('hero')"
       ref="heroLinkRef"
       class="cursor-pointer relative z-50 hover:opacity-80 transition-opacity text-base md:text-lg font-serif italic tracking-normal normal-case font-bold"
     >
@@ -17,8 +17,8 @@
     <!-- Desktop Navigation Links -->
     <ul class="hidden md:flex gap-10 items-center relative z-10">
       <li v-for="item in navItems" :key="item.id">
-        <a 
-          @click.prevent="scrollTo(item.id)" 
+        <a
+          @click.prevent="scrollTo(item.id)"
           :ref="el => { if(el) itemRefs[item.id] = el }"
           class="cursor-pointer text-text-secondary hover:text-text-primary transition-colors"
           :class="{ '!text-text-primary font-bold': activeId === item.id }"

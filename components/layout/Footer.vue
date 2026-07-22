@@ -1,16 +1,78 @@
 <script setup lang="ts">
-// Footer Section
+import { onMounted, onUnmounted, ref } from 'vue'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useKineticType, buildWordTokens } from '~/composables/useKineticType'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const { kineticVars } = useKineticType()
+
+const sectionRef = ref<HTMLElement | null>(null)
+
+const tokens1 = buildWordTokens("Let's build")
+const tokens2 = buildWordTokens('something great')
+
+const letterEls: HTMLElement[][] = [[], []]
+function setLetterRef(el: Element | null, line: number, index: number) {
+  if (el) letterEls[line][index] = el as HTMLElement
+}
+
+let ctx: gsap.Context
+
+onMounted(() => {
+  ctx = gsap.context(() => {
+    const allLetters = [...letterEls[0], ...letterEls[1]]
+    gsap.from(allLetters, {
+      ...kineticVars({ stagger: 0.02 }),
+      scrollTrigger: {
+        trigger: sectionRef.value,
+        start: 'top 75%',
+        toggleActions: 'play none none reverse'
+      }
+    })
+  }, sectionRef.value ?? undefined)
+})
+
+onUnmounted(() => {
+  ctx && ctx.revert()
+})
 </script>
 
 <template>
-  <footer class="relative bg-transparent py-32 md:py-48 w-full flex flex-col items-center justify-center overflow-hidden z-20 border-t border-border-subtle mt-32">
-    
+  <footer ref="sectionRef" class="relative bg-transparent py-32 md:py-48 w-full flex flex-col items-center justify-center overflow-hidden z-20 border-t border-border-subtle mt-32">
+
     <!-- Big statement -->
-    <h2 class="font-serif text-text-primary text-5xl md:text-7xl lg:text-[8rem] text-center mb-16 tracking-tighter leading-none px-4 selection:bg-text-primary selection:text-bg-primary group">
-      <span class="block italic text-text-secondary">Let's build</span>
-      <span class="block group-hover:text-text-primary transition-colors duration-500">something great</span>
+    <h2 class="font-serif text-text-primary text-5xl md:text-7xl lg:text-[8rem] text-center mb-16 tracking-tighter leading-none px-4 selection:bg-text-primary selection:text-bg-primary group" style="perspective: 800px;">
+      <span class="sr-only">Let's build something great</span>
+      <span class="block italic text-text-secondary" aria-hidden="true">
+        <template v-for="(token, wi) in tokens1" :key="`f1-w${wi}`">
+          <span class="inline-block whitespace-nowrap">
+            <span
+              v-for="c in token.chars"
+              :key="`f1-${c.index}`"
+              :ref="el => setLetterRef(el as Element | null, 0, c.index)"
+              class="footer-letter inline-block"
+              >{{ c.char }}</span>
+          </span>
+          <span v-if="wi < tokens1.length - 1">&nbsp;</span>
+        </template>
+      </span>
+      <span class="block group-hover:text-text-primary transition-colors duration-500" aria-hidden="true">
+        <template v-for="(token, wi) in tokens2" :key="`f2-w${wi}`">
+          <span class="inline-block whitespace-nowrap">
+            <span
+              v-for="c in token.chars"
+              :key="`f2-${c.index}`"
+              :ref="el => setLetterRef(el as Element | null, 1, c.index)"
+              class="footer-letter inline-block"
+              >{{ c.char }}</span>
+          </span>
+          <span v-if="wi < tokens2.length - 1">&nbsp;</span>
+        </template>
+      </span>
     </h2>
-    
+
     <div class="flex items-center gap-8 md:gap-12">
       <!-- GitHub -->
       <a href="https://github.com/virgill-e" target="_blank" class="text-text-muted hover:text-text-primary hover:-translate-y-1 transition-all duration-300" aria-label="GitHub">
@@ -47,7 +109,7 @@
         </svg>
       </a>
     </div>
-    
+
     <div class="absolute bottom-8 text-text-muted font-sans tracking-widest uppercase text-xs">
       © 2026 Virgile Bigaré
     </div>

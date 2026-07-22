@@ -1,6 +1,6 @@
 <template>
-  <button 
-    @click="toggleTheme" 
+  <button
+    @click="toggleTheme"
     class="fixed bottom-8 right-8 z-[10000] w-14 h-14 rounded-full bg-text-primary text-bg-primary shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-transform duration-300 group border border-border-subtle"
     aria-label="Toggle theme"
   >

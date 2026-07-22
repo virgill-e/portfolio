@@ -1,7 +1,7 @@
 <template>
   <section ref="sectionRef" id="projects" class="w-full min-h-screen bg-transparent py-32 relative overflow-hidden">
     <div class="w-full max-w-7xl mx-auto px-6 md:px-16 flex flex-col relative z-10">
-      
+
       <!-- Title -->
       <div class="mb-24 flex items-end justify-between border-b border-border-subtle pb-8">
         <h2 ref="titleRef" class="text-5xl md:text-8xl font-serif font-bold text-text-primary tracking-tighter translate-y-full opacity-0">
@@ -15,19 +15,32 @@
       <!-- Cinematic Horizontal Layout -->
       <div class="flex flex-col gap-32 md:gap-48">
         <template v-if="projects.length > 0">
-          <div 
-            v-for="(project, index) in projects" 
+          <div
+            v-for="(project, index) in projects"
             :key="index"
-            class="project-card flex flex-col md:flex-row items-center gap-12 md:gap-24"
+            class="project-card flex flex-col md:flex-row items-center gap-12 md:gap-24 relative"
             :class="index % 2 === 1 ? 'md:flex-row-reverse' : ''"
           >
-            <!-- Image Section (Landscape optimized) -->
-            <div class="w-full md:w-[60%] group">
-              <div
-                class="relative block w-full rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-bg-tertiary shadow-2xl transition-all duration-700"
-                :class="isVideo(project.images && project.images[0]) ? 'aspect-[9/16] max-w-[280px] sm:max-w-xs md:max-w-sm mx-auto' : 'aspect-video'"
+            <!-- Ghost index numeral: pure background typography, never covers content -->
+            <span
+              class="project-ghost-index hidden lg:block"
+              :class="index % 2 === 1 ? 'lg:right-auto lg:left-0' : 'lg:right-0'"
+              aria-hidden="true"
+            >{{ pad(index + 1) }}</span>
+
+            <!-- Image Section (Landscape optimized, portrait media never cropped) -->
+            <div class="w-full md:w-[60%] group relative z-10">
+              <a
+                v-if="project.link && project.link !== '#'"
+                :href="project.link"
+                target="_blank"
+                rel="noopener"
+                class="block"
               >
-                <template v-if="project.images && project.images.length > 0">
+                <div
+                  class="relative block w-full rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-bg-tertiary shadow-2xl transition-all duration-700"
+                  :class="isVideo(project.images && project.images[0]) ? 'aspect-[9/16] max-w-[280px] sm:max-w-xs md:max-w-sm mx-auto' : 'aspect-video'"
+                >
                   <video
                     v-if="isVideo(project.images[0])"
                     :src="project.images[0]"
@@ -37,10 +50,44 @@
                     playsinline
                     class="project-parallax-img w-full h-full object-cover transform transition-transform duration-1000 ease-out"
                   />
-                  <img 
+                  <img
                     v-else
-                    :src="project.images[0]" 
-                    :alt="project.title" 
+                    :src="project.images[0]"
+                    :alt="project.title"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    width="800"
+                    height="450"
+                    class="project-parallax-img w-full h-full object-cover transform transition-transform duration-1000 ease-out"
+                  />
+                  <div class="absolute top-6 left-6 md:top-10 md:left-10">
+                    <span class="text-[10px] md:text-xs font-sans tracking-[0.3em] uppercase text-text-primary/60 backdrop-blur-md bg-bg-primary/20 px-4 py-2 rounded-full border border-white/5">
+                      0{{ index + 1 }}
+                    </span>
+                  </div>
+                </div>
+              </a>
+
+              <div
+                v-else
+                class="relative block w-full rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-bg-tertiary shadow-2xl transition-all duration-700"
+                :class="hasImage(project) && isVideo(project.images[0]) ? 'aspect-[9/16] max-w-[280px] sm:max-w-xs md:max-w-sm mx-auto' : 'aspect-video'"
+              >
+                <template v-if="hasImage(project)">
+                  <video
+                    v-if="isVideo(project.images[0])"
+                    :src="project.images[0]"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="project-parallax-img w-full h-full object-cover transform transition-transform duration-1000 ease-out"
+                  />
+                  <img
+                    v-else
+                    :src="project.images[0]"
+                    :alt="project.title"
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low"
@@ -52,7 +99,7 @@
                 <div v-else class="w-full h-full bg-bg-tertiary/40 backdrop-blur-xl flex flex-col items-center justify-center gap-8 relative overflow-hidden group-hover:bg-bg-tertiary/60 transition-all duration-700 border border-white/5">
                   <!-- Decorative Background Glow -->
                   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
-                  
+
                   <!-- Large Spinner -->
                   <div class="relative w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
                     <svg class="w-full h-full animate-spin-slow" viewBox="0 0 100 100">
@@ -63,16 +110,16 @@
                       <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                     </div>
                   </div>
-                  
+
                   <!-- Title -->
                   <div class="flex flex-col items-center gap-2">
                     <h4 class="font-serif text-4xl md:text-6xl text-text-primary italic tracking-tighter opacity-90">MORE SOON...</h4>
                     <span class="text-[9px] md:text-[10px] uppercase tracking-[0.6em] text-text-muted font-bold">More projects coming soon</span>
                   </div>
                 </div>
-                
+
                 <!-- Project Number -->
-                <div class="absolute top-6 left-6 md:top-10 md:left-10">
+                <div v-if="hasImage(project)" class="absolute top-6 left-6 md:top-10 md:left-10">
                   <span class="text-[10px] md:text-xs font-sans tracking-[0.3em] uppercase text-text-primary/60 backdrop-blur-md bg-bg-primary/20 px-4 py-2 rounded-full border border-white/5">
                     0{{ index + 1 }}
                   </span>
@@ -81,10 +128,10 @@
             </div>
 
             <!-- Info Section -->
-            <div class="w-full md:w-[40%] flex flex-col px-4 md:px-0" :class="index % 2 === 1 ? 'md:items-end md:text-right' : ''">
+            <div class="w-full md:w-[40%] flex flex-col px-4 md:px-0 relative z-10" :class="index % 2 === 1 ? 'md:items-end md:text-right' : ''">
               <!-- Tags -->
               <div class="flex flex-wrap gap-2 mb-8" :class="index % 2 === 1 ? 'md:justify-end' : ''">
-                <span v-for="tag in project.tags" :key="tag" 
+                <span v-for="tag in project.tags" :key="tag"
                       class="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-sans font-bold text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">
                   {{ tag }}
                 </span>
@@ -102,8 +149,8 @@
 
               <!-- CTA -->
               <div v-if="project.link && project.link !== '#'" class="mt-12 overflow-hidden">
-                <NuxtLink 
-                  :to="project.link" 
+                <NuxtLink
+                  :to="project.link"
                   target="_blank"
                   class="inline-flex items-center gap-4 text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold text-text-primary group/cta"
                 >
@@ -122,7 +169,7 @@
             </div>
           </div>
         </template>
-        
+
         <!-- Empty State Placeholder -->
         <div v-else class="project-card w-full h-[40vh] md:h-[60vh] rounded-[2rem] border border-border-subtle flex items-center justify-center bg-bg-secondary/30 backdrop-blur-sm shadow-2xl">
           <p class="font-sans text-xl md:text-2xl text-text-muted tracking-widest uppercase flex flex-col items-center gap-4">
@@ -155,6 +202,9 @@ const isVideo = (src) => {
   const cleanSrc = src.split('?')[0].split('#')[0]
   return cleanSrc.endsWith('.mp4') || cleanSrc.endsWith('.webm') || cleanSrc.endsWith('.ogg')
 }
+
+const hasImage = (project) => !!(project.images && project.images.length > 0)
+const pad = (n) => String(n).padStart(2, '0')
 
 const projects = ref([
 {
@@ -283,5 +333,22 @@ onUnmounted(() => {
 
 .project-parallax-img {
   will-change: transform;
+}
+
+/* Pure background typography — sits behind the image/text columns (z-0),
+   never overlaps or hides content (those columns are z-10). */
+.project-ghost-index {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  translate: 0 -50%;
+  z-index: 0;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: clamp(6rem, 12vw, 14rem);
+  line-height: 1;
+  color: var(--text-primary);
+  opacity: 0.04;
+  pointer-events: none;
 }
 </style>

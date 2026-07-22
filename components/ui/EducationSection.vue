@@ -1,16 +1,24 @@
 <template>
-  <section 
-    ref="sectionRef" 
-    id="education" 
+  <section
+    ref="sectionRef"
+    id="education"
     class="w-full min-h-screen bg-transparent py-32 relative overflow-hidden transition-all duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)]"
     :style="{ clipPath: isVisible ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' : 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }"
   >
     <div class="w-full max-w-7xl mx-auto px-6 md:px-16 flex flex-col relative z-10">
-      
+
       <!-- Title -->
       <div class="mb-24 flex items-end justify-between border-b border-border-subtle pb-8">
-        <h2 class="text-5xl md:text-8xl font-serif font-bold text-text-primary tracking-tighter">
-          Education
+        <h2 class="text-5xl md:text-8xl font-serif font-bold text-text-primary tracking-tighter" style="perspective: 800px;">
+          <span class="sr-only">Education</span>
+          <span class="whitespace-nowrap" aria-hidden="true">
+            <span
+              v-for="(char, i) in titleChars"
+              :key="`edu-${i}`"
+              :ref="el => setLetterRef(el, i)"
+              class="edu-letter inline-block"
+              >{{ char }}</span>
+          </span>
         </h2>
         <span class="hidden md:block text-text-muted font-sans tracking-widest uppercase text-sm">
           01 // Academic
@@ -19,13 +27,15 @@
 
       <!-- Timeline / List -->
       <div class="flex flex-col w-full">
-        <div 
-          v-for="(item, index) in educationItems" 
+        <div
+          v-for="(item, index) in educationItems"
           :key="index"
           class="edu-row group flex flex-col md:flex-row justify-between items-start md:items-center py-10 md:py-16 border-b border-border-subtle hover:border-text-primary/20 transition-colors duration-500 relative cursor-default"
         >
+          <span class="edu-ghost-index hidden lg:block" aria-hidden="true">{{ pad(index + 1) }}</span>
+
           <!-- Left side: Date & School -->
-          <div class="w-full md:w-1/2 flex flex-col md:flex-row gap-4 md:gap-16 items-start md:items-center mb-6 md:mb-0">
+          <div class="w-full md:w-1/2 flex flex-col md:flex-row gap-4 md:gap-16 items-start md:items-center mb-6 md:mb-0 relative z-10">
             <span class="font-sans text-xs md:text-sm tracking-widest uppercase text-text-muted group-hover:text-text-secondary transition-colors w-32">
               {{ item.year }}
             </span>
@@ -35,7 +45,7 @@
           </div>
 
           <!-- Right side: Degree -->
-          <div class="w-full md:w-1/2 md:text-right">
+          <div class="w-full md:w-1/2 md:text-right relative z-10">
             <p class="font-sans text-lg md:text-xl text-text-secondary font-light group-hover:text-text-primary transition-colors duration-500">
               {{ item.degree }}
             </p>
@@ -48,9 +58,21 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useKineticType } from '~/composables/useKineticType'
+
+const { revealLetters } = useKineticType()
 
 const sectionRef = ref(null)
 const isVisible = ref(false)
+
+const pad = (n) => String(n).padStart(2, '0')
+
+const TITLE = 'Education'
+const titleChars = TITLE.split('')
+const letterEls = []
+function setLetterRef(el, index) {
+  if (el) letterEls[index] = el
+}
 
 const educationItems = [
   {
@@ -78,6 +100,7 @@ onMounted(() => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         isVisible.value = true
+        revealLetters(letterEls, { delay: 0.3, stagger: 0.03 })
         // Unobserve after reveal to keep it visible
         observer.unobserve(entry.target)
       }
@@ -95,3 +118,25 @@ onUnmounted(() => {
   }
 })
 </script>
+
+<style scoped>
+.edu-ghost-index {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  translate: 0 -50%;
+  z-index: 0;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: clamp(4rem, 8vw, 8rem);
+  line-height: 1;
+  color: var(--text-primary);
+  opacity: 0.04;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.edu-row:hover .edu-ghost-index {
+  opacity: 0.08;
+}
+</style>
