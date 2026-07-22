@@ -1,5 +1,5 @@
 <template>
-  <section ref="sectionRef" id="about-me" class="w-full min-h-svh bg-transparent px-6 md:px-16 py-32 relative overflow-hidden flex items-center">
+  <section ref="sectionRef" id="about-me" class="w-full min-h-app-screen bg-transparent px-6 md:px-16 py-32 relative overflow-hidden flex items-center">
 
     <span class="about-ghost-index hidden lg:block" aria-hidden="true">00</span>
 

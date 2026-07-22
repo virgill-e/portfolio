@@ -1,5 +1,5 @@
 <template>
-  <section ref="sectionRef" id="experience" class="w-full min-h-svh bg-transparent py-32 relative overflow-hidden">
+  <section ref="sectionRef" id="experience" class="w-full min-h-app-screen bg-transparent py-32 relative overflow-hidden">
     <div class="w-full max-w-7xl mx-auto px-6 md:px-16 flex flex-col relative z-10">
 
       <!-- Title -->

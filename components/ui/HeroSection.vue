@@ -1,5 +1,5 @@
 <template>
-  <section id="hero" class="relative w-full h-svh flex items-center justify-center overflow-hidden bg-transparent">
+  <section id="hero" class="relative w-full h-app-screen flex items-center justify-center overflow-hidden bg-transparent">
     <!-- Parallax Layers -->
 
     <!-- Background Layer (0.3x) -->

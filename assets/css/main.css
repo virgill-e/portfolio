@@ -68,6 +68,22 @@ html {
     color: var(--text-primary);
     overflow-x: hidden;
     scroll-behavior: smooth;
+    /* Fallback for the instant JS paints before the pinned-vh plugin runs. */
+    --app-100vh: 100svh;
+}
+
+/* Pinned viewport height: see plugins/viewport.client.ts. Some in-app browsers
+   (Instagram, TikTok) resize their WebView frame natively when their own
+   chrome hides/shows on scroll — a genuine viewport resize the svh/dvh spec
+   doesn't protect against, since it isn't the OS-level dynamic toolbar those
+   units track. --app-100vh is set once in JS and only updates on a real
+   width change, so full-screen sections never resize mid-scroll. */
+.h-app-screen {
+    height: var(--app-100vh);
+}
+
+.min-h-app-screen {
+    min-height: var(--app-100vh);
 }
 
 /* Reduced-motion safety net: every animation/transition on the site collapses to instant.

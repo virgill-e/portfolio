@@ -2,7 +2,7 @@
   <section
     ref="sectionRef"
     id="education"
-    class="w-full min-h-svh bg-transparent py-32 relative overflow-hidden transition-all duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)]"
+    class="w-full min-h-app-screen bg-transparent py-32 relative overflow-hidden transition-all duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)]"
     :style="{ clipPath: isVisible ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' : 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }"
   >
     <div class="w-full max-w-7xl mx-auto px-6 md:px-16 flex flex-col relative z-10">
