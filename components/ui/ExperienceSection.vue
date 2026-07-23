@@ -4,7 +4,7 @@
 
       <!-- Title -->
       <div class="mb-24 flex items-end justify-between border-b border-border-subtle pb-8">
-        <h2 class="text-5xl md:text-8xl font-serif font-bold text-text-primary tracking-tighter" style="perspective: 800px;">
+        <h2 class="text-5xl md:text-8xl font-serif font-bold text-text-primary tracking-tighter">
           <span class="sr-only">Experience</span>
           <span class="whitespace-nowrap" aria-hidden="true">
             <span

@@ -14,7 +14,7 @@
 
         <!-- Asymmetric left column for the huge statement -->
         <div class="col-span-1 md:col-span-5 flex flex-col items-start">
-          <h2 class="text-6xl sm:text-7xl md:text-[8rem] font-serif font-bold text-text-primary leading-[0.85] tracking-tighter flex flex-col gap-2 md:gap-4" style="perspective: 800px;">
+          <h2 class="text-6xl sm:text-7xl md:text-[8rem] font-serif font-bold text-text-primary leading-[0.85] tracking-tighter flex flex-col gap-2 md:gap-4">
             <span class="sr-only">Hello, I'm Virgile.</span>
             <span class="block" aria-hidden="true">
               <template v-for="(token, wi) in tokens1" :key="`a1-w${wi}`">

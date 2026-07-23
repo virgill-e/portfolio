@@ -21,9 +21,13 @@ export function useKineticType() {
   const prefersReducedMotion = () =>
     typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  // Letter-by-letter snap: each glyph settles from a rotated, receded state
-  // rather than the whole word sliding in as one block. Under reduced motion,
-  // the same letters just fade — same words, no rotation or travel.
+  // Letter-by-letter snap: each glyph settles from a receded, scaled-down
+  // state rather than the whole word sliding in as one block. Deliberately
+  // 2D-only (no rotateX/perspective): 3D transforms combined with an
+  // overflow-hidden ancestor are a known WebKit/mobile rendering trap — the
+  // rotated glyphs can visibly clip mid-transform until the transform flattens
+  // back to none, which read as "part of the title is cut off, then appears
+  // a moment later" on real phones. Under reduced motion, the letters just fade.
   function kineticVars(opts = {}) {
     const reduced = prefersReducedMotion()
     return reduced ? {
@@ -35,9 +39,7 @@ export function useKineticType() {
     } : {
       opacity: 0,
       y: opts.y ?? 50,
-      rotateX: opts.rotateX ?? -70,
       scale: opts.scale ?? 0.85,
-      transformOrigin: '50% 100%',
       duration: opts.duration ?? 0.9,
       stagger: opts.stagger ?? 0.025,
       ease: 'power4.out',

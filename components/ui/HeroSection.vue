@@ -32,7 +32,7 @@
       ref="fgLayer"
       class="relative z-10 w-full max-w-7xl px-6 flex flex-col items-center text-center will-change-transform"
     >
-      <h1 class="hero-name text-7xl md:text-[8rem] lg:text-[10rem] font-serif font-bold text-text-primary leading-[0.9] tracking-tight mb-8 flex flex-col gap-2 md:gap-4" style="perspective: 800px;">
+      <h1 class="hero-name text-7xl md:text-[8rem] lg:text-[10rem] font-serif font-bold text-text-primary leading-[0.9] tracking-tight mb-8 flex flex-col gap-2 md:gap-4">
         <span class="sr-only">Virgile Bigaré</span>
         <span class="block whitespace-nowrap" aria-hidden="true">
           <span
@@ -137,8 +137,10 @@ onMounted(() => {
     const allLetters = [...letterEls[0], ...letterEls[1]]
 
     // Kinetic split-letter entrance: each glyph snaps into place from a
-    // rotated, receded state rather than the whole word sliding as one block.
-    // Under reduced motion: a plain, instant-ish fade — same content, no rotation/travel.
+    // receded, scaled-down state rather than the whole word sliding as one
+    // block. Deliberately 2D-only (no rotateX/perspective) — see
+    // composables/useKineticType.js for why. Under reduced motion: a plain,
+    // instant-ish fade — same content, no travel.
     const tl = gsap.timeline({ delay: 0.2 })
 
     tl.from(allLetters, reducedMotion ? {
@@ -149,9 +151,7 @@ onMounted(() => {
     } : {
       opacity: 0,
       y: 60,
-      rotateX: -70,
       scale: 0.85,
-      transformOrigin: '50% 100%',
       duration: 1,
       stagger: 0.025,
       ease: 'power4.out'

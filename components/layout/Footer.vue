@@ -43,7 +43,7 @@ onUnmounted(() => {
   <footer ref="sectionRef" class="relative bg-transparent py-32 md:py-48 w-full flex flex-col items-center justify-center overflow-hidden z-20 border-t border-border-subtle mt-32">
 
     <!-- Big statement -->
-    <h2 class="font-serif text-text-primary text-5xl md:text-7xl lg:text-[8rem] text-center mb-16 tracking-tighter leading-none px-4 selection:bg-text-primary selection:text-bg-primary group" style="perspective: 800px;">
+    <h2 class="font-serif text-text-primary text-5xl md:text-7xl lg:text-[8rem] text-center mb-16 tracking-tighter leading-none px-4 selection:bg-text-primary selection:text-bg-primary group">
       <span class="sr-only">Let's build something great</span>
       <span class="block italic text-text-secondary" aria-hidden="true">
         <template v-for="(token, wi) in tokens1" :key="`f1-w${wi}`">
