@@ -4,16 +4,8 @@
 
       <!-- Title -->
       <div class="mb-24 flex items-end justify-between border-b border-border-subtle pb-8">
-        <h2 class="text-5xl md:text-8xl font-serif font-bold text-text-primary tracking-tighter">
-          <span class="sr-only">Experience</span>
-          <span class="whitespace-nowrap" aria-hidden="true">
-            <span
-              v-for="(char, i) in titleChars"
-              :key="`exp-${i}`"
-              :ref="el => setLetterRef(el, i)"
-              class="exp-letter inline-block"
-              >{{ char }}</span>
-          </span>
+        <h2 ref="titleRef" class="text-5xl md:text-8xl font-serif font-bold text-text-primary tracking-tighter whitespace-nowrap translate-y-full opacity-0">
+          Experience
         </h2>
         <span class="hidden md:block text-text-muted font-sans tracking-widest uppercase text-sm">
           02 // Professional
@@ -66,21 +58,12 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import noshaqLogo from '@/assets/images/Noshaq.png'
-import { useKineticType } from '~/composables/useKineticType'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const { kineticVars } = useKineticType()
-
 const sectionRef = ref(null)
+const titleRef = ref(null)
 const pad = (n) => String(n).padStart(2, '0')
-
-const TITLE = 'Experience'
-const titleChars = TITLE.split('')
-const letterEls = []
-function setLetterRef(el, index) {
-  if (el) letterEls[index] = el
-}
 
 const experienceItems = [
   {
@@ -103,13 +86,16 @@ onMounted(() => {
   ctx = gsap.context(() => {
 
     // Title Animation
-    gsap.from(letterEls, {
-      ...kineticVars({ stagger: 0.03 }),
+    gsap.to(titleRef.value, {
       scrollTrigger: {
         trigger: sectionRef.value,
         start: 'top 70%',
         toggleActions: 'play none none reverse'
-      }
+      },
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      ease: 'power4.out'
     })
 
     // Cards Animation

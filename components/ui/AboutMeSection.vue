@@ -15,32 +15,11 @@
         <!-- Asymmetric left column for the huge statement -->
         <div class="col-span-1 md:col-span-5 flex flex-col items-start">
           <h2 class="text-6xl sm:text-7xl md:text-[8rem] font-serif font-bold text-text-primary leading-[0.85] tracking-tighter flex flex-col gap-2 md:gap-4">
-            <span class="sr-only">Hello, I'm Virgile.</span>
-            <span class="block" aria-hidden="true">
-              <template v-for="(token, wi) in tokens1" :key="`a1-w${wi}`">
-                <span class="inline-block whitespace-nowrap">
-                  <span
-                    v-for="c in token.chars"
-                    :key="`a1-${c.index}`"
-                    :ref="el => setLetterRef(el, 0, c.index)"
-                    class="about-letter inline-block"
-                    >{{ c.char }}</span>
-                </span>
-                <span v-if="wi < tokens1.length - 1">&nbsp;</span>
-              </template>
+            <span class="block overflow-hidden py-6 -my-6">
+              <span ref="title1" class="block translate-y-full whitespace-nowrap">Hello,</span>
             </span>
-            <span class="block italic text-text-secondary" aria-hidden="true">
-              <template v-for="(token, wi) in tokens2" :key="`a2-w${wi}`">
-                <span class="inline-block whitespace-nowrap">
-                  <span
-                    v-for="c in token.chars"
-                    :key="`a2-${c.index}`"
-                    :ref="el => setLetterRef(el, 1, c.index)"
-                    class="about-letter inline-block"
-                    >{{ c.char }}</span>
-                </span>
-                <span v-if="wi < tokens2.length - 1">&nbsp;</span>
-              </template>
+            <span class="block overflow-hidden py-6 -my-6">
+              <span ref="title2" class="block translate-y-full italic text-text-secondary whitespace-nowrap">I'm Virgile.</span>
             </span>
           </h2>
         </div>
@@ -79,23 +58,14 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useKineticType, buildWordTokens } from '~/composables/useKineticType'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const { kineticVars } = useKineticType()
-
 const sectionRef = ref(null)
+const title1 = ref(null)
+const title2 = ref(null)
 const lineRef = ref(null)
 const metaRef = ref(null)
-
-const tokens1 = buildWordTokens('Hello,')
-const tokens2 = buildWordTokens("I'm Virgile.")
-
-const letterEls = [[], []]
-function setLetterRef(el, line, index) {
-  if (el) letterEls[line][index] = el
-}
 
 const paragraph = "a full stack developer passionate about creating web and mobile applications. Curious and always seeking new challenges, I enjoy exploring personal projects that allow me to expand my skills and stay up-to-date in an ever-evolving field."
 const words = paragraph.split(' ')
@@ -104,8 +74,6 @@ let ctx;
 
 onMounted(() => {
   ctx = gsap.context(() => {
-    const allLetters = [...letterEls[0], ...letterEls[1]]
-
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.value,
@@ -114,14 +82,19 @@ onMounted(() => {
       }
     })
 
-    tl.from(allLetters, kineticVars({ stagger: 0.02 }))
+    tl.to([title1.value, title2.value], {
+      y: 0,
+      duration: 1,
+      stagger: 0.1,
+      ease: 'power4.out'
+    })
     .to('.word-reveal', {
       y: 0,
       opacity: 1,
       duration: 0.8,
       stagger: 0.02,
       ease: 'power3.out'
-    }, "-=0.5")
+    }, "-=0.6")
     .to(lineRef.value, {
       scaleX: 1,
       duration: 1,

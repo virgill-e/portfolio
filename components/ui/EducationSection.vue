@@ -9,16 +9,8 @@
 
       <!-- Title -->
       <div class="mb-24 flex items-end justify-between border-b border-border-subtle pb-8">
-        <h2 class="text-5xl md:text-8xl font-serif font-bold text-text-primary tracking-tighter">
-          <span class="sr-only">Education</span>
-          <span class="whitespace-nowrap" aria-hidden="true">
-            <span
-              v-for="(char, i) in titleChars"
-              :key="`edu-${i}`"
-              :ref="el => setLetterRef(el, i)"
-              class="edu-letter inline-block"
-              >{{ char }}</span>
-          </span>
+        <h2 class="text-5xl md:text-8xl font-serif font-bold text-text-primary tracking-tighter overflow-hidden">
+          <span ref="titleRef" class="block translate-y-full whitespace-nowrap">Education</span>
         </h2>
         <span class="hidden md:block text-text-muted font-sans tracking-widest uppercase text-sm">
           01 // Academic
@@ -58,21 +50,13 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { useKineticType } from '~/composables/useKineticType'
-
-const { revealLetters } = useKineticType()
+import gsap from 'gsap'
 
 const sectionRef = ref(null)
+const titleRef = ref(null)
 const isVisible = ref(false)
 
 const pad = (n) => String(n).padStart(2, '0')
-
-const TITLE = 'Education'
-const titleChars = TITLE.split('')
-const letterEls = []
-function setLetterRef(el, index) {
-  if (el) letterEls[index] = el
-}
 
 const educationItems = [
   {
@@ -100,7 +84,7 @@ onMounted(() => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         isVisible.value = true
-        revealLetters(letterEls, { delay: 0.3, stagger: 0.03 })
+        gsap.to(titleRef.value, { y: 0, duration: 1, delay: 0.3, ease: 'power4.out' })
         // Unobserve after reveal to keep it visible
         observer.unobserve(entry.target)
       }

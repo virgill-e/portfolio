@@ -90,8 +90,7 @@ This system explicitly rejects the **generic corporate/agency look**: no glassmo
 - Flat by default; weight (shadow, blur) appears only under featured media
 - No cards as the default container — alternating cinematic rows instead, media always visible, never hidden behind a hover gate
 - Motion is choreographed, not incidental: staggered reveals, scroll-scrubbed parallax, hover states that always *do* something
-- The hero name is kinetic type, not static: it snaps in letter by letter and leans away from the cursor — typography as the risk-taking centerpiece
-- On desktop, the mouse itself is part of the interface: a custom cursor that names what it's over
+- Headlines reveal through a masked slide-up (whole word/line, not individual letters) — clean and proven, not a novelty
 
 ## 2. Colors
 
@@ -170,11 +169,8 @@ Each Selected Works entry keeps its original alternating text+media layout (imag
 
 **The Ghost Rule.** Decoration never costs content. If a numeral, watermark, or background flourish would require hiding the real image, description, or CTA to make room, it's the wrong flourish.
 
-### Signature Component: Custom Cursor (desktop, fine pointer, motion-safe only)
-A 6px dot plus a 40px ring replace the system cursor. The ring holds position and border by default; over a real link it fills solid and grows into an 88px pill labelled "View", over any other link it grows to 56px with a faint fill and no label. There is no "Soon" or placeholder state — a data-cursor is only ever attached where a real destination exists. Sizing is done via `scale`/`translate` on nested elements, never `width`/`height`, so it stays compositor-only. Skipped entirely on touch, coarse pointers, or `prefers-reduced-motion` — the native cursor is the fallback, not a degraded custom one.
-
-### Signature Component: Kinetic Hero Type
-The hero name splits into individual letters that snap into place (opacity + `rotateX` + scale, `power4.out`, no bounce/elastic) rather than the whole word sliding as one block — the deliberate typographic risk-take of the system. On fine-pointer, motion-safe devices the letters also lean away from the cursor as it passes near (a magnetic-type effect, same "the cursor is part of the interface" idea as the custom cursor). Reduced motion drops straight to a plain fade — same words, no rotation, no magnetism. The visible text is `aria-hidden`; a `sr-only` span carries the real string for assistive tech.
+### Signature Component: Masked Headline Reveal
+Section headlines (hero name, "Hello, I'm Virgile.", "Education", "Experience") reveal via an `overflow-hidden` wrapper around a `translate-y-full → 0` inner span — the whole word/line slides up from behind its own mask as one block, never split into individually-animated letters. Per-letter GSAP transforms (even 2D-only, even opacity-only) turned out to visibly clip mid-reveal on real mobile devices — the masked whole-line slide is the proven-safe technique and stays that way deliberately.
 
 ### Signature Component: Cinematic Theme Wipe
 The theme toggle uses the View Transitions API to expand a circle from the button's own position, wiping the whole viewport from one grade to the other in ~500ms. Falls back to an instant swap where View Transitions aren't supported.
@@ -194,6 +190,6 @@ The theme toggle uses the View Transitions API to expand a circle from the butto
 - **Don't** introduce a second accent color alongside Signal Amber; the whole system depends on there being exactly one.
 - **Don't** declare a font, token, or utility class without a real caller — `Bagel Fat One`, the `Lostar` `@font-face`, and `.underline-gradient` were removed for exactly this drift; don't reintroduce assets the UI doesn't use.
 - **Don't** hardcode `font-family` inline instead of going through a token (`--font-lato`, etc.); it's how markup and the design system silently drift apart.
-- **Don't** ship a desktop-only mechanic (custom cursor, magnetic hero type) without its plain fallback — every one of them must degrade to a fully usable state on touch, coarse pointers, and `prefers-reduced-motion`.
 - **Don't** hide a project's image, video, or description behind a hover gate to make room for a decorative flourish — media stays visible by default, always.
-- **Don't** give an unlinked project (`link: '#'`) a fake CTA or cursor affordance; if there's nowhere to go, don't imply there is.
+- **Don't** give an unlinked project (`link: '#'`) a fake CTA; if there's nowhere to go, don't imply there is.
+- **Don't** animate individual letters of a headline via transform (translate/scale/rotate) — it visibly clips mid-reveal on real mobile devices. Animate the whole word/line as one masked block instead.
