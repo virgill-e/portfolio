@@ -15,7 +15,7 @@
     <!-- Midground Layer (0.6x) -->
     <div
       ref="midLayer"
-      class="absolute inset-0 flex items-center justify-center pointer-events-none will-change-transform"
+      class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden will-change-transform"
     >
       <div class="w-full max-w-7xl px-6 flex justify-between items-end h-full pb-20 md:pb-32">
         <div class="text-text-muted font-sans tracking-widest uppercase text-xs md:text-sm">
@@ -74,6 +74,9 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useKineticType } from '~/composables/useKineticType'
+
+const { kineticVars } = useKineticType()
 
 if (process.client) {
   gsap.registerPlugin(ScrollTrigger)
@@ -138,24 +141,12 @@ onMounted(() => {
 
     // Kinetic split-letter entrance: each glyph snaps into place from a
     // receded, scaled-down state rather than the whole word sliding as one
-    // block. Deliberately 2D-only (no rotateX/perspective) — see
-    // composables/useKineticType.js for why. Under reduced motion: a plain,
-    // instant-ish fade — same content, no travel.
+    // block — desktop/fine-pointer only. Touch and narrow viewports (same
+    // bucket as reduced motion) get a plain opacity fade instead: see
+    // composables/useKineticType.js for why.
     const tl = gsap.timeline({ delay: 0.2 })
 
-    tl.from(allLetters, reducedMotion ? {
-      opacity: 0,
-      duration: 0.4,
-      stagger: 0,
-      ease: 'power1.out'
-    } : {
-      opacity: 0,
-      y: 60,
-      scale: 0.85,
-      duration: 1,
-      stagger: 0.025,
-      ease: 'power4.out'
-    })
+    tl.from(allLetters, kineticVars({ y: 60, duration: 1 }))
       .to(subtitle.value, {
         y: 0,
         duration: 1,

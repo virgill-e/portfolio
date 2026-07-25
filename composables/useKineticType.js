@@ -21,16 +21,24 @@ export function useKineticType() {
   const prefersReducedMotion = () =>
     typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  // Letter-by-letter snap: each glyph settles from a receded, scaled-down
-  // state rather than the whole word sliding in as one block. Deliberately
-  // 2D-only (no rotateX/perspective): 3D transforms combined with an
-  // overflow-hidden ancestor are a known WebKit/mobile rendering trap — the
-  // rotated glyphs can visibly clip mid-transform until the transform flattens
-  // back to none, which read as "part of the title is cut off, then appears
-  // a moment later" on real phones. Under reduced motion, the letters just fade.
+  // Many individually-transformed letter spans (each forced onto its own GPU
+  // layer by GSAP's translate3d) nested inside an overflow-hidden ancestor is
+  // a known WebKit/mobile rendering trap: letters can visibly clip mid-reveal
+  // until the transform settles, reading as "part of the title cut off, then
+  // appears a moment later" on real phones. Desktop browsers (and the fewer
+  // layers of a single fine-pointer hover) don't hit it in practice. So the
+  // transform-driven reveal is a desktop-only enhancement; touch/narrow
+  // viewports — same bucket as reduced motion — get an opacity-only fade:
+  // same letters, same timing, zero transform, zero clipping risk.
+  const shouldSimplify = () => {
+    if (typeof window === 'undefined') return true
+    return prefersReducedMotion() ||
+      !window.matchMedia('(min-width: 768px)').matches ||
+      !window.matchMedia('(pointer: fine)').matches
+  }
+
   function kineticVars(opts = {}) {
-    const reduced = prefersReducedMotion()
-    return reduced ? {
+    return shouldSimplify() ? {
       opacity: 0,
       duration: 0.4,
       stagger: 0,
