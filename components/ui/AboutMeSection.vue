@@ -14,12 +14,12 @@
 
         <!-- Asymmetric left column for the huge statement -->
         <div class="col-span-1 md:col-span-5 flex flex-col items-start">
-          <h2 class="text-6xl sm:text-7xl md:text-[8rem] font-serif font-bold text-text-primary leading-[0.85] tracking-tighter flex flex-col gap-2 md:gap-4">
+          <h2 class="text-6xl sm:text-7xl md:text-[clamp(4.25rem,calc(-0.25rem_+_9.375vw),8rem)] font-serif font-bold text-text-primary leading-[0.85] tracking-tighter flex flex-col gap-2 md:gap-4">
             <span class="block overflow-hidden py-6 -my-6">
               <span ref="title1" class="block translate-y-full whitespace-nowrap">Hello,</span>
             </span>
             <span class="block overflow-hidden py-6 -my-6">
-              <span ref="title2" class="block translate-y-full italic text-text-secondary whitespace-nowrap">I'm Virgile.</span>
+              <span ref="title2" class="block translate-y-full italic text-text-secondary">I'm <span class="whitespace-nowrap">Virgile.</span></span>
             </span>
           </h2>
         </div>
