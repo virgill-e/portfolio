@@ -9,6 +9,11 @@ export default defineNuxtConfig({
   // Pour une SPA statique
   ssr: false,
 
+  // Renvoie un vrai 404 (au lieu du shell SPA en 200) pour les URLs qui ne correspondent à aucune page
+  experimental: {
+    early404: true,
+  },
+
   css: ['~/assets/css/main.css'],
 
   app: {
