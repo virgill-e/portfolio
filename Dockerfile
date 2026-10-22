@@ -1,5 +1,5 @@
 # Dockerfile pour Nuxt 4 - Déploiement Dokploy
-FROM node:20-alpine
+FROM node:24.22.1-alpine
 
 # Définir le répertoire de travail
 WORKDIR /app
