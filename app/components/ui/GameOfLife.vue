@@ -52,16 +52,9 @@ const DIGIT_0 = ['01110', '10001', '10001', '10001', '10001', '10001', '01110']
 function build404Pattern(): { rows: string[]; width: number; height: number } {
   const glyphs = [DIGIT_4, DIGIT_0, DIGIT_4]
   const height = 7
-  const rows: string[] = Array.from({ length: height }, () => '')
+  const rows: string[] = Array.from({ length: height }, (_, r) => glyphs.map((glyph) => glyph[r]).join('0'))
 
-  glyphs.forEach((glyph, gi) => {
-    for (let r = 0; r < height; r++) {
-      rows[r] += glyph[r]
-      if (gi < glyphs.length - 1) rows[r] += '0'
-    }
-  })
-
-  return { rows, width: rows[0].length, height }
+  return { rows, width: rows[0]?.length ?? 0, height }
 }
 
 // ─── Simulation constants ──────────────────────────
@@ -125,7 +118,7 @@ function seedWithPattern() {
 
   for (let py = 0; py < ph; py++) {
     for (let px = 0; px < pw; px++) {
-      if (patternRows[py][px] !== '1') continue
+      if (patternRows[py]?.[px] !== '1') continue
       for (let sy = 0; sy < scale; sy++) {
         for (let sx = 0; sx < scale; sx++) {
           const x = offsetX + px * scale + sx
