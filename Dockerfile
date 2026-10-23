@@ -27,5 +27,9 @@ ENV NODE_ENV=production
 ENV PORT=3001
 ENV HOST=0.0.0.0
 
+# Exécuter l'application avec l'utilisateur non-root fourni par l'image node
+# (les fichiers restent la propriété de root : lecture seule pour l'app)
+USER node
+
 # Commande pour démarrer l'application
 CMD ["node", ".output/server/index.mjs"]
