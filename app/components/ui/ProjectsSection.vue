@@ -196,6 +196,7 @@ import PIkemon from '../../assets/images/PIkemon/mockup PIkemon mac+iphone.webp'
 import clove from '../../assets/images/clove/mockup Clove.webp'
 import toomanycookies from '../../assets/images/toomanycookies/mockup too many cookies.webp'
 import tvtime from '../../assets/images/tv-time/mockup.mp4'
+import melos from '../../assets/images/melos/mockup-melos.webp'
 
 const isVideo = (src) => {
   if (typeof src !== 'string') return false
@@ -207,7 +208,14 @@ const hasImage = (project) => !!(project.images && project.images.length > 0)
 const pad = (n) => String(n).padStart(2, '0')
 
 const projects = ref([
-{
+  {
+    title: 'Melos',
+    description: 'Melos is a living-room blind test built on your own Spotify music. A computer plays the tracks through the Spotify Web Playback SDK while players join by scanning a QR code and use their phones as buzzers over the local Wi-Fi, with real-time scoring and forgiving answer matching.',
+    images: [melos],
+    tags: ['Nuxt 4', 'Spotify API', 'WebSocket'],
+    link: '#'
+  },
+  {
     title: 'TV-time',
     description: 'TV-time is a web application for tracking and managing your favorite TV shows. It allows users to keep track of the shows they are watching, the episodes they have seen, and the shows they want to watch in the future.',
     images: [tvtime],
