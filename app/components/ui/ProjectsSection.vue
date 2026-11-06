@@ -213,7 +213,7 @@ const projects = ref([
     description: 'Melos is a living-room blind test built on your own Spotify music. A computer plays the tracks through the Spotify Web Playback SDK while players join by scanning a QR code and use their phones as buzzers over the local Wi-Fi, with real-time scoring and forgiving answer matching.',
     images: [melos],
     tags: ['Nuxt 4', 'Spotify API', 'WebSocket'],
-    link: '#'
+    link: 'https://github.com/virgill-e/melos'
   },
   {
     title: 'TV-time',
